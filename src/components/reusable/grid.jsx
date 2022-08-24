@@ -1,4 +1,4 @@
-import { Badge, Button, Card, Col } from "react-bootstrap";
+import { Badge, Button, Card } from "react-bootstrap";
 
 const styles = {
     card : {

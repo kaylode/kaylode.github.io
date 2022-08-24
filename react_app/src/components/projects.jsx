@@ -1,6 +1,5 @@
 import React from 'react'
 import {project_list} from '../data/projects'
-import CardGrid from './reusable/card_grid'
 import Grid from './reusable/grid'
 
 function Projects() {

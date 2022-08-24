@@ -35,6 +35,6 @@ Use this command to publish the page to githubio
 
 ## Reference
 
-https://youtu.be/LpZrAjU6Hhk
-https://tailwindcss.com/docs/installation
-https://react-bootstrap.github.io/
+- https://youtu.be/LpZrAjU6Hhk
+- https://tailwindcss.com/docs/installation
+- https://react-bootstrap.github.io/

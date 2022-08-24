@@ -5,6 +5,8 @@ import postgresql from "../assets/techs/postgresql.png";
 import overleaf from "../assets/techs/overleaf.png"
 import docker from "../assets/techs/docker.png"
 import android_studio from "../assets/techs/android_studio.png"
+import reactjs from "../assets/techs/react.png"
+import tailwind from "../assets/techs/tailwind.png"
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export const techs_list = [
@@ -47,9 +49,23 @@ export const techs_list = [
       title: "Android Studio",
       style: "shadow-emerald-500",
     },
-
+    
     {
       id: 6,
+      src: reactjs,
+      title: "ReactJS",
+      style: "shadow-sky-500",
+    },
+
+    {
+      id: 7,
+      src: tailwind,
+      title: "GitHub",
+      style: "shadow-teal-400",
+    },
+
+    {
+      id: 8,
       src: github,
       title: "GitHub",
       style: "shadow-gray-400",

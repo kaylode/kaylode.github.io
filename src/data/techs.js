@@ -60,7 +60,7 @@ export const techs_list = [
     {
       id: 7,
       src: tailwind,
-      title: "GitHub",
+      title: "TailwindCSS",
       style: "shadow-teal-400",
     },
 

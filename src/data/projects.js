@@ -5,6 +5,7 @@ import VNOCRToolBox from "../assets/projects/vnocrtoolbox.png"
 import Kai from "../assets/projects/kai.jpg"
 import Pothole from "../assets/projects/pothole.png"
 import TrafficEventRetrieval from "../assets/projects/aic22.png"
+import FoodAPI from "../assets/projects/food_api.jpg"
 
 // 'Primary',
 // 'Secondary',
@@ -103,6 +104,18 @@ export const project_list = [
     color: "light",
     text_color: "dark",
     tags: {pytorch:"danger", "semi-supervised":"info", "semantic segmentation": "success"}
+  },
+
+  {
+    id: 8,
+    img: FoodAPI,
+    title: "Meal Analysis Web-application",
+    desc: "We deployed a web application where user can upload images or videos of their dishes to get full analysis of the ingredients and nutritions of it. Food ingredients are detected using object detection deep learning algorithm and their information is retrieved from online APIs.",
+    demo: "",
+    source: "https://github.com/lannguyen0910/food-recognition",
+    color: "light",
+    text_color: "dark",
+    tags: {pytorch:"danger", "flask-server":"dark", yolov5:"warning", "object detection": "success", "web-application":"info"}
   },
 
   

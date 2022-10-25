@@ -72,7 +72,7 @@ function Home() {
                     </div>
                     <div className="py-2">
                       <a className="btn btn-primary my-1 mx-3 hover:scale-105 duration-500"
-                          href="https://drive.google.com/file/d/1BXvBd6wiMftJgpn4cJBTQ2fUt2JaYnG0/view?usp=sharing">Resumé</a>
+                          href="https://drive.google.com/file/d/1QuBwk92yxYacEvgHm6d2KKRFAgVm873L/view?usp=sharing">Resumé</a>
                       <a className="btn btn-primary my-1 mx-3 hover:scale-105 duration-500" href="mailto:pmkhoi@selab.hcmus.edu.vn">Email</a>
                     </div>
                 </div>
@@ -87,9 +87,9 @@ function Home() {
                     <div className='text-xl'>
                         <p className="pt-4">I&#x27;m an AI researcher and engineer from Viet Nam - country known for its long-standing
                             culture and customs.</p>
-                        <p className="py-2">I am currently a 4th year Computer Science student of Honors Program of <a
-                            href="https://www.hcmus.edu.vn/">University of Science</a>, Ho Chi Minh city, Viet Nam. My
-                            major is mainly about Artificial Intelligence, Machine Learning and Deep Learning.</p>
+                        <p className="py-2">I graduated with Bachelor degree of Computer Science in Honors Program from <a
+                            href="https://www.hcmus.edu.vn/">University of Science</a>, VNU-HCM, Viet Nam. My
+                            major is mainly about Computer Vision and Image Processing. Currently, I am taking the Ph.D programme at Dublin City University, Dublin, Ireland</p>
                         <p className="py-2">I&#x27;m interested in finding new thing, new method, state-of-the-art models and trying to apply
                             it or even reimplement it. Technology is growing everyday, so I spend effort trying as many new
                             things as possible. All my code are opensource on my personal Github account for education

@@ -6,6 +6,7 @@ import Kai from "../assets/projects/kai.jpg"
 import Pothole from "../assets/projects/pothole.png"
 import TrafficEventRetrieval from "../assets/projects/aic22.png"
 import FoodAPI from "../assets/projects/food_api.jpg"
+import IVOS from "../assets/projects/ivos.png"
 
 // 'Primary',
 // 'Secondary',
@@ -116,6 +117,18 @@ export const project_list = [
     color: "light",
     text_color: "dark",
     tags: {pytorch:"danger", "flask-server":"dark", yolov5:"warning", "object detection": "success", "web-application":"info"}
+  },
+
+  {
+    id: 9,
+    img: IVOS,
+    title: "Interactive CT Volume Organ Segmentation",
+    desc: "We present a novel two-staged method that employs various 2D-based techniques to deal with the 3D segmentation task. In most of the previous challenges, it is unlikely for 2D CNNs to be comparable with other 3D CNNs since 2D models can hardly capture temporal information. In light of that, we propose using the recent state-of-the-art technique in video object segmentation, combining it with other semi-supervised training techniques to leverage the extensive unlabeled data. Moreover, we introduce a way to generate pseudo-labeled data that is both plausible and consistent for further retraining by using uncertainty estimation.",
+    demo: "",
+    source: "https://github.com/kaylode/ivos",
+    color: "light",
+    text_color: "dark",
+    tags: {pytorch:"danger", "3d segmentation":"info"}
   },
 
   

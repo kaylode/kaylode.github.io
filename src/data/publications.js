@@ -20,6 +20,14 @@ export const publications_list = {
             authors: 'Minh-Khoi Pham, Thang-Long Nguyen-Ho, Trong-Thang Pham, Hai-Tuan Ho-Nguyen, Hai-Dang Nguyen, Minh-Triet Tran',
             site: 'CEUR Workshop Proceedings',
         },
+        {
+            id: 6,
+            link: 'https://doi.org/10.1016/j.cag.2021.07.010',
+            name: 'SHREC 2021: Retrieval of cultural heritage objects',
+            description: "Our team propose various methods to retrieve objects based on shape, with me introduce a 3D mesh-based approach by using MeshNet",
+            authors: 'Ivan Sipiran, ..., Dinh-Huan Nguyen, Thang-Long Nguyen-Ho, Bang-Dang Pham, Minh-Khoi Pham, Quoc-Huy Trinh, The-Anh Vu-Le',
+            site: 'Computer & Graphics',
+        },
     ],
 
 

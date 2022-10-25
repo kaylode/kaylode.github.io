@@ -5,7 +5,7 @@ function Techstack() {
       return (
         <div
           name="techstack"
-          className="bg-gray-800 w-full h-screen flex flex-col justify-center"
+          className="bg-gray-800 w-full py-5 px-5 h-screen flex flex-col justify-center"
         >
           <div className="max-w-screen-lg mx-auto p-4 flex flex-col justify-center w-full text-white">
             <div className="justify-center text-center">

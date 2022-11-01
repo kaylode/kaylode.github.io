@@ -1,13 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.3a4d4446.css",
-    "main.js": "/static/js/main.e5e1e779.js",
+    "main.js": "/static/js/main.00af2fe8.js",
     "static/media/vehicle_tracking.gif": "/static/media/vehicle_tracking.db26553df7da48cc3ae9.gif",
     "static/media/avatar.png": "/static/media/avatar.cc5d578b2df4a8c05ec9.png",
     "static/media/facemask.png": "/static/media/facemask.6f084b4c9d87ce0fc735.png",
     "static/media/github.png": "/static/media/github.3b9e32903aa89111875d.png",
     "static/media/vnocrtoolbox.png": "/static/media/vnocrtoolbox.7b744a8daf787e4e3d81.png",
     "static/media/pothole.png": "/static/media/pothole.05d431246da69c366229.png",
+    "static/media/ivos.png": "/static/media/ivos.6ea8d353e067b1e903e5.png",
     "static/media/food_api.jpg": "/static/media/food_api.903713f2fa51a054eccd.jpg",
     "static/media/aic22.png": "/static/media/aic22.f24e7a3b504ba9d79de2.png",
     "static/media/postgresql.png": "/static/media/postgresql.1b904635aedb7c19150d.png",
@@ -19,10 +20,10 @@
     "static/media/pytorch.png": "/static/media/pytorch.4db22492ada46048fd1c.png",
     "index.html": "/index.html",
     "main.3a4d4446.css.map": "/static/css/main.3a4d4446.css.map",
-    "main.e5e1e779.js.map": "/static/js/main.e5e1e779.js.map"
+    "main.00af2fe8.js.map": "/static/js/main.00af2fe8.js.map"
   },
   "entrypoints": [
     "static/css/main.3a4d4446.css",
-    "static/js/main.e5e1e779.js"
+    "static/js/main.00af2fe8.js"
   ]
 }

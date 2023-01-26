@@ -59,6 +59,17 @@ export const publications_list = {
             authors: 'Thang-Long Nguyen-Ho, Minh-Khoi Pham, Tien-Phat Nguyen, Hai-Dang Nguyen, Minh N. Do, Tam V. Nguyen and Minh-Triet Tran',
             site: 'AI City Challenge Workshop @ CVPR 2022',
         },
+    ],
+
+    2023: [
+        {
+            id: 6,
+            link: 'https://link.springer.com/chapter/10.1007/978-3-031-23911-3_15',
+            name: 'Semi-supervised Organ Segmentation with Mask Propagation Refinement and Uncertainty Estimation for Data Generation',
+            description: 'We present a novel two-staged method that employs various 2D-based techniques to deal with the 3D segmentation task. We propose using the recent state-of-the-art technique in video object segmentation, combining it with other semi-supervised training techniques to leverage the extensive unlabeled data. Moreover, we introduce a way to generate pseudo-labeled data that is both plausible and consistent for further retraining by using uncertainty estimation',
+            authors: 'Minh-Khoi Pham, Thang-Long Nguyen-Ho, Thao Thi Phuong Dao, Tan-Cong Nguyen & Minh-Triet Tran',
+            site: 'Lecture Notes in Computer Science',
+        },
     ]
 
 };

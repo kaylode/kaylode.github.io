@@ -50,8 +50,8 @@ jobs:
     #     uses: actions/deploy-pages@v1
   deploy:
     environment:
-    name: github-pages
-    url: ${{ steps.deployment.outputs.page_url }}
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

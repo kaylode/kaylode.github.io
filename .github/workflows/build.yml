@@ -59,11 +59,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-
       - name: Authenticate Github Action
         run:
-          git remote set-url origin https://git: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@github.com/kaylode/kaylode.github.io.git
-          npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
+          git remote set-url origin https://git:${GITTOKEN}@github.com/kaylode/kaylode.github.io.git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITTOKEN }}
       - name: Deploy GithubPages
         run: 
           npm ci

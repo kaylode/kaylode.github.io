@@ -60,3 +60,5 @@ jobs:
         env:
           CI: false
       - run: npm run deploy
+        env:
+          CI: false

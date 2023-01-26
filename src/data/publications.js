@@ -63,7 +63,7 @@ export const publications_list = {
 
     2023: [
         {
-            id: 6,
+            id: 7,
             link: 'https://link.springer.com/chapter/10.1007/978-3-031-23911-3_15',
             name: 'Semi-supervised Organ Segmentation with Mask Propagation Refinement and Uncertainty Estimation for Data Generation',
             description: 'We present a novel two-staged method that employs various 2D-based techniques to deal with the 3D segmentation task. We propose using the recent state-of-the-art technique in video object segmentation, combining it with other semi-supervised training techniques to leverage the extensive unlabeled data. Moreover, we introduce a way to generate pseudo-labeled data that is both plausible and consistent for further retraining by using uncertainty estimation',

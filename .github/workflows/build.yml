@@ -49,9 +49,7 @@ jobs:
     #     id: deployment
     #     uses: actions/deploy-pages@v1
 
-  build:
-    r
-  
+
   deploy:
     runs-on: ubuntu-latest
     steps:

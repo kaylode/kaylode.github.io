@@ -186,3 +186,67 @@ model Contact {
 
   @@map("contacts")
 }
+
+model Education {
+  id           String   @id @default(cuid())
+  institution  String
+  location     String
+  degree       String
+  field        String
+  period       String
+  status       String   // "Ongoing", "Graduated", "Completed"
+  gpa          String?
+  description  String?
+  highlights   String[] // Array of achievement highlights
+  logo         String?  // URL to institution logo
+  type         String   // "phd", "master", "bachelor", "certificate"
+  startDate    DateTime?
+  endDate      DateTime?
+  isVisible    Boolean  @default(true)
+  order        Int      @default(0) // For custom ordering
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("education")
+}
+
+model Experience {
+  id               String   @id @default(cuid())
+  company          String
+  position         String
+  location         String?
+  period           String
+  type             String   // "professional", "research", "internship", "volunteer"
+  description      String?
+  responsibilities String[] // Array of key responsibilities
+  achievements     String[] // Array of achievements
+  technologies     String[] // Technologies used
+  logo             String?  // URL to company logo
+  website          String?  // Company website
+  startDate        DateTime?
+  endDate          DateTime?
+  isCurrent        Boolean  @default(false)
+  isVisible        Boolean  @default(true)
+  order            Int      @default(0) // For custom ordering
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("experiences")
+}
+
+model Technology {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  category    String   // "frontend", "backend", "database", "tools", "languages"
+  icon        String?  // URL to technology icon/logo
+  description String?
+  proficiency String   @default("intermediate") // "beginner", "intermediate", "advanced", "expert"
+  yearStarted Int?     // Year when started using this technology
+  isVisible   Boolean  @default(true)
+  order       Int      @default(0) // For custom ordering in UI
+  color       String?  // Hex color for UI theming
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("technologies")
+}

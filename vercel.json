@@ -1,9 +1,4 @@
 {
-  "functions": {
-    "app/api/**": {
-      "maxDuration": 10
-    }
-  },
   "crons": [
     {
       "path": "/api/cron/crawl-data",

@@ -173,9 +173,11 @@ Visit: http://localhost:3000/api/github to test database connectivity.
 
 ### Common Issues:
 
-1. **Connection Timeout**
-   - Check authorized networks include your IP
-   - Verify instance is running
+1. **Connection Timeout (P1001 Error)**
+   - **Most Common**: Your IP is not in authorized networks
+   - **Check**: Instance has public IP enabled
+   - **Verify**: Instance is running and not stopped
+   - **Fix**: Add your IP to authorized networks (see below)
 
 2. **Authentication Failed**
    - Verify username/password
@@ -184,6 +186,27 @@ Visit: http://localhost:3000/api/github to test database connectivity.
 3. **Prisma Connection Error**
    - Ensure DATABASE_URL format is correct
    - Check if database exists
+
+### Fix P1001 Connection Timeout:
+
+#### Step 1: Get Your Current IP Address
+```bash
+curl ifconfig.me
+# Note: Your IP address (e.g., 123.456.789.012)
+```
+
+#### Step 2: Add Your IP to Authorized Networks
+1. Go to [Google Cloud Console](https://console.cloud.google.com)
+2. Navigate to **SQL** → Select your **portfolio-db** instance
+3. Click **Connections** → **Networking**
+4. Under **Authorized Networks**, click **Add Network**
+5. Add your IP: `YOUR_IP/32` (e.g., `123.456.789.012/32`)
+6. Click **Save**
+
+#### Step 3: Quick Fix - Allow All IPs (Development Only)
+⚠️ **Warning**: Only use for development/testing
+1. Add network: `0.0.0.0/0`
+2. This allows connections from any IP address
 
 ### Debug Commands:
 

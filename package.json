@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "version": "0.1.0",
-  "homepage": "https://kaylode.studio",
+  "homepage": "https://kaylode.com",
   "private": true,
   "dependencies": {
     "@prisma/client": "^6.12.0",

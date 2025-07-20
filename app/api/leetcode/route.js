@@ -1,23 +1,40 @@
 import { NextResponse } from 'next/server'
-import { prisma } from '../../../src/lib/prisma'
+
+// Check if database is available
+let prisma = null;
+try {
+  const { prisma: prismaClient } = require('../../../src/lib/prisma');
+  prisma = prismaClient;
+} catch (error) {
+  console.log('Database not available, using fallback mode');
+}
 
 export async function GET() {
   try {
-    const stats = await prisma.leetCodeStats.findFirst({
-      where: {
-        username: 'kaylode' // Replace with your LeetCode username
-      },
-      orderBy: {
-        lastUpdated: 'desc'
+    let stats = null;
+    
+    // Try to get from database first
+    if (prisma) {
+      try {
+        stats = await prisma.leetCodeStats.findFirst({
+          where: {
+            username: 'kaylode' // Replace with your LeetCode username
+          },
+          orderBy: {
+            lastUpdated: 'desc'
+          }
+        });
+      } catch (dbError) {
+        console.error('Database error, using fallback data:', dbError.message);
       }
-    })
+    }
 
-    // If no data exists, return mock data for development
+    // If no data exists or database unavailable, return mock data for development
     if (!stats) {
       return NextResponse.json({
         username: 'kaylode',
-        totalSolved: 245,
-        easySolved: 89,
+        totalSolved: 89,
+        easySolved: 45,
         mediumSolved: 126,
         hardSolved: 30,
         acceptanceRate: 75.2,
@@ -61,6 +78,10 @@ export async function GET() {
 
 export async function POST(request) {
   try {
+    if (!prisma) {
+      return NextResponse.json({ error: 'Database not available' }, { status: 503 });
+    }
+
     const data = await request.json()
     
     const stats = await prisma.leetCodeStats.upsert({

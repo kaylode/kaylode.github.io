@@ -1,25 +1,42 @@
 import { NextResponse } from 'next/server'
-import { prisma } from '../../../src/lib/prisma'
+
+// Check if database is available
+let prisma = null;
+try {
+  const { prisma: prismaClient } = require('../../../src/lib/prisma');
+  prisma = prismaClient;
+} catch (error) {
+  console.log('Database not available, using fallback mode');
+}
 
 export async function GET() {
   try {
-    const stats = await prisma.gitHubStats.findFirst({
-      where: {
-        username: 'kaylode' // Replace with your GitHub username
-      },
-      orderBy: {
-        lastUpdated: 'desc'
+    let stats = null;
+    
+    // Try to get from database first
+    if (prisma) {
+      try {
+        stats = await prisma.gitHubStats.findFirst({
+          where: {
+            username: 'kaylode'
+          },
+          orderBy: {
+            lastUpdated: 'desc'
+          }
+        });
+      } catch (dbError) {
+        console.error('Database error, using fallback data:', dbError.message);
       }
-    })
+    }
 
-    // If no data exists, return mock data for development
+    // If no data exists or database unavailable, return mock data
     if (!stats) {
       return NextResponse.json({
         username: 'kaylode',
-        publicRepos: 50,
-        followers: 123,
+        publicRepos: 33,
+        followers: 100,
         following: 45,
-        totalStars: 127,
+        totalStars: 494,
         totalForks: 34,
         totalCommits: 1234,
         contributionsLastYear: 856,
@@ -38,14 +55,6 @@ export async function GET() {
             forks: 12,
             language: 'Python',
             url: 'https://github.com/kaylode/awesome-ai-project'
-          },
-          {
-            name: 'portfolio-website',
-            description: 'Dynamic portfolio built with Next.js',
-            stars: 23,
-            forks: 8,
-            language: 'JavaScript',
-            url: 'https://github.com/kaylode/portfolio-website'
           }
         ],
         lastUpdated: new Date().toISOString()
@@ -55,15 +64,16 @@ export async function GET() {
     return NextResponse.json(stats)
   } catch (error) {
     console.error('Error fetching GitHub stats:', error)
-    return NextResponse.json(
-      { error: 'Failed to fetch GitHub stats' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Failed to fetch GitHub stats' }, { status: 500 })
   }
 }
 
 export async function POST(request) {
   try {
+    if (!prisma) {
+      return NextResponse.json({ error: 'Database not available' }, { status: 503 });
+    }
+
     const data = await request.json()
     
     const stats = await prisma.gitHubStats.upsert({
@@ -80,9 +90,6 @@ export async function POST(request) {
     return NextResponse.json(stats)
   } catch (error) {
     console.error('Error updating GitHub stats:', error)
-    return NextResponse.json(
-      { error: 'Failed to update GitHub stats' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Failed to update GitHub stats' }, { status: 500 })
   }
 }

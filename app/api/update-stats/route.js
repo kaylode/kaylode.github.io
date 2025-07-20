@@ -1,5 +1,13 @@
 import { NextResponse } from 'next/server'
-import { prisma } from '../../../src/lib/prisma'
+
+// Check if database is available
+let prisma = null;
+try {
+  const { prisma: prismaClient } = require('../../../src/lib/prisma');
+  prisma = prismaClient;
+} catch (error) {
+  console.log('Database not available, using fallback mode');
+}
 
 // GitHub API crawler
 async function updateGitHubStats() {
@@ -65,33 +73,43 @@ async function updateGitHubStats() {
         updatedAt: repo.updated_at
       }));
     
-    // Update database
-    const updatedStats = await prisma.gitHubStats.upsert({
-      where: { username },
-      create: {
-        username,
-        publicRepos: userData.public_repos,
-        followers: userData.followers,
-        following: userData.following,
-        totalStars,
-        totalForks,
-        totalCommits: 0, // We'll need to calculate this separately if needed
-        contributionsLastYear: 0, // This requires GitHub GraphQL API
-        languages: languagePercentages,
-        topRepositories: topRepos,
-        lastUpdated: new Date()
-      },
-      update: {
-        publicRepos: userData.public_repos,
-        followers: userData.followers,
-        following: userData.following,
-        totalStars,
-        totalForks,
-        languages: languagePercentages,
-        topRepositories: topRepos,
-        lastUpdated: new Date()
+    // Prepare stats data
+    const statsData = {
+      username,
+      publicRepos: userData.public_repos,
+      followers: userData.followers,
+      following: userData.following,
+      totalStars,
+      totalForks,
+      totalCommits: 0, // We'll need to calculate this separately if needed
+      contributionsLastYear: 0, // This requires GitHub GraphQL API
+      languages: languagePercentages,
+      topRepositories: topRepos,
+      lastUpdated: new Date()
+    };
+
+    // Update database if available
+    let updatedStats = statsData;
+    if (prisma) {
+      try {
+        updatedStats = await prisma.gitHubStats.upsert({
+          where: { username },
+          create: statsData,
+          update: {
+            publicRepos: userData.public_repos,
+            followers: userData.followers,
+            following: userData.following,
+            totalStars,
+            totalForks,
+            languages: languagePercentages,
+            topRepositories: topRepos,
+            lastUpdated: new Date()
+          }
+        });
+      } catch (dbError) {
+        console.error('Database error, returning live data:', dbError.message);
       }
-    });
+    }
     
     return { success: true, data: updatedStats };
   } catch (error) {
@@ -154,27 +172,37 @@ async function updateLeetCodeStats() {
       const hardSolved = submitStats.find(s => s.difficulty === 'Hard')?.count || 0;
       const totalSolved = easySolved + mediumSolved + hardSolved;
       
-      // Update database
-      const updatedStats = await prisma.leetCodeStats.upsert({
-        where: { username },
-        create: {
-          username,
-          totalSolved,
-          easySolved,
-          mediumSolved,
-          hardSolved,
-          ranking: userData.profile?.ranking || 0,
-          lastUpdated: new Date()
-        },
-        update: {
-          totalSolved,
-          easySolved,
-          mediumSolved,
-          hardSolved,
-          ranking: userData.profile?.ranking || 0,
-          lastUpdated: new Date()
+      // Prepare stats data
+      const statsData = {
+        username,
+        totalSolved,
+        easySolved,
+        mediumSolved,
+        hardSolved,
+        ranking: userData.profile?.ranking || 0,
+        lastUpdated: new Date()
+      };
+
+      // Update database if available
+      let updatedStats = statsData;
+      if (prisma) {
+        try {
+          updatedStats = await prisma.leetCodeStats.upsert({
+            where: { username },
+            create: statsData,
+            update: {
+              totalSolved,
+              easySolved,
+              mediumSolved,
+              hardSolved,
+              ranking: userData.profile?.ranking || 0,
+              lastUpdated: new Date()
+            }
+          });
+        } catch (dbError) {
+          console.error('Database error, returning live data:', dbError.message);
         }
-      });
+      }
       
       return { success: true, data: updatedStats };
     } else {

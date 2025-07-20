@@ -1,9 +1,4 @@
 {
-  "env": {
-    "DATABASE_URL": "@database-url",
-    "GITHUB_TOKEN": "@github-token",
-    "NEXTAUTH_SECRET": "@nextauth-secret"
-  },
   "functions": {
     "app/api/**.js": {
       "maxDuration": 10

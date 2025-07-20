@@ -30,42 +30,42 @@ export const techs_list = [
     },
 
     {
-      id: 3,
+      id: 4,
       src: overleaf,
       title: "Overleaf",
       style: "shadow-green-400",
     },
 
     {
-      id: 4,
+      id: 5,
       src: docker,
       title: "Docker",
       style: "shadow-blue-500",
     },
 
     {
-      id: 5,
+      id: 6,
       src: android_studio,
       title: "Android Studio",
       style: "shadow-emerald-500",
     },
     
     {
-      id: 6,
+      id: 7,
       src: reactjs,
       title: "ReactJS",
       style: "shadow-sky-500",
     },
 
     {
-      id: 7,
+      id: 8,
       src: tailwind,
       title: "TailwindCSS",
       style: "shadow-teal-400",
     },
 
     {
-      id: 8,
+      id: 9,
       src: github,
       title: "GitHub",
       style: "shadow-gray-400",

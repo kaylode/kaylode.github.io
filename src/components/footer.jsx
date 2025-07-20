@@ -5,9 +5,9 @@ function Footer() {
     <footer className="text-white bg-gray-900 text-center py-2 px-5">
         <div className="container text-muted ">
             <small>
-                <a className="text-white"> © 2022 </a>
+                <span className="text-white"> © 2024 </span>
                 <a className="text-white" href="https://github.com/kaylode">Written by Kaylode using ReactJS and TailwindCSS</a>
-                <a className="text-white">. Open sourced with love under MIT License</a>
+                <span className="text-white">. Open sourced with love under MIT License</span>
             </small>
         </div>
     </footer>

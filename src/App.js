@@ -1,23 +1,38 @@
-import Home from "./components/home";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ModernHome from "./components/modern-home";
 import NavBar from "./components/navbar";
-import Techstack from './components/techstack'
-// import Achievements from './components/achievements'
-// import Topics from './components/topics'
-// import Reference from './components/reference'
-import Projects from './components/projects'
-import Publications from './components/publications'
+import PublicationsPage from './components/PublicationsPage'
+import ProjectsPage from './components/ProjectsPage'
 import Footer from "./components/footer";
 
 function App() {
   return (
-    <div>
-      <NavBar />
-      <Home />
-      <Techstack />
-      <Publications />
-      <Projects /> 
-      <Footer />
-    </div>
+    <Router>
+      <div>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={
+            <>
+              <ModernHome />
+              <Footer />
+            </>
+          } />
+          <Route path="/publications" element={
+            <>
+              <PublicationsPage />
+              <Footer />
+            </>
+          } />
+          <Route path="/projects" element={
+            <>
+              <ProjectsPage />
+              <Footer />
+            </>
+          } />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

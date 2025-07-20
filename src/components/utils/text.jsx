@@ -3,14 +3,14 @@ import React from "react";
 export default function AuthorNames({ text, shouldBeBold }) {
     const textArray = text.split(shouldBeBold);
     return (
-      <span>
+      <span className="text-gray-300">
         {textArray.map((item, index) => (
-          <>
-            <i> {item} </i>
+          <React.Fragment key={index}>
+            <span className="text-gray-300 italic"> {item} </span>
             {index !== textArray.length - 1 && (
-              <u><b><i>{shouldBeBold}</i></b></u>
+              <span className="text-blue-400 font-bold italic underline">{shouldBeBold}</span>
             )}
-          </>
+          </React.Fragment>
         ))}
       </span>
   );

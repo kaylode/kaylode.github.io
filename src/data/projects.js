@@ -28,7 +28,19 @@ export const project_list = [
     source: "https://github.com/kaylode/theseus",
     color: "light",
     text_color: "dark",
-    tags: {pytorch:"danger", framework: "primary"}
+    stars: 35,
+    forks: 5,
+    language: "Python",
+    lastUpdated: "2025-05-05",
+    openIssues: 2,
+    tags: {
+      "pytorch": "danger", 
+      "computer-vision": "primary", 
+      "object-detection": "success",
+      "segmentation": "info",
+      "classification": "warning",
+      "template": "secondary"
+    }
   },
   
   {
@@ -40,7 +52,18 @@ export const project_list = [
     source: "https://github.com/kaylode/vehicle-counting",
     color: "light",
     text_color: "dark",
-    tags: {pytorch:"danger", yolov5:"warning", "object tracking": "success"}
+    stars: 99,
+    forks: 31,
+    language: "Python",
+    lastUpdated: "2025-06-05",
+    openIssues: 4,
+    tags: {
+      "pytorch": "danger", 
+      "yolov5": "warning", 
+      "object-tracking": "success",
+      "deepsort": "info",
+      "vehicle-counting": "primary"
+    }
   },
 
   {
@@ -52,7 +75,18 @@ export const project_list = [
     source: "https://github.com/nhtlongcs/AIC2022-VER",
     color: "light",
     text_color: "dark",
-    tags: {pytorch:"danger", "streamlit":"warning", "video retrieval": "success"}
+    stars: 12,
+    forks: 0,
+    language: "Python",
+    lastUpdated: "2024-08-15",
+    openIssues: 2,
+    tags: {
+      "pytorch": "danger", 
+      "pytorch-lightning": "warning", 
+      "retrieval": "success",
+      "image-text-matching": "info",
+      "aicitychallenge": "primary"
+    }
   },
   
   {
@@ -64,7 +98,18 @@ export const project_list = [
     source: "https://github.com/kaylode/facemask-removal",
     color: "light",
     text_color: "dark",
-    tags: {pytorch:"danger", GAN:"success"}
+    stars: 35,
+    forks: 12,
+    language: "Python",
+    lastUpdated: "2025-07-10",
+    openIssues: 5,
+    tags: {
+      "pytorch": "danger", 
+      "gan": "success",
+      "deep-learning": "primary",
+      "image-inpainting": "info",
+      "generative-adversarial-network": "warning"
+    }
   },
 
   {
@@ -76,7 +121,18 @@ export const project_list = [
     source: "https://github.com/kaylode/kai",
     color: "light",
     text_color: "dark",
-    tags: {"discord.py":"primary", "discord.js":"warning"}
+    stars: 6,
+    forks: 1,
+    language: "Python",
+    lastUpdated: "2022-06-25",
+    openIssues: 6,
+    tags: {
+      "discord-py": "primary", 
+      "discord-bot": "warning",
+      "computer-vision": "success",
+      "gpt-3": "info",
+      "voice-recognition": "danger"
+    }
   },
 
   
@@ -90,7 +146,19 @@ export const project_list = [
     source: "https://github.com/kaylode/vietnamese-ocr-toolbox",
     color: "light",
     text_color: "dark",
-    tags: {pytorch:"danger", OCR:"info"}
+    stars: 123,
+    forks: 31,
+    language: "C++",
+    lastUpdated: "2025-07-19",
+    openIssues: 5,
+    tags: {
+      "ocr": "info", 
+      "character-recognition": "primary",
+      "text-detection": "success",
+      "vietnamese-ocr": "warning",
+      "object-detection": "danger",
+      "toolbox": "secondary"
+    }
   },
 
   
@@ -104,7 +172,17 @@ export const project_list = [
     source: "https://github.com/kaylode/shrec22-pothole",
     color: "light",
     text_color: "dark",
-    tags: {pytorch:"danger", "semi-supervised":"info", "semantic segmentation": "success"}
+    stars: 10,
+    forks: 5,
+    language: "Python",
+    lastUpdated: "2025-06-24",
+    openIssues: 0,
+    tags: {
+      "semantic-segmentation": "success", 
+      "semi-supervised-learning": "info",
+      "crack-segmentation": "warning",
+      "pothole-segmentation": "primary"
+    }
   },
 
   {
@@ -116,7 +194,20 @@ export const project_list = [
     source: "https://github.com/lannguyen0910/food-recognition",
     color: "light",
     text_color: "dark",
-    tags: {pytorch:"danger", "flask-server":"dark", yolov5:"warning", "object detection": "success", "web-application":"info"}
+    stars: 333,
+    forks: 99,
+    language: "Python",
+    lastUpdated: "2025-07-16",
+    openIssues: 4,
+    tags: {
+      "pytorch": "danger", 
+      "yolov5": "warning", 
+      "object-detection": "success", 
+      "food-analysis": "info",
+      "deep-learning": "primary",
+      "semantic-segmentation": "secondary",
+      "efficientnet": "light"
+    }
   },
 
   {
@@ -128,7 +219,19 @@ export const project_list = [
     source: "https://github.com/kaylode/ivos",
     color: "light",
     text_color: "dark",
-    tags: {pytorch:"danger", "3d segmentation":"info"}
+    stars: 9,
+    forks: 4,
+    language: "Python",
+    lastUpdated: "2024-05-15",
+    openIssues: 3,
+    tags: {
+      "pytorch": "danger", 
+      "active-learning": "info",
+      "medical": "primary",
+      "ct-volumes": "success",
+      "label-propagation": "warning",
+      "pseudo-labeling": "secondary"
+    }
   },
 
   

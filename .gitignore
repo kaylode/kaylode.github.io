@@ -11,6 +11,10 @@
 # production
 /build
 
+# Next.js
+/.next/
+/out/
+
 # misc
 .DS_Store
 .env.local
@@ -21,3 +25,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+/src/generated/prisma
+
+# Environment variables
+.env

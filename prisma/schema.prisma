@@ -1,0 +1,118 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  excerpt     String
+  content     String
+  author      String
+  publishedAt DateTime
+  updatedAt   DateTime @updatedAt
+  category    String
+  tags        String[]
+  readTime    Int
+  featured    Boolean  @default(false)
+  image       String?
+  status      String   @default("published")
+  views       Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  @@map("blog_posts")
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  technologies String[]
+  githubUrl   String?
+  liveUrl     String?
+  image       String?
+  featured    Boolean  @default(false)
+  stars       Int      @default(0)
+  forks       Int      @default(0)
+  language    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("projects")
+}
+
+model Publication {
+  id          String   @id @default(cuid())
+  title       String
+  authors     String[]
+  venue       String
+  year        Int
+  doi         String?
+  arxivId     String?
+  pdfUrl      String?
+  category    String
+  abstract    String?
+  citations   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("publications")
+}
+
+model LeetCodeStats {
+  id                    String   @id @default(cuid())
+  username              String   @unique
+  totalSolved           Int      @default(0)
+  easySolved            Int      @default(0)
+  mediumSolved          Int      @default(0)
+  hardSolved            Int      @default(0)
+  acceptanceRate        Float    @default(0.0)
+  ranking               Int?
+  contributionPoints    Int      @default(0)
+  recentSubmissions     Json?
+  skillStats            Json?
+  contestRating         Int?
+  contestParticipation  Int      @default(0)
+  lastUpdated           DateTime @default(now())
+  createdAt             DateTime @default(now())
+
+  @@map("leetcode_stats")
+}
+
+model GitHubStats {
+  id              String   @id @default(cuid())
+  username        String   @unique
+  publicRepos     Int      @default(0)
+  followers       Int      @default(0)
+  following       Int      @default(0)
+  totalStars      Int      @default(0)
+  totalForks      Int      @default(0)
+  totalCommits    Int      @default(0)
+  contributionsLastYear Int @default(0)
+  languages       Json?
+  topRepositories Json?
+  lastUpdated     DateTime @default(now())
+  createdAt       DateTime @default(now())
+
+  @@map("github_stats")
+}
+
+model Analytics {
+  id          String   @id @default(cuid())
+  page        String
+  views       Int      @default(1)
+  uniqueViews Int      @default(1)
+  visitors    Json?
+  date        DateTime @default(now())
+  
+  @@unique([page, date])
+  @@map("analytics")
+}

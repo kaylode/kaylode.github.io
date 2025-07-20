@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -10,16 +12,13 @@ import {
   FaFilter,
   FaTimes,
   FaCalendarAlt,
-  FaDownload,
   FaCodeBranch
 } from 'react-icons/fa';
 import { project_list } from '../data/projects';
-import { techs_list } from '../data/techs';
 
 const ProjectsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTag, setSelectedTag] = useState('');
-  const [viewMode, setViewMode] = useState('projects'); // 'projects' or 'tech'
   const [selectedProject, setSelectedProject] = useState(null);
 
   // Color mapping for tags
@@ -175,30 +174,6 @@ const ProjectsPage = () => {
     </motion.div>
   );
 
-  const TechCard = ({ tech }) => (
-    <motion.div
-      variants={itemVariants}
-      className={`bg-gray-800 rounded-lg p-6 border border-gray-700 hover:border-blue-500 transition-all duration-300 text-center group ${tech.style}`}
-      whileHover={{ y: -5, scale: 1.02 }}
-    >
-      <div className="flex justify-center mb-4">
-        <img 
-          src={tech.src} 
-          alt={tech.title}
-          className="w-16 h-16 object-contain group-hover:scale-110 transition-transform duration-300"
-        />
-      </div>
-      <h3 className="text-lg font-semibold text-white mb-2">{tech.title}</h3>
-      <div className="w-full bg-gray-700 rounded-full h-2 mb-2">
-        <div 
-          className="bg-blue-500 h-2 rounded-full transition-all duration-500"
-          style={{ width: `${Math.floor(Math.random() * 40) + 60}%` }}
-        ></div>
-      </div>
-      <span className="text-sm text-gray-400">Experience Level</span>
-    </motion.div>
-  );
-
   const ProjectModal = ({ project, onClose }) => (
     <AnimatePresence>
       {project && (
@@ -330,122 +305,77 @@ const ProjectsPage = () => {
             <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               GitHub
             </span>{' '}
-            Projects & Tech Stack
+            Projects
           </h1>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Explore my open-source contributions, innovative projects, and the technologies I use to bring ideas to life
+            Explore my open-source contributions and innovative projects that showcase my development journey
           </p>
-          
-          {/* View Mode Toggle */}
-          <div className="flex justify-center mb-8">
-            <div className="bg-gray-800 rounded-lg p-1 flex">
-              <button
-                onClick={() => setViewMode('projects')}
-                className={`px-6 py-3 rounded-md transition-all duration-300 ${
-                  viewMode === 'projects'
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                <FaCode className="inline mr-2" />
-                Projects
-              </button>
-              <button
-                onClick={() => setViewMode('tech')}
-                className={`px-6 py-3 rounded-md transition-all duration-300 ${
-                  viewMode === 'tech'
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                <FaDownload className="inline mr-2" />
-                Tech Stack
-              </button>
-            </div>
-          </div>
         </motion.div>
       </div>
 
       {/* Search and Filter Section */}
-      {viewMode === 'projects' && (
-        <div className="px-6 mb-12">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex flex-col md:flex-row gap-4 mb-8">
-              {/* Search Bar */}
-              <div className="relative flex-1">
-                <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                <input
-                  type="text"
-                  placeholder="Search projects..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-              
-              {/* Tag Filter */}
-              <div className="relative">
-                <select
-                  value={selectedTag}
-                  onChange={(e) => setSelectedTag(e.target.value)}
-                  className="px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none pr-10"
-                >
-                  <option value="">All Technologies</option>
-                  {allTags.map(tag => (
-                    <option key={tag} value={tag}>{tag}</option>
-                  ))}
-                </select>
-                <FaFilter className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
-              </div>
-              
-              {/* Clear Filters */}
-              {(searchTerm || selectedTag) && (
-                <button
-                  onClick={() => {
-                    setSearchTerm('');
-                    setSelectedTag('');
-                  }}
-                  className="px-4 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors flex items-center gap-2"
-                >
-                  <FaTimes />
-                  Clear
-                </button>
-              )}
+      <div className="px-6 mb-12">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-4 mb-8">
+            {/* Search Bar */}
+            <div className="relative flex-1">
+              <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search projects..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-12 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
             </div>
+            
+            {/* Tag Filter */}
+            <div className="relative">
+              <select
+                value={selectedTag}
+                onChange={(e) => setSelectedTag(e.target.value)}
+                className="px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none pr-10"
+              >
+                <option value="">All Technologies</option>
+                {allTags.map(tag => (
+                  <option key={tag} value={tag}>{tag}</option>
+                ))}
+              </select>
+              <FaFilter className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
+            </div>
+            
+            {/* Clear Filters */}
+            {(searchTerm || selectedTag) && (
+              <button
+                onClick={() => {
+                  setSearchTerm('');
+                  setSelectedTag('');
+                }}
+                className="px-4 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors flex items-center gap-2"
+              >
+                <FaTimes />
+                Clear
+              </button>
+            )}
           </div>
         </div>
-      )}
+      </div>
 
       {/* Content Section */}
       <div className="px-6 pb-20">
         <div className="max-w-7xl mx-auto">
-          {viewMode === 'projects' ? (
-            <motion.div
-              key="projects-view"
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            >
-              {filteredProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </motion.div>
-          ) : (
-            <motion.div
-              key="tech-view"
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8"
-            >
-              {techs_list.map((tech) => (
-                <TechCard key={tech.id} tech={tech} />
-              ))}
-            </motion.div>
-          )}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {filteredProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </motion.div>
           
-          {filteredProjects.length === 0 && viewMode === 'projects' && (
+          {filteredProjects.length === 0 && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

@@ -1,12 +1,13 @@
-import Github from "../assets/projects/github.png"
-import FaceMaskRemoval from "../assets/projects/facemask.png"
-import VehicleTracking from "../assets/projects/vehicle_tracking.gif"
-import VNOCRToolBox from "../assets/projects/vnocrtoolbox.png"
-import Kai from "../assets/projects/kai.jpg"
-import Pothole from "../assets/projects/pothole.png"
-import TrafficEventRetrieval from "../assets/projects/aic22.png"
-import FoodAPI from "../assets/projects/food_api.jpg"
-import IVOS from "../assets/projects/ivos.png"
+// Import images from public directory for Next.js
+const Github = "/projects/github.png"
+const FaceMaskRemoval = "/projects/facemask.png"
+const VehicleTracking = "/projects/vehicle_tracking.gif"
+const VNOCRToolBox = "/projects/vnocrtoolbox.png"
+const Kai = "/projects/kai.jpg"
+const Pothole = "/projects/pothole.png"
+const TrafficEventRetrieval = "/projects/aic22.png"
+const FoodAPI = "/projects/food_api.jpg"
+const IVOS = "/projects/ivos.png"
 
 // 'Primary',
 // 'Secondary',

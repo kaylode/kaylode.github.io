@@ -1,0 +1,67 @@
+/* Calendar Heatmap Styles */
+.react-calendar-heatmap .color-empty {
+  fill: #161b22;
+}
+
+.react-calendar-heatmap .color-scale-1 {
+  fill: #0e4429;
+}
+
+.react-calendar-heatmap .color-scale-2 {
+  fill: #006d32;
+}
+
+.react-calendar-heatmap .color-scale-3 {
+  fill: #26a641;
+}
+
+.react-calendar-heatmap .color-scale-4 {
+  fill: #39d353;
+}
+
+.react-calendar-heatmap text {
+  fill: #7d8590;
+  font-size: 10px;
+}
+
+.react-calendar-heatmap .month-label {
+  font-size: 10px;
+  fill: #7d8590;
+}
+
+.react-calendar-heatmap .day-label {
+  font-size: 10px;
+  fill: #7d8590;
+}
+
+/* Recharts Custom Styles */
+.recharts-tooltip-wrapper {
+  background: rgba(31, 41, 55, 0.95) !important;
+  border: 1px solid #374151 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+.recharts-default-tooltip {
+  background: transparent !important;
+  border: none !important;
+}
+
+.recharts-tooltip-label {
+  color: #f9fafb !important;
+  font-weight: 600 !important;
+}
+
+.recharts-tooltip-item {
+  color: #e5e7eb !important;
+}
+
+/* Loading Animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}

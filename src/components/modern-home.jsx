@@ -1,5 +1,8 @@
+'use client'
+
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { 
   FaGithub, 
   FaLinkedin, 
@@ -16,7 +19,7 @@ import {
   FaTwitter
 } from 'react-icons/fa';
 import { SiLeetcode, SiGooglescholar, SiOrcid } from 'react-icons/si';
-import avatar from '../assets/avatar.png';
+const avatar = '/avatar.png';
 import '../styles/modern-home.css';
 
 const ModernHome = () => {
@@ -26,7 +29,7 @@ const ModernHome = () => {
   const roles = [
     "AI Researcher",
     "Ph.D. Student", 
-    "Computer Vision Engineer",
+    "AI Engineer",
     "Software Developer",
     "Open Source Contributor"
   ];
@@ -256,13 +259,19 @@ const ModernHome = () => {
             <div className="text-center lg:text-right">
               <motion.div variants={avatarVariants} className="relative inline-block mb-8">
                 <div className="relative">
-                  <motion.img
-                    src={avatar}
-                    alt="Minh-Khoi Pham (Kay)"
-                    className="w-64 h-64 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-blue-400 shadow-2xl avatar-glow pulse-glow"
+                  <motion.div
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
-                  />
+                  >
+                    <Image
+                      src={avatar}
+                      alt="Minh-Khoi Pham (Kay)"
+                      width={320}
+                      height={320}
+                      className="w-64 h-64 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-blue-400 shadow-2xl avatar-glow pulse-glow"
+                      priority
+                    />
+                  </motion.div>
                   <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-full"></div>
                   
                   {/* Floating elements around avatar */}
@@ -330,14 +339,14 @@ const ModernHome = () => {
             <motion.div variants={itemVariants} className="max-w-4xl mx-auto space-y-6 text-lg text-gray-300 leading-relaxed modern-font">
               <p>
                 I'm an AI researcher and engineer from Vietnam 🇻🇳 - a country known for its long-standing 
-                culture and customs. Currently pursuing my Ph.D. at Dublin City University, Dublin, Ireland.
+                culture and customs. Currently pursuing my Ph.D. at Dublin City University, Dublin, Ireland, working at the ADAPT research center. My research focuses on using advanced machine learning and deep learning models to study patients' electronic health records in healthcare.
               </p>
               
               <p>
                 I graduated with a Bachelor's degree in Computer Science from the Honors Program at{' '}
                 <a href="https://www.hcmus.edu.vn/" className="text-blue-400 hover:text-blue-300 transition-colors">
                   University of Science
-                </a>, VNU-HCM, Vietnam. My major focuses on Computer Vision and Image Processing.
+                </a>, VNU-HCM, Vietnam.
               </p>
               
               <p>

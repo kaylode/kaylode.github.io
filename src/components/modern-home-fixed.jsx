@@ -16,7 +16,7 @@ import {
   FaTwitter
 } from 'react-icons/fa';
 import { SiLeetcode, SiGooglescholar, SiOrcid } from 'react-icons/si';
-import avatar from '../assets/avatar.png';
+const avatar = '/avatar.png';
 import '../styles/modern-home.css';
 
 const ModernHome = () => {
@@ -26,7 +26,7 @@ const ModernHome = () => {
   const roles = [
     "AI Researcher",
     "Ph.D. Student", 
-    "Computer Vision Engineer",
+    "AI Engineer",
     "Software Developer",
     "Open Source Contributor"
   ];
@@ -330,14 +330,14 @@ const ModernHome = () => {
             <motion.div variants={itemVariants} className="max-w-4xl mx-auto space-y-6 text-lg text-gray-300 leading-relaxed modern-font">
               <p>
                 I'm an AI researcher and engineer from Vietnam 🇻🇳 - a country known for its long-standing 
-                culture and customs. Currently pursuing my Ph.D. at Dublin City University, Dublin, Ireland.
+                culture and customs. Currently pursuing my Ph.D. at Dublin City University, Dublin, Ireland, working at the ADAPT research center. My research focuses on using advanced machine learning and deep learning models to study patients' electronic health records in healthcare.
               </p>
               
               <p>
                 I graduated with a Bachelor's degree in Computer Science from the Honors Program at{' '}
                 <a href="https://www.hcmus.edu.vn/" className="text-blue-400 hover:text-blue-300 transition-colors">
                   University of Science
-                </a>, VNU-HCM, Vietnam. My major focuses on Computer Vision and Image Processing.
+                </a>, VNU-HCM, Vietnam.
               </p>
               
               <p>

@@ -1,5 +1,5 @@
 import React from 'react'
-import avatar from '../assets/avatar.png'
+const avatar = '/avatar.png'
 
 function Home() {
   return (
@@ -88,8 +88,7 @@ function Home() {
                         <p className="pt-4">I&#x27;m an AI researcher and engineer from Viet Nam - country known for its long-standing
                             culture and customs.</p>
                         <p className="py-2">I graduated with Bachelor degree of Computer Science in Honors Program from <a
-                            href="https://www.hcmus.edu.vn/">University of Science</a>, VNU-HCM, Viet Nam. My
-                            major is mainly about Computer Vision and Image Processing. Currently, I am taking the Ph.D programme at Dublin City University, Dublin, Ireland</p>
+                            href="https://www.hcmus.edu.vn/">University of Science</a>, VNU-HCM, Viet Nam. Currently, I am taking the Ph.D programme at Dublin City University, Dublin, Ireland, working at the ADAPT research center. My research focuses on using advanced machine learning and deep learning models to study patients' electronic health records in healthcare.</p>
                         <p className="py-2">I&#x27;m interested in finding new thing, new method, state-of-the-art models and trying to apply
                             it or even reimplement it. Technology is growing everyday, so I spend effort trying as many new
                             things as possible. All my code are opensource on my personal Github account for education

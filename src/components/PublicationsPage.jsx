@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -21,6 +23,7 @@ const PublicationsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedYear, setSelectedYear] = useState('all');
   const [selectedVenue, setSelectedVenue] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortOrder, setSortOrder] = useState('desc'); // desc = newest first
   const [selectedPublication, setSelectedPublication] = useState(null);
 
@@ -44,6 +47,38 @@ const PublicationsPage = () => {
     }
   };
 
+  // Get category color based on category type
+  const getCategoryColor = (category) => {
+    const categoryColors = {
+      'Computer Vision': 'bg-blue-100 text-blue-800 border-blue-200',
+      'Deep Learning': 'bg-purple-100 text-purple-800 border-purple-200',
+      'Medical AI': 'bg-green-100 text-green-800 border-green-200',
+      'Adversarial Attacks': 'bg-red-100 text-red-800 border-red-200',
+      'Privacy Protection': 'bg-yellow-100 text-yellow-800 border-yellow-200',
+      'Image Quality': 'bg-indigo-100 text-indigo-800 border-indigo-200',
+      'Facial Recognition': 'bg-pink-100 text-pink-800 border-pink-200',
+      '3D Computer Vision': 'bg-cyan-100 text-cyan-800 border-cyan-200',
+      'Shape Retrieval': 'bg-teal-100 text-teal-800 border-teal-200',
+      'Cultural Heritage': 'bg-amber-100 text-amber-800 border-amber-200',
+      'MeshNet': 'bg-lime-100 text-lime-800 border-lime-200',
+      'Knowledge Distillation': 'bg-violet-100 text-violet-800 border-violet-200',
+      'Dataset Creation': 'bg-emerald-100 text-emerald-800 border-emerald-200',
+      'Healthcare': 'bg-rose-100 text-rose-800 border-rose-200',
+      'Object Detection': 'bg-orange-100 text-orange-800 border-orange-200',
+      'RGB-D Data': 'bg-slate-100 text-slate-800 border-slate-200',
+      'Road Analysis': 'bg-zinc-100 text-zinc-800 border-zinc-200',
+      'Video Retrieval': 'bg-sky-100 text-sky-800 border-sky-200',
+      'Text-Video Matching': 'bg-fuchsia-100 text-fuchsia-800 border-fuchsia-200',
+      'Traffic Analysis': 'bg-neutral-100 text-neutral-800 border-neutral-200',
+      'Multimodal Learning': 'bg-stone-100 text-stone-800 border-stone-200',
+      'Semi-supervised Learning': 'bg-red-100 text-red-800 border-red-200',
+      '3D Segmentation': 'bg-blue-100 text-blue-800 border-blue-200',
+      'Uncertainty Estimation': 'bg-green-100 text-green-800 border-green-200',
+      'Video Object Segmentation': 'bg-purple-100 text-purple-800 border-purple-200',
+    };
+    return categoryColors[category] || 'bg-gray-100 text-gray-800 border-gray-200';
+  };
+
   // Flatten publications and add year to each publication
   const allPublications = useMemo(() => {
     const flattened = [];
@@ -64,6 +99,16 @@ const PublicationsPage = () => {
     return [...new Set(allPublications.map(pub => pub.site))].filter(venue => venue);
   }, [allPublications]);
 
+  const categories = useMemo(() => {
+    const allCategories = [];
+    allPublications.forEach(pub => {
+      if (pub.categories) {
+        allCategories.push(...pub.categories);
+      }
+    });
+    return [...new Set(allCategories)].sort();
+  }, [allPublications]);
+
   // Filter and sort publications
   const filteredPublications = useMemo(() => {
     let filtered = allPublications.filter(pub => {
@@ -72,8 +117,10 @@ const PublicationsPage = () => {
                            pub.description.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesYear = selectedYear === 'all' || pub.year === parseInt(selectedYear);
       const matchesVenue = selectedVenue === 'all' || pub.site === selectedVenue;
+      const matchesCategory = selectedCategory === 'all' || 
+                             (pub.categories && pub.categories.includes(selectedCategory));
       
-      return matchesSearch && matchesYear && matchesVenue;
+      return matchesSearch && matchesYear && matchesVenue && matchesCategory;
     });
 
     // Sort by year
@@ -86,12 +133,13 @@ const PublicationsPage = () => {
     });
 
     return filtered;
-  }, [allPublications, searchTerm, selectedYear, selectedVenue, sortOrder]);
+  }, [allPublications, searchTerm, selectedYear, selectedVenue, selectedCategory, sortOrder]);
 
   const clearFilters = () => {
     setSearchTerm('');
     setSelectedYear('all');
     setSelectedVenue('all');
+    setSelectedCategory('all');
   };
 
   const containerVariants = {
@@ -141,6 +189,20 @@ const PublicationsPage = () => {
       <p className="text-gray-300 text-sm mb-4 line-clamp-3">
         {publication.description}
       </p>
+
+      {/* Category chips */}
+      {publication.categories && publication.categories.length > 0 && (
+        <div className="flex flex-wrap gap-2 mb-4">
+          {publication.categories.map((category, index) => (
+            <span
+              key={index}
+              className={`px-2 py-1 rounded-full text-xs font-medium border ${getCategoryColor(category)}`}
+            >
+              {category}
+            </span>
+          ))}
+        </div>
+      )}
 
       <div className="flex justify-between items-center">
         <div className="flex items-center space-x-4 text-sm text-gray-400">
@@ -216,6 +278,22 @@ const PublicationsPage = () => {
               <p className={`text-lg font-medium ${getVenueColor(publication.site)}`}>{publication.site}</p>
             </div>
 
+            {publication.categories && publication.categories.length > 0 && (
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold text-blue-300 mb-2">Research Areas</h3>
+                <div className="flex flex-wrap gap-2">
+                  {publication.categories.map((category, index) => (
+                    <span
+                      key={index}
+                      className={`px-3 py-1 rounded-full text-sm font-medium border ${getCategoryColor(category)}`}
+                    >
+                      {category}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {publication.description && (
               <div className="mb-8">
                 <h3 className="text-lg font-semibold text-blue-300 mb-2">Abstract</h3>
@@ -267,7 +345,7 @@ const PublicationsPage = () => {
             Publications
           </h1>
           <p className="text-xl text-gray-300 mb-8">
-            Research contributions in Computer Vision, AI, and Machine Learning
+            Research contributions in AI, Deep Learning and Machine Learning
           </p>
           
           {/* Academic Profile Links */}
@@ -315,7 +393,7 @@ const PublicationsPage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-8 border border-white/20"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-4">
             {/* Search */}
             <div className="relative">
               <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
@@ -356,6 +434,20 @@ const PublicationsPage = () => {
               ))}
             </select>
 
+            {/* Category Filter */}
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-blue-400"
+            >
+              <option value="all">All Categories</option>
+              {categories.map(category => (
+                <option key={category} value={category} className="bg-gray-800">
+                  {category}
+                </option>
+              ))}
+            </select>
+
             {/* Sort Order */}
             <button
               onClick={() => setSortOrder(sortOrder === 'desc' ? 'asc' : 'desc')}
@@ -368,7 +460,7 @@ const PublicationsPage = () => {
 
           {/* Active Filters & Clear */}
           <div className="flex flex-wrap items-center gap-2">
-            {(searchTerm || selectedYear !== 'all' || selectedVenue !== 'all') && (
+            {(searchTerm || selectedYear !== 'all' || selectedVenue !== 'all' || selectedCategory !== 'all') && (
               <>
                 <span className="text-gray-300 text-sm">Active filters:</span>
                 {searchTerm && (
@@ -384,6 +476,11 @@ const PublicationsPage = () => {
                 {selectedVenue !== 'all' && (
                   <span className="bg-purple-500/20 text-purple-300 px-2 py-1 rounded text-sm">
                     Venue: {selectedVenue}
+                  </span>
+                )}
+                {selectedCategory !== 'all' && (
+                  <span className="bg-orange-500/20 text-orange-300 px-2 py-1 rounded text-sm">
+                    Category: {selectedCategory}
                   </span>
                 )}
                 <button

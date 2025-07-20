@@ -1,12 +1,15 @@
+'use client'
+
 import React, { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { Link as ScrollLink } from 'react-scroll';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const NavBar = () => {
     const [nav, setNav] = useState(false);
-    const location = useLocation();
-    const isHomePage = location.pathname === '/';
+    const pathname = usePathname();
+    const isHomePage = pathname === '/';
 
     const links = [
         {
@@ -27,18 +30,36 @@ const NavBar = () => {
             label: 'Publications',
             type: 'route'
         },
+        {
+            id: 4,
+            link: '/experiences',
+            label: 'Experiences',
+            type: 'route'
+        },
+        {
+            id: 5,
+            link: '/blog',
+            label: 'Blog',
+            type: 'route'
+        },
+        {
+            id: 6,
+            link: '/tracker',
+            label: 'Tracker',
+            type: 'route'
+        },
     ];
 
     const renderNavLink = (item) => {
         if (item.type === 'route') {
             return (
-                <RouterLink 
-                    to={item.link}
+                <Link 
+                    href={item.link}
                     className="capitalize font-medium text-gray-500 hover:text-white hover:scale-110 duration-200 transition-all"
                     onClick={() => setNav(false)}
                 >
                     {item.label}
-                </RouterLink>
+                </Link>
             );
         } else if (isHomePage) {
             return (
@@ -54,13 +75,13 @@ const NavBar = () => {
             );
         } else {
             return (
-                <RouterLink 
-                    to={`/#${item.link}`}
+                <Link 
+                    href={`/#${item.link}`}
                     className="capitalize font-medium text-gray-500 hover:text-white hover:scale-110 duration-200 transition-all"
                     onClick={() => setNav(false)}
                 >
                     {item.label}
-                </RouterLink>
+                </Link>
             );
         }
     };
@@ -68,9 +89,9 @@ const NavBar = () => {
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center w-full h-20 px-4 text-white bg-black/90 backdrop-blur-sm border-b border-white/10">
             <div>
-                <RouterLink to="/" className="text-5xl font-signature ml-2 hover:text-blue-400 transition-colors">
+                <Link href="/" className="text-5xl font-signature ml-2 hover:text-blue-400 transition-colors">
                     Kaylode
-                </RouterLink>
+                </Link>
             </div>
 
             {/* Desktop Navigation */}

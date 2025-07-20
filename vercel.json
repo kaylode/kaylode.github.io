@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "env": {
+    "DATABASE_URL": "@database-url",
+    "GITHUB_TOKEN": "@github-token",
+    "NEXTAUTH_SECRET": "@nextauth-secret"
+  },
+  "functions": {
+    "app/api/**.js": {
+      "maxDuration": 10
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/cron/crawl-data",
+      "schedule": "0 6 * * *"
+    }
+  ]
+}

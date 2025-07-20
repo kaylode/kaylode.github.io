@@ -7,6 +7,7 @@ export const publications_list = {
             description: "We employed multiple improved adversarial attack algorithms based on Fast Gradient Sign Method to degrade the quality of images while maintaining their quality scores assessed by the BiQA model",
             authors: 'Minh-Khoi Pham, Hai-Tuan Ho-Nguyen, Trong-Thang Pham, Hung Vinh Tran, Hai-Dang Nguyen, Minh-Triet Tran',
             site: 'CEUR Workshop Proceedings',
+            categories: ['Adversarial Attacks'],
         },
     ],
 
@@ -19,6 +20,7 @@ export const publications_list = {
             description: "We employed adversarial attack algorithms on driver' faces while storing their identities in hidden representation",
             authors: 'Minh-Khoi Pham, Thang-Long Nguyen-Ho, Trong-Thang Pham, Hai-Tuan Ho-Nguyen, Hai-Dang Nguyen, Minh-Triet Tran',
             site: 'CEUR Workshop Proceedings',
+            categories: ['Facial Recognition', 'Adversarial Attacks', 'Computer Vision'],
         },
         {
             id: 6,
@@ -27,6 +29,7 @@ export const publications_list = {
             description: "Our team propose various methods to retrieve objects based on shape, with me introduce a 3D mesh-based approach by using MeshNet",
             authors: 'Ivan Sipiran, ..., Dinh-Huan Nguyen, Thang-Long Nguyen-Ho, Bang-Dang Pham, Minh-Khoi Pham, Quoc-Huy Trinh, The-Anh Vu-Le',
             site: 'Computer & Graphics',
+            categories: ['3D Computer Vision', '3D Object Retrieval'],
         },
     ],
 
@@ -40,6 +43,7 @@ export const publications_list = {
             name: 'Vision-based Assistance for Vocal Fold Identification in Laryngoscopy with Knowledge Distillation',
             description: 'We introduced a new  dataset about the identification of vocal fold along with an efficient model trained by knowledge distillation technique',
             site: 'poster at WiCV Workshop @ CVPR 2022',
+            categories: ['Medical AI', 'Knowledge Distillation', 'Computer Vision'],
         },
 
         {
@@ -49,6 +53,7 @@ export const publications_list = {
             description: '',
             authors: 'Elia Moscoso Thompson, Andrea Ranieri, Silvia Biasotti, Miguel Chicchon, Ivan Sipiran, Minh-Khoi Pham, Thang-Long Nguyen-Ho, Hai-Dang Nguyen, Minh-Triet Tran',
             site: "Computers & Graphics",
+            categories: ['Computer Vision', 'Image Segmentation'],
         },
 
         {
@@ -58,6 +63,7 @@ export const publications_list = {
             description: 'We proposed an improved pipeline to perform video retrieval based on query texts about traffic events. Our approach achieved rank 5th overall, received runner-up award',
             authors: 'Thang-Long Nguyen-Ho, Minh-Khoi Pham, Tien-Phat Nguyen, Hai-Dang Nguyen, Minh N. Do, Tam V. Nguyen and Minh-Triet Tran',
             site: 'AI City Challenge Workshop @ CVPR 2022',
+            categories: ['Text-Video Retrieval', 'Multimodal Learning', 'Computer Vision'],
         },
     ],
 
@@ -69,6 +75,7 @@ export const publications_list = {
             description: 'We present a novel two-staged method that employs various 2D-based techniques to deal with the 3D segmentation task. We propose using the recent state-of-the-art technique in video object segmentation, combining it with other semi-supervised training techniques to leverage the extensive unlabeled data. Moreover, we introduce a way to generate pseudo-labeled data that is both plausible and consistent for further retraining by using uncertainty estimation',
             authors: 'Minh-Khoi Pham, Thang-Long Nguyen-Ho, Thao Thi Phuong Dao, Tan-Cong Nguyen & Minh-Triet Tran',
             site: 'Lecture Notes in Computer Science',
+            categories: ['Medical AI', 'Semi-supervised Learning', 'Uncertainty Estimation', 'Video Object Segmentation'],
         },
     ]
 

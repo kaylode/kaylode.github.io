@@ -1,15 +1,16 @@
-import github from "../assets/techs/github.png";
-import pytorch from "../assets/techs/pytorch.png";
-import python from "../assets/techs/python.png";
-import postgresql from "../assets/techs/postgresql.png";
-import overleaf from "../assets/techs/overleaf.png"
-import docker from "../assets/techs/docker.png"
-import android_studio from "../assets/techs/android_studio.png"
-import reactjs from "../assets/techs/react.png"
-import tailwind from "../assets/techs/tailwind.png"
+// Use public directory paths for Next.js
+const github = "/techs/github.png";
+const pytorch = "/techs/pytorch.png";
+const python = "/techs/python.png";
+const postgresql = "/techs/postgresql.png";
+const overleaf = "/techs/overleaf.png"
+const docker = "/techs/docker.png"
+const android_studio = "/techs/android_studio.png"
+const reactjs = "/techs/react.png"
+const tailwind = "/techs/tailwind.png"
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export const techs_list = [
+const techs_list = [
     {
       id: 1,
       src: python,
@@ -72,5 +73,5 @@ export const techs_list = [
     },
   ];
 
-
-export default techs_list
+// eslint-disable-next-line import/no-anonymous-default-export
+export { techs_list }

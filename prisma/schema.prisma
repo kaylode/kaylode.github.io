@@ -27,6 +27,9 @@ model BlogPost {
   status      String   @default("published")
   views       Int      @default(0)
   createdAt   DateTime @default(now())
+  
+  // File attachments
+  blogPostFiles BlogPostFile[]
 
   @@map("blog_posts")
 }
@@ -45,6 +48,9 @@ model Project {
   language    String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  
+  // File attachments (PDFs, additional images, etc.)
+  projectFiles ProjectFile[]
 
   @@map("projects")
 }
@@ -115,4 +121,68 @@ model Analytics {
   
   @@unique([page, date])
   @@map("analytics")
+}
+
+model FileStorage {
+  id          String   @id @default(cuid())
+  filename    String
+  originalName String
+  mimeType    String
+  size        Int      // File size in bytes
+  path        String   // Storage path/URL
+  category    String   // e.g., "pdf", "image", "document"
+  description String?
+  isPublic    Boolean  @default(true)
+  uploadedBy  String?  // User who uploaded (future feature)
+  downloadCount Int    @default(0)
+  
+  // Metadata for different file types
+  metadata    Json?    // Store file-specific metadata
+  
+  // Relationships
+  blogPostFiles BlogPostFile[]
+  projectFiles  ProjectFile[]
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("file_storage")
+}
+
+model BlogPostFile {
+  id         String     @id @default(cuid())
+  blogPostId String
+  fileId     String
+  blogPost   BlogPost   @relation(fields: [blogPostId], references: [id], onDelete: Cascade)
+  file       FileStorage @relation(fields: [fileId], references: [id], onDelete: Cascade)
+  
+  @@unique([blogPostId, fileId])
+  @@map("blog_post_files")
+}
+
+model ProjectFile {
+  id        String     @id @default(cuid())
+  projectId String
+  fileId    String
+  project   Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  file      FileStorage @relation(fields: [fileId], references: [id], onDelete: Cascade)
+  
+  @@unique([projectId, fileId])
+  @@map("project_files")
+}
+
+model Contact {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  status    String   @default("unread") // "unread", "read", "replied"
+  isSpam    Boolean  @default(false)
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("contacts")
 }

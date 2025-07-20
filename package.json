@@ -35,6 +35,8 @@
     "db:push": "prisma db push",
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio",
+    "db:deploy": "node scripts/deploy-database.js",
+    "db:sample": "node scripts/deploy-database.js --sample",
     "crawl": "node scripts/crawl-data.js"
   },
   "eslintConfig": {

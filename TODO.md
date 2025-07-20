@@ -87,7 +87,63 @@
 
 ## 📅 **PLANNED**
 
-### Phase 3: LeetCode Progress Tracker
+### Phase 4: Google Cloud PostgreSQL Integration (Current Priority)
+- [x] **Database Setup Documentation**
+  - [x] Created comprehensive Google Cloud SQL setup guide (GOOGLE_CLOUD_SETUP.md)
+  - [x] Updated Prisma schema with file storage support
+  - [x] Added blog post and project file relationship models
+  - [x] Created contact form model for visitor inquiries
+  - [x] Enhanced API endpoints with database integration
+  - [x] Created file management APIs and components
+  - [x] Added database deployment scripts
+
+- [ ] **Database Deployment**
+  - [ ] Create Google Cloud SQL PostgreSQL instance
+  - [ ] Configure authorized networks and security settings
+  - [ ] Set up environment variables in Vercel
+  - [ ] Run database migrations and schema deployment
+  - [ ] Test database connectivity from production
+
+- [ ] **File Storage System**
+  - [ ] Implement file upload API endpoints
+  - [ ] Add support for PDF storage and serving
+  - [ ] Create file management dashboard
+  - [ ] Implement file categorization (pdfs, images, documents)
+  - [ ] Add file download tracking and analytics
+
+- [ ] **Enhanced Blog System**
+  - [ ] Migrate from static blog data to database
+  - [ ] Add file attachment support for blog posts
+  - [ ] Implement blog post search and filtering
+  - [ ] Add blog analytics (views, engagement)
+  - [ ] Create blog management interface
+
+- [ ] **Project Enhancement**
+  - [ ] Add file attachments to projects (PDFs, additional media)
+  - [ ] Store project documentation and resources
+  - [ ] Implement project analytics tracking
+  - [ ] Add project collaboration features
+
+### Phase 5: Advanced Features & Analytics
+- [ ] **Contact System**
+  - [ ] Implement contact form with database storage
+  - [ ] Add spam protection and validation
+  - [ ] Create contact management dashboard
+  - [ ] Set up email notifications for new contacts
+
+- [ ] **Analytics & Performance**
+  - [ ] Implement page view tracking
+  - [ ] Add visitor analytics and insights
+  - [ ] Monitor file download statistics
+  - [ ] Create analytics dashboard
+
+- [ ] **Content Management**
+  - [ ] Build admin interface for content management
+  - [ ] Add rich text editor for blog posts
+  - [ ] Implement media gallery management
+  - [ ] Create backup and export functionality
+
+### Phase 6: LeetCode Progress Tracker
 - [ ] **Data Integration**
   - [ ] LeetCode API research and setup
   - [ ] GitHub-style calendar component

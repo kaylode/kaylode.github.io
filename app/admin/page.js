@@ -59,6 +59,7 @@ const AdminDashboard = () => {
   };
 
   const handleDelete = async (id, endpoint) => {
+    // eslint-disable-next-line no-restricted-globals
     if (!confirm('Are you sure you want to delete this item?')) return;
 
     try {

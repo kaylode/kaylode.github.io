@@ -5,13 +5,12 @@ export default function PrimarySection({ id, title, children }) {
     <React.Fragment>
       <div className='bg-gradient-to-b from-gray-800 to-black w-full h-screen py-5 px-5 flex flex-col justify-center' id={id}>
           {children}
-        </div>
       </div>
     </React.Fragment>
   )
 }
 
-export default function SecondarySection({ id, title, children }) {
+export function SecondarySection({ id, title, children }) {
   return (
     <React.Fragment>
       <section className='resume-section' id={id}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ModernHome from "./components/modern-home";
+import ModernHome from "./components/modern-home-fixed";
 import NavBar from "./components/navbar";
 import PublicationsPage from './components/PublicationsPage'
 import ProjectsPage from './components/ProjectsPage'

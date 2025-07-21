@@ -1,12 +1,13 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { FaPlus, FaEdit, FaTrash, FaEye, FaEyeSlash } from 'react-icons/fa';
+import { FaPlus, FaEdit, FaTrash, FaEye, FaEyeSlash, FaSync } from 'react-icons/fa';
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('projects');
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
 
   const tabs = [
@@ -65,6 +66,20 @@ const AdminDashboard = () => {
     } catch (error) {
       console.error('Error deleting:', error);
     }
+  };
+
+  const refreshAllData = async () => {
+    setRefreshing(true);
+    try {
+      // Clear existing data and refetch all tabs
+      setData({});
+      for (const tab of tabs) {
+        await fetchData(tab.id);
+      }
+    } catch (error) {
+      console.error('Error refreshing data:', error);
+    }
+    setRefreshing(false);
   };
 
   useEffect(() => {
@@ -196,6 +211,306 @@ const AdminDashboard = () => {
     </div>
   );
 
+  const renderPublicationForm = (item = {}) => (
+    <div className="bg-white p-6 rounded-lg">
+      <h3 className="text-xl font-bold mb-4">{item?.id ? 'Edit Publication' : 'Add New Publication'}</h3>
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData);
+        
+        // Convert authors from textarea to array
+        if (data.authors) {
+          data.authors = data.authors.split(',').map(a => a.trim()).filter(a => a !== '');
+        } else {
+          data.authors = [];
+        }
+        
+        // Ensure citations is a number
+        if (data.citations) {
+          data.citations = parseInt(data.citations, 10);
+        }
+        
+        handleSave(data, '/api/publications');
+      }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input name="title" placeholder="Title" defaultValue={item?.title || ''} required
+                 className="p-2 border rounded" />
+          <input name="venue" placeholder="Venue" defaultValue={item?.venue || ''} required
+                 className="p-2 border rounded" />
+          <input name="year" type="number" placeholder="Year" defaultValue={item?.year || ''} required
+                 className="p-2 border rounded" />
+          <select name="category" defaultValue={item?.category || 'conference'} required
+                  className="p-2 border rounded">
+            <option value="">Select Category</option>
+            <option value="conference">Conference</option>
+            <option value="journal">Journal</option>
+            <option value="workshop">Workshop</option>
+            <option value="preprint">Preprint</option>
+            <option value="book">Book</option>
+            <option value="thesis">Thesis</option>
+          </select>
+          <input name="doi" placeholder="DOI" defaultValue={item?.doi || ''}
+                 className="p-2 border rounded" />
+          <input name="arxivId" placeholder="ArXiv ID" defaultValue={item?.arxivId || ''}
+                 className="p-2 border rounded" />
+          <input name="pdfUrl" placeholder="PDF URL" defaultValue={item?.pdfUrl || ''}
+                 className="p-2 border rounded" />
+          <input name="citations" type="number" placeholder="Citations" defaultValue={item?.citations || 0}
+                 className="p-2 border rounded" />
+        </div>
+        <textarea name="authors" placeholder="Authors (comma-separated)" 
+                  defaultValue={Array.isArray(item?.authors) ? item.authors.join(', ') : ''}
+                  className="w-full p-2 border rounded mt-4" rows="2" required />
+        <textarea name="abstract" placeholder="Abstract" defaultValue={item?.abstract || ''}
+                  className="w-full p-2 border rounded mt-4" rows="4" />
+        <div className="flex gap-2 mt-4">
+          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            {item?.id ? 'Update' : 'Create'}
+          </button>
+          <button type="button" onClick={() => setEditingItem(null)}
+                  className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+
+  const renderEducationForm = (item = {}) => (
+    <div className="bg-white p-6 rounded-lg">
+      <h3 className="text-xl font-bold mb-4">{item.id ? 'Edit Education' : 'Add New Education'}</h3>
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData);
+        
+        // Convert boolean fields
+        data.isVisible = data.isVisible === 'on';
+        
+        // Convert highlights from textarea to array
+        if (data.highlights) {
+          data.highlights = data.highlights.split('\n').filter(h => h.trim() !== '');
+        } else {
+          data.highlights = [];
+        }
+        
+        // Ensure order is a number
+        if (data.order) {
+          data.order = parseInt(data.order, 10);
+        }
+        
+        handleSave(data, '/api/education');
+      }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input name="institution" placeholder="Institution" defaultValue={item?.institution || ''} required
+                 className="p-2 border rounded" />
+          <input name="location" placeholder="Location" defaultValue={item?.location || ''} required
+                 className="p-2 border rounded" />
+          <input name="degree" placeholder="Degree" defaultValue={item?.degree || ''} required
+                 className="p-2 border rounded" />
+          <input name="field" placeholder="Field of Study" defaultValue={item?.field || ''} required
+                 className="p-2 border rounded" />
+          <select name="status" defaultValue={item?.status || 'Completed'} required
+                  className="p-2 border rounded">
+            <option value="">Select Status</option>
+            <option value="Completed">Completed</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Ongoing">Ongoing</option>
+            <option value="Dropped">Dropped</option>
+          </select>
+          <select name="type" defaultValue={item?.type || 'bachelor'} required
+                  className="p-2 border rounded">
+            <option value="">Select Type</option>
+            <option value="bachelor">Bachelor's</option>
+            <option value="master">Master's</option>
+            <option value="phd">PhD</option>
+            <option value="certificate">Certificate</option>
+            <option value="diploma">Diploma</option>
+            <option value="associate">Associate</option>
+          </select>
+          <input name="startDate" type="date" placeholder="Start Date" 
+                 defaultValue={item?.startDate ? new Date(item.startDate).toISOString().split('T')[0] : ''}
+                 className="p-2 border rounded" />
+          <input name="endDate" type="date" placeholder="End Date" 
+                 defaultValue={item?.endDate ? new Date(item.endDate).toISOString().split('T')[0] : ''}
+                 className="p-2 border rounded" />
+          <input name="gpa" placeholder="GPA" defaultValue={item?.gpa || ''}
+                 className="p-2 border rounded" />
+          <input name="order" type="number" placeholder="Order" defaultValue={item?.order || 0}
+                 className="p-2 border rounded" />
+        </div>
+        <textarea name="description" placeholder="Description" defaultValue={item?.description || ''}
+                  className="w-full p-2 border rounded mt-4" rows="3" />
+        <textarea name="highlights" placeholder="Highlights (one per line)" 
+                  defaultValue={Array.isArray(item?.highlights) ? item.highlights.join('\n') : ''}
+                  className="w-full p-2 border rounded mt-4" rows="3" />
+        <input name="logo" placeholder="Logo URL" defaultValue={item?.logo || ''}
+               className="w-full p-2 border rounded mt-4" />
+        <div className="flex items-center gap-2 mt-4">
+          <input name="isVisible" type="checkbox" defaultChecked={item?.isVisible !== false}
+                 className="w-4 h-4" />
+          <label>Visible on site</label>
+        </div>
+        <div className="flex gap-2 mt-4">
+          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            {item.id ? 'Update' : 'Create'}
+          </button>
+          <button type="button" onClick={() => setEditingItem(null)}
+                  className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+
+  const renderExperienceForm = (item = {}) => (
+    <div className="bg-white p-6 rounded-lg">
+      <h3 className="text-xl font-bold mb-4">{item.id ? 'Edit Experience' : 'Add New Experience'}</h3>
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData);
+        
+        // Convert boolean fields
+        data.isCurrent = data.current === 'on';
+        data.isVisible = data.isVisible === 'on';
+        
+        // Convert responsibilities from textarea to array
+        if (data.responsibilities) {
+          data.responsibilities = data.responsibilities.split('\n').filter(r => r.trim() !== '');
+        } else {
+          data.responsibilities = [];
+        }
+        
+        // Convert technologies from textarea to array
+        if (data.technologies) {
+          data.technologies = data.technologies.split('\n').filter(t => t.trim() !== '');
+        } else {
+          data.technologies = [];
+        }
+        
+        // Ensure order is a number
+        if (data.order) {
+          data.order = parseInt(data.order, 10);
+        }
+        
+        handleSave(data, '/api/experiences');
+      }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input name="company" placeholder="Company" defaultValue={item?.company || ''} required
+                 className="p-2 border rounded" />
+          <input name="position" placeholder="Position" defaultValue={item?.position || ''} required
+                 className="p-2 border rounded" />
+          <input name="location" placeholder="Location" defaultValue={item?.location || ''}
+                 className="p-2 border rounded" />
+          <input name="startDate" type="date" placeholder="Start Date" 
+                 defaultValue={item?.startDate ? new Date(item.startDate).toISOString().split('T')[0] : ''} 
+                 required className="p-2 border rounded" />
+          <input name="endDate" type="date" placeholder="End Date" 
+                 defaultValue={item?.endDate ? new Date(item.endDate).toISOString().split('T')[0] : ''}
+                 className="p-2 border rounded" />
+          <input name="url" placeholder="Company URL" defaultValue={item?.website || item?.url || ''}
+                 className="p-2 border rounded" />
+          <input name="order" type="number" placeholder="Order" defaultValue={item?.order || 0}
+                 className="p-2 border rounded" />
+          <input name="logo" placeholder="Company Logo URL" defaultValue={item?.logo || ''}
+                 className="p-2 border rounded" />
+        </div>
+        <textarea name="description" placeholder="Description" defaultValue={item?.description || ''}
+                  className="w-full p-2 border rounded mt-4" rows="4" />
+        <textarea name="responsibilities" placeholder="Key Responsibilities (one per line)" 
+                  defaultValue={Array.isArray(item?.responsibilities) ? item.responsibilities.join('\n') : ''}
+                  className="w-full p-2 border rounded mt-4" rows="5" />
+        <textarea name="technologies" placeholder="Technologies Used (one per line)" 
+                  defaultValue={Array.isArray(item?.technologies) ? item.technologies.join('\n') : ''}
+                  className="w-full p-2 border rounded mt-4" rows="4" />
+        <div className="flex items-center gap-4 mt-4">
+          <label className="flex items-center">
+            <input type="checkbox" name="current" defaultChecked={item?.isCurrent || false}
+                   className="mr-2" />
+            Current Position
+          </label>
+          <label className="flex items-center">
+            <input type="checkbox" name="isVisible" defaultChecked={item?.isVisible !== false}
+                   className="mr-2" />
+            Visible on site
+          </label>
+        </div>
+        <div className="flex gap-2 mt-4">
+          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            {item.id ? 'Update' : 'Create'}
+          </button>
+          <button type="button" onClick={() => setEditingItem(null)}
+                  className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+
+  const renderBlogForm = (item) => (
+    <div className="bg-white p-6 rounded-lg">
+      <h3 className="text-xl font-bold mb-4">{item.id ? 'Edit Blog Post' : 'Add New Blog Post'}</h3>
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData);
+        
+        // Convert boolean fields
+        data.published = data.published === 'on';
+        data.featured = data.featured === 'on';
+        
+        // Convert tags
+        if (data.tags) {
+          data.tags = data.tags.split(',').map(tag => tag.trim());
+        }
+        
+        handleSave(data, '/api/blog');
+      }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input name="title" placeholder="Title" defaultValue={item.title} required
+                 className="p-2 border rounded" />
+          <input name="slug" placeholder="URL Slug" defaultValue={item.slug} required
+                 className="p-2 border rounded" />
+          <input name="publishedAt" type="date" placeholder="Published Date" defaultValue={item.publishedAt}
+                 className="p-2 border rounded" />
+          <input name="readingTime" type="number" placeholder="Reading Time (minutes)" defaultValue={item.readingTime}
+                 className="p-2 border rounded" />
+        </div>
+        <textarea name="summary" placeholder="Summary" defaultValue={item.summary}
+                  className="w-full p-2 border rounded mt-4" rows="3" />
+        <textarea name="content" placeholder="Content (Markdown)" defaultValue={item.content}
+                  className="w-full p-2 border rounded mt-4" rows="10" />
+        <input name="tags" placeholder="Tags (comma-separated)" defaultValue={item.tags?.join(', ')}
+               className="w-full p-2 border rounded mt-4" />
+        <div className="flex gap-4 mt-4">
+          <label className="flex items-center">
+            <input type="checkbox" name="published" defaultChecked={item.published}
+                   className="mr-2" />
+            Published
+          </label>
+          <label className="flex items-center">
+            <input type="checkbox" name="featured" defaultChecked={item.featured}
+                   className="mr-2" />
+            Featured
+          </label>
+        </div>
+        <div className="flex gap-2 mt-4">
+          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            {item.id ? 'Update' : 'Create'}
+          </button>
+          <button type="button" onClick={() => setEditingItem(null)}
+                  className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+
   const renderDataTable = (items, type) => {
     if (!items || items.length === 0) {
       return <div className="text-center py-8 text-gray-500">No data available</div>;
@@ -232,6 +547,33 @@ const AdminDashboard = () => {
                   <th className="px-4 py-2 text-left">Actions</th>
                 </>
               )}
+              {type === 'education' && (
+                <>
+                  <th className="px-4 py-2 text-left">Institution</th>
+                  <th className="px-4 py-2 text-left">Degree</th>
+                  <th className="px-4 py-2 text-left">Field</th>
+                  <th className="px-4 py-2 text-left">Years</th>
+                  <th className="px-4 py-2 text-left">Actions</th>
+                </>
+              )}
+              {type === 'experiences' && (
+                <>
+                  <th className="px-4 py-2 text-left">Company</th>
+                  <th className="px-4 py-2 text-left">Position</th>
+                  <th className="px-4 py-2 text-left">Duration</th>
+                  <th className="px-4 py-2 text-left">Current</th>
+                  <th className="px-4 py-2 text-left">Actions</th>
+                </>
+              )}
+              {type === 'blog' && (
+                <>
+                  <th className="px-4 py-2 text-left">Title</th>
+                  <th className="px-4 py-2 text-left">Published</th>
+                  <th className="px-4 py-2 text-left">Featured</th>
+                  <th className="px-4 py-2 text-left">Reading Time</th>
+                  <th className="px-4 py-2 text-left">Actions</th>
+                </>
+              )}
             </tr>
           </thead>
           <tbody>
@@ -264,6 +606,36 @@ const AdminDashboard = () => {
                     <td className="px-4 py-2">{item.year}</td>
                   </>
                 )}
+                {type === 'education' && (
+                  <>
+                    <td className="px-4 py-2">{item.institution}</td>
+                    <td className="px-4 py-2">{item.degree}</td>
+                    <td className="px-4 py-2">{item.field}</td>
+                    <td className="px-4 py-2">{item.startYear} - {item.endYear || 'Present'}</td>
+                  </>
+                )}
+                {type === 'experiences' && (
+                  <>
+                    <td className="px-4 py-2">{item.company}</td>
+                    <td className="px-4 py-2">{item.position}</td>
+                    <td className="px-4 py-2">{item.startDate} - {item.endDate || 'Present'}</td>
+                    <td className="px-4 py-2">
+                      {item.current ? <FaEye className="text-green-500" /> : <FaEyeSlash className="text-gray-400" />}
+                    </td>
+                  </>
+                )}
+                {type === 'blog' && (
+                  <>
+                    <td className="px-4 py-2">{item.title}</td>
+                    <td className="px-4 py-2">
+                      {item.published ? <FaEye className="text-green-500" /> : <FaEyeSlash className="text-gray-400" />}
+                    </td>
+                    <td className="px-4 py-2">
+                      {item.featured ? <FaEye className="text-green-500" /> : <FaEyeSlash className="text-gray-400" />}
+                    </td>
+                    <td className="px-4 py-2">{item.readingTime} min</td>
+                  </>
+                )}
                 <td className="px-4 py-2">
                   <div className="flex gap-2">
                     <button onClick={() => setEditingItem(item)}
@@ -287,7 +659,17 @@ const AdminDashboard = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-4">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold text-center mb-8">Portfolio Admin Dashboard</h1>
+        <div className="flex justify-between items-center mb-8">
+          <h1 className="text-3xl font-bold">Portfolio Admin Dashboard</h1>
+          <button
+            onClick={refreshAllData}
+            disabled={refreshing}
+            className="bg-blue-500 hover:bg-blue-600 disabled:bg-blue-300 text-white px-4 py-2 rounded-lg flex items-center gap-2"
+          >
+            <FaSync className={`${refreshing ? 'animate-spin' : ''}`} />
+            {refreshing ? 'Refreshing...' : 'Refresh Data'}
+          </button>
+        </div>
         
         {/* Tab Navigation */}
         <div className="flex flex-wrap justify-center mb-8 border-b">
@@ -325,7 +707,10 @@ const AdminDashboard = () => {
               <div className="max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
                 {activeTab === 'projects' && renderProjectForm(editingItem)}
                 {activeTab === 'technologies' && renderTechnologyForm(editingItem)}
-                {/* Add more forms for other types as needed */}
+                {activeTab === 'publications' && renderPublicationForm(editingItem)}
+                {activeTab === 'education' && renderEducationForm(editingItem)}
+                {activeTab === 'experiences' && renderExperienceForm(editingItem)}
+                {activeTab === 'blog' && renderBlogForm(editingItem)}
               </div>
             </div>
           )}

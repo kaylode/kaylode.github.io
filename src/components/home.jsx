@@ -62,6 +62,20 @@ function Home() {
                         </svg> 
                         </span>
                     </a>
+                    
+                    &nbsp;
+
+                    <a className="svg hover:scale-105 duration-500" target="_blank" rel="noreferrer" href="https://steamcommunity.com/id/Kaylode/"> 
+                        <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                            className="bi bi-steam" viewBox="0 0 16 16">
+                            <path fill="#ffffff"
+                                d="M.329 10.333A8.01 8.01 0 0 0 7.99 16C12.414 16 16 12.418 16 8s-3.586-8-8.009-8A8.006 8.006 0 0 0 0 7.468l.003.006 4.304 1.769A2.198 2.198 0 0 1 5.62 8.88l1.96-2.844-.001-.04a3.046 3.046 0 0 1 3.042-3.043 3.046 3.046 0 0 1 3.042 3.043 3.047 3.047 0 0 1-3.111 3.044l-2.804 2a2.223 2.223 0 0 1-3.075 2.11 2.217 2.217 0 0 1-1.312-1.568L.329 10.333z"/>
+                            <path fill="#ffffff"
+                                d="M7.99 1C11.866 1 15 4.134 15 8s-3.134 7-7.01 7A6.995 6.995 0 0 1 1 8.958l2.549 1.053a1.226 1.226 0 1 0 1.257-2.118L2.51 6.87A6.99 6.99 0 0 1 7.99 1z"/>
+                        </svg> 
+                        </span>
+                    </a>
 
                     </div>
                 </div>
@@ -73,7 +87,7 @@ function Home() {
                     <div className="py-2">
                       <a className="btn btn-primary my-1 mx-3 hover:scale-105 duration-500"
                           href="https://drive.google.com/file/d/1QuBwk92yxYacEvgHm6d2KKRFAgVm873L/view?usp=sharing">Resumé</a>
-                      <a className="btn btn-primary my-1 mx-3 hover:scale-105 duration-500" href="mailto:pmkhoi@selab.hcmus.edu.vn">Email</a>
+                      <a className="btn btn-primary my-1 mx-3 hover:scale-105 duration-500" href="mailto:kayp.kieran@gmail.com">Email</a>
                     </div>
                 </div>
 

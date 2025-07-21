@@ -145,3 +145,84 @@ export async function POST(request) {
     )
   }
 }
+
+export async function PUT(request) {
+  try {
+    if (!prisma) {
+      return NextResponse.json(
+        { error: 'Database not available' },
+        { status: 503 }
+      );
+    }
+
+    const data = await request.json();
+    
+    if (!data.id) {
+      return NextResponse.json(
+        { error: 'Blog post ID is required' },
+        { status: 400 }
+      );
+    }
+
+    const post = await prisma.blogPost.update({
+      where: { id: data.id },
+      data: {
+        title: data.title,
+        slug: data.slug,
+        content: data.content,
+        excerpt: data.excerpt,
+        category: data.category,
+        tags: data.tags,
+        featured: data.featured,
+        status: data.status,
+        publishedAt: data.publishedAt ? new Date(data.publishedAt) : null,
+      },
+      include: {
+        blogPostFiles: {
+          include: { file: true }
+        }
+      }
+    });
+
+    return NextResponse.json(post);
+  } catch (error) {
+    console.error('Database error:', error);
+    return NextResponse.json(
+      { error: 'Failed to update blog post' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function DELETE(request) {
+  try {
+    if (!prisma) {
+      return NextResponse.json(
+        { error: 'Database not available' },
+        { status: 503 }
+      );
+    }
+
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+    
+    if (!id) {
+      return NextResponse.json(
+        { error: 'Blog post ID is required' },
+        { status: 400 }
+      );
+    }
+
+    await prisma.blogPost.delete({
+      where: { id: id }
+    });
+
+    return NextResponse.json({ message: 'Blog post deleted successfully' });
+  } catch (error) {
+    console.error('Database error:', error);
+    return NextResponse.json(
+      { error: 'Failed to delete blog post' },
+      { status: 500 }
+    );
+  }
+}

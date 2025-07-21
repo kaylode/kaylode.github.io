@@ -66,7 +66,14 @@ export async function GET() {
       })
     }
 
-    return NextResponse.json(stats)
+    // Parse JSON fields and return the data
+    const parsedStats = {
+      ...stats,
+      recentSubmissions: typeof stats.recentSubmissions === 'string' ? JSON.parse(stats.recentSubmissions) : stats.recentSubmissions,
+      lastUpdated: stats.lastUpdated.toISOString()
+    };
+
+    return NextResponse.json(parsedStats)
   } catch (error) {
     console.error('Error fetching LeetCode stats:', error)
     return NextResponse.json(

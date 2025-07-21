@@ -18,9 +18,18 @@ import {
   FaInstagram,
   FaTwitter
 } from 'react-icons/fa';
-import { SiLeetcode, SiGooglescholar, SiOrcid } from 'react-icons/si';
+import { SiGooglescholar, SiOrcid } from 'react-icons/si';
 const avatar = '/avatar.png';
 import '../styles/modern-home.css';
+
+// Custom Steam Icon Component
+const SteamIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" width="1em" height="1em">
+    <path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.029 4.524 4.524s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.624 0 11.979-5.354 11.979-11.979C23.958 5.397 18.603.021 11.979 0z"/>
+    <path d="M7.54 18.21c.397.159.673.555.673.999 0 .601-.487 1.089-1.089 1.089s-1.089-.488-1.089-1.089c0-.445.275-.841.672-1.021l1.833.022z"/>
+    <path d="M18.979 8.91c0-1.665-1.353-3.019-3.019-3.019s-3.019 1.354-3.019 3.019 1.353 3.019 3.019 3.019 3.019-1.354 3.019-3.019zm-5.334 0c0-1.276 1.037-2.312 2.315-2.312 1.276 0 2.312 1.036 2.312 2.312s-1.036 2.312-2.312 2.312c-1.278 0-2.315-1.036-2.315-2.312z"/>
+  </svg>
+);
 
 const ModernHome = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -37,8 +46,7 @@ const ModernHome = () => {
   const stats = [
     { label: "Years of Experience", value: "5+", icon: FaCode },
     { label: "Research Papers", value: "10+", icon: FaGraduationCap },
-    { label: "GitHub Repositories", value: "50+", icon: FaGithub },
-    { label: "LeetCode Problems", value: "200+", icon: SiLeetcode }
+    { label: "GitHub Repositories", value: "50+", icon: FaGithub }
   ];
 
   const socialLinks = [
@@ -89,6 +97,12 @@ const ModernHome = () => {
       url: "https://x.com/_kaylode",
       icon: FaTwitter,
       color: "hover:text-sky-400"
+    },
+    {
+      name: "Steam",
+      url: "https://steamcommunity.com/id/Kaylode/",
+      icon: SteamIcon,
+      color: "hover:text-blue-300"
     }
   ];
 
@@ -224,7 +238,7 @@ const ModernHome = () => {
                 </motion.a>
                 
                 <motion.a
-                  href="mailto:pmkhoi@selab.hcmus.edu.vn"
+                  href="mailto:kayp.kieran@gmail.com"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="bg-transparent border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 btn-modern modern-font"
@@ -264,7 +278,7 @@ const ModernHome = () => {
                     transition={{ duration: 0.3 }}
                   >
                     <Image
-                      src={avatar}
+                      src="/avatar.png"
                       alt="Minh-Khoi Pham (Kay)"
                       width={320}
                       height={320}
@@ -317,6 +331,49 @@ const ModernHome = () => {
                 ))}
               </motion.div>
             </div>
+          </motion.div>
+
+          {/* Buy Me Coffee Section */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="mt-20 text-white"
+          >
+            <motion.div variants={itemVariants} className="text-center">
+              <h3 className="text-2xl lg:text-3xl font-bold mb-6 modern-font">
+                <span className="gradient-text">
+                  Support My Work
+                </span>
+              </h3>
+              <motion.div 
+                className="inline-block bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="flex flex-col items-center space-y-4">
+                  <p className="text-gray-300 text-center max-w-md modern-font">
+                    If you find my work helpful or inspiring, consider buying me a coffee! ☕
+                  </p>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Image
+                      src="/bmc_qr.png"
+                      alt="Buy Me Coffee QR Code"
+                      width={200}
+                      height={200}
+                      className="rounded-lg shadow-lg border-2 border-blue-400/30"
+                    />
+                  </motion.div>
+                  <p className="text-sm text-gray-400 modern-font">
+                    Scan with your phone to support my research and projects
+                  </p>
+                </div>
+              </motion.div>
+            </motion.div>
           </motion.div>
 
           {/* About Section */}

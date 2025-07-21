@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaSearch, 
@@ -15,7 +15,6 @@ import {
   FaSortAmountUp
 } from 'react-icons/fa';
 import { SiGooglescholar, SiOrcid } from 'react-icons/si';
-import { publications_list } from '../data/publications';
 import AuthorNames from './utils/text';
 import '../styles/modern-home.css';
 
@@ -26,6 +25,31 @@ const PublicationsPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortOrder, setSortOrder] = useState('desc'); // desc = newest first
   const [selectedPublication, setSelectedPublication] = useState(null);
+  const [publications, setPublications] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPublications = async () => {
+      try {
+        const response = await fetch('/api/publications');
+        const data = await response.json();
+        setPublications(data);
+      } catch (error) {
+        console.error('Failed to fetch publications:', error);
+        // Fallback to static data
+        try {
+          const { publications_list } = await import('../data/publications');
+          setPublications(publications_list);
+        } catch (fallbackError) {
+          console.error('Failed to load fallback data:', fallbackError);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPublications();
+  }, []);
 
   // Get venue color based on venue type
   const getVenueColor = (venue) => {
@@ -82,13 +106,22 @@ const PublicationsPage = () => {
   // Flatten publications and add year to each publication
   const allPublications = useMemo(() => {
     const flattened = [];
-    Object.entries(publications_list).forEach(([year, publications]) => {
-      publications.forEach(pub => {
-        flattened.push({ ...pub, year: parseInt(year) });
+    Object.entries(publications).forEach(([year, publicationsArray]) => {
+      publicationsArray.forEach(pub => {
+        flattened.push({ 
+          ...pub, 
+          year: parseInt(year),
+          // Map database fields to expected format
+          name: pub.title || pub.name,
+          site: pub.venue || pub.site,
+          link: pub.pdfUrl || pub.link,
+          description: pub.abstract || pub.description,
+          authors: Array.isArray(pub.authors) ? pub.authors.join(', ') : pub.authors
+        });
       });
     });
     return flattened;
-  }, []);
+  }, [publications]);
 
   // Get unique years and venues for filters
   const years = useMemo(() => {
@@ -387,6 +420,18 @@ const PublicationsPage = () => {
           </div>
         </motion.div>
 
+        {/* Loading State */}
+        {loading ? (
+          <div className="text-center py-20">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              className="w-12 h-12 border-4 border-blue-300 border-t-transparent rounded-full mx-auto mb-4"
+            />
+            <p className="text-xl text-gray-300">Loading publications...</p>
+          </div>
+        ) : (
+          <>
         {/* Filters */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -528,6 +573,8 @@ const PublicationsPage = () => {
               Clear Filters
             </button>
           </motion.div>
+        )}
+        </>
         )}
       </div>
 

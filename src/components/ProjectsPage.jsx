@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaGithub,
@@ -8,18 +8,90 @@ import {
   FaCode,
   FaStar,
   FaEye,
-  FaSearch,
-  FaFilter,
   FaTimes,
   FaCalendarAlt,
   FaCodeBranch
 } from 'react-icons/fa';
-import { project_list } from '../data/projects';
 
 const ProjectsPage = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedTag, setSelectedTag] = useState('');
   const [selectedProject, setSelectedProject] = useState(null);
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch('/api/projects');
+        const data = await response.json();
+        
+        // Map database fields to expected format for ProjectsPage component
+        const mappedProjects = data.map(project => {
+          // Map project images to local assets
+          let imagePath = '/projects/github.png'; // default fallback
+          
+          if (project.title.toLowerCase().includes('vehicle')) {
+            imagePath = '/projects/vehicle_tracking.gif';
+          } else if (project.title.toLowerCase().includes('theseus')) {
+            imagePath = '/projects/github.png';
+          } else if (project.title.toLowerCase().includes('aic') || project.title.toLowerCase().includes('traffic')) {
+            imagePath = '/projects/aic22.png';
+          } else if (project.title.toLowerCase().includes('meal') || project.title.toLowerCase().includes('food')) {
+            imagePath = '/projects/food_api.jpg';
+          } else if (project.title.toLowerCase().includes('ocr') || project.title.toLowerCase().includes('vietnamese')) {
+            imagePath = '/projects/vnocrtoolbox.png';
+          } else if (project.title.toLowerCase().includes('facemask')) {
+            imagePath = '/projects/facemask.png';
+          } else if (project.title.toLowerCase().includes('pothole')) {
+            imagePath = '/projects/pothole.png';
+          } else if (project.title.toLowerCase().includes('ivos') || project.title.toLowerCase().includes('organ')) {
+            imagePath = '/projects/ivos.png';
+          } else if (project.title.toLowerCase().includes('k.a.i') || project.title.toLowerCase().includes('discord')) {
+            imagePath = '/projects/kai.jpg';
+          } else if (project.title.toLowerCase().includes('picturetales')) {
+            imagePath = '/projects/picturetales.png';
+          }
+
+          return {
+            id: project.id,
+            title: project.title,
+            desc: project.description,
+            img: imagePath, // Use local image path
+            image: imagePath, // Keep both for compatibility
+            source: project.githubUrl || '#',
+            demo: project.liveUrl || '',
+            github: project.githubUrl || '',
+            live: project.liveUrl || '',
+            stars: project.stars || 0,
+            forks: project.forks || 0,
+            language: project.language || 'Unknown',
+            featured: project.featured || false,
+            createdAt: project.createdAt,
+            updatedAt: project.updatedAt,
+            tags: project.technologies ? project.technologies.reduce((acc, tech) => {
+              acc[tech] = 'secondary'; // default color for tech tags
+              return acc;
+            }, {}) : {},
+            technologies: project.technologies || []
+          };
+        });
+        
+        setProjects(mappedProjects);
+      } catch (error) {
+        console.error('Failed to fetch projects:', error);
+        // Fallback to static data
+        try {
+          const { project_list } = await import('../data/projects');
+          setProjects(project_list);
+        } catch (fallbackError) {
+          console.error('Failed to load fallback data:', fallbackError);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
 
   // Color mapping for tags
   const getTagColors = (colorName) => {
@@ -39,21 +111,13 @@ const ProjectsPage = () => {
   // Get all unique tags from projects
   const allTags = useMemo(() => {
     const tags = new Set();
-    project_list.forEach(project => {
-      Object.keys(project.tags).forEach(tag => tags.add(tag));
+    projects.forEach(project => {
+      if (project.tags) {
+        Object.keys(project.tags).forEach(tag => tags.add(tag));
+      }
     });
     return Array.from(tags);
-  }, []);
-
-  // Filter projects based on search and tag
-  const filteredProjects = useMemo(() => {
-    return project_list.filter(project => {
-      const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           project.desc.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesTag = !selectedTag || Object.keys(project.tags).includes(selectedTag);
-      return matchesSearch && matchesTag;
-    });
-  }, [searchTerm, selectedTag]);
+  }, [projects]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -86,8 +150,11 @@ const ProjectsPage = () => {
       <div className="relative">
         <img 
           src={project.img} 
-          alt={project.title}
+          alt={`${project.title} project screenshot`}
           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+          onError={(e) => {
+            e.target.src = '/projects/github.png'; // Fallback to default image
+          }}
         />
         <div className="absolute top-3 right-3 flex gap-2">
           {project.source && (
@@ -194,8 +261,11 @@ const ProjectsPage = () => {
             <div className="relative">
               <img 
                 src={project.img} 
-                alt={project.title}
+                alt={`${project.title} project screenshot`}
                 className="w-full h-64 object-cover"
+                onError={(e) => {
+                  e.target.src = '/projects/github.png'; // Fallback to default image
+                }}
               />
               <button
                 onClick={onClose}
@@ -313,53 +383,18 @@ const ProjectsPage = () => {
         </motion.div>
       </div>
 
-      {/* Search and Filter Section */}
-      <div className="px-6 mb-12">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row gap-4 mb-8">
-            {/* Search Bar */}
-            <div className="relative flex-1">
-              <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search projects..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-            
-            {/* Tag Filter */}
-            <div className="relative">
-              <select
-                value={selectedTag}
-                onChange={(e) => setSelectedTag(e.target.value)}
-                className="px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none pr-10"
-              >
-                <option value="">All Technologies</option>
-                {allTags.map(tag => (
-                  <option key={tag} value={tag}>{tag}</option>
-                ))}
-              </select>
-              <FaFilter className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
-            </div>
-            
-            {/* Clear Filters */}
-            {(searchTerm || selectedTag) && (
-              <button
-                onClick={() => {
-                  setSearchTerm('');
-                  setSelectedTag('');
-                }}
-                className="px-4 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors flex items-center gap-2"
-              >
-                <FaTimes />
-                Clear
-              </button>
-            )}
-          </div>
+      {/* Loading State */}
+      {loading ? (
+        <div className="text-center py-20">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+            className="w-12 h-12 border-4 border-blue-300 border-t-transparent rounded-full mx-auto mb-4"
+          />
+          <p className="text-xl text-gray-300">Loading projects...</p>
         </div>
-      </div>
+      ) : (
+        <>
 
       {/* Content Section */}
       <div className="px-6 pb-20">
@@ -370,20 +405,20 @@ const ProjectsPage = () => {
             animate="visible"
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {filteredProjects.map((project) => (
+            {projects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </motion.div>
           
-          {filteredProjects.length === 0 && (
+          {projects.length === 0 && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className="text-center py-20"
             >
-              <FaSearch className="mx-auto text-6xl text-gray-600 mb-4" />
+              <FaCode className="mx-auto text-6xl text-gray-600 mb-4" />
               <h3 className="text-2xl font-bold text-white mb-2">No projects found</h3>
-              <p className="text-gray-400">Try adjusting your search terms or filters</p>
+              <p className="text-gray-400">Failed to load projects from database</p>
             </motion.div>
           )}
         </div>
@@ -394,6 +429,8 @@ const ProjectsPage = () => {
         project={selectedProject} 
         onClose={() => setSelectedProject(null)} 
       />
+      </>
+      )}
     </div>
   );
 };

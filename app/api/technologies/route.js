@@ -102,3 +102,29 @@ export async function PUT(request) {
     );
   }
 }
+
+export async function DELETE(request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+    
+    if (!id) {
+      return NextResponse.json(
+        { error: 'Technology ID is required' },
+        { status: 400 }
+      );
+    }
+
+    await prisma.technology.delete({
+      where: { id: id }
+    });
+
+    return NextResponse.json({ message: 'Technology deleted successfully' });
+  } catch (error) {
+    console.error('Database error:', error);
+    return NextResponse.json(
+      { error: 'Failed to delete technology' },
+      { status: 500 }
+    );
+  }
+}

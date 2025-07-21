@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { 
   FaGithub, 
   FaLinkedin, 
@@ -15,7 +16,7 @@ import {
   FaInstagram,
   FaTwitter
 } from 'react-icons/fa';
-import { SiLeetcode, SiGooglescholar, SiOrcid } from 'react-icons/si';
+import { SiGooglescholar, SiOrcid } from 'react-icons/si';
 import avatar from '../assets/avatar.png';
 
 const ModernHome: React.FC = () => {
@@ -33,8 +34,7 @@ const ModernHome: React.FC = () => {
   const stats = [
     { label: "Years of Experience", value: "5+", icon: FaCode },
     { label: "Research Papers", value: "10+", icon: FaGraduationCap },
-    { label: "GitHub Repositories", value: "50+", icon: FaGithub },
-    { label: "LeetCode Problems", value: "200+", icon: SiLeetcode }
+    { label: "GitHub Repositories", value: "50+", icon: FaGithub }
   ];
 
   const socialLinks = [
@@ -219,7 +219,7 @@ const ModernHome: React.FC = () => {
               </motion.a>
               
               <motion.a
-                href="mailto:pmkhoi@selab.hcmus.edu.vn"
+                href="mailto:kayp.kieran@gmail.com"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-transparent border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2"
@@ -306,6 +306,49 @@ const ModernHome: React.FC = () => {
               ))}
             </motion.div>
           </div>
+        </motion.div>
+
+        {/* Buy Me Coffee Section */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="mt-20 text-white"
+        >
+          <motion.div variants={itemVariants} className="text-center">
+            <h3 className="text-2xl lg:text-3xl font-bold mb-6 modern-font">
+              <span className="gradient-text">
+                Support My Work
+              </span>
+            </h3>
+            <motion.div 
+              className="inline-block bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700/50"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="flex flex-col items-center space-y-4">
+                <p className="text-gray-300 text-center max-w-md modern-font">
+                  If you find my work helpful or inspiring, consider buying me a coffee! ☕
+                </p>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Image
+                    src="/bmc_qr.png"
+                    alt="Buy Me Coffee QR Code"
+                    width={200}
+                    height={200}
+                    className="rounded-lg shadow-lg border-2 border-blue-400/30"
+                  />
+                </motion.div>
+                <p className="text-sm text-gray-400 modern-font">
+                  Scan with your phone to support my research and projects
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
         </motion.div>
 
         {/* About Section */}

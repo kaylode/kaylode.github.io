@@ -136,3 +136,29 @@ export async function PUT(request) {
     );
   }
 }
+
+export async function DELETE(request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+    
+    if (!id) {
+      return NextResponse.json(
+        { error: 'Project ID is required' },
+        { status: 400 }
+      );
+    }
+
+    await prisma.project.delete({
+      where: { id: id }
+    });
+
+    return NextResponse.json({ message: 'Project deleted successfully' });
+  } catch (error) {
+    console.error('Database error:', error);
+    return NextResponse.json(
+      { error: 'Failed to delete project' },
+      { status: 500 }
+    );
+  }
+}

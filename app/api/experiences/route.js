@@ -43,12 +43,32 @@ export async function POST(request) {
   try {
     const data = await request.json();
     
+    // Calculate period from dates
+    let period = '';
+    if (data.startDate) {
+      const startDate = new Date(data.startDate);
+      const endDate = data.endDate ? new Date(data.endDate) : new Date();
+      
+      const startMonth = startDate.toLocaleDateString('en-US', { month: 'short' });
+      const startYear = startDate.getFullYear();
+      const endMonth = endDate.toLocaleDateString('en-US', { month: 'short' });
+      const endYear = endDate.getFullYear();
+      
+      if (data.isCurrent) {
+        period = `${startMonth} ${startYear} - Present`;
+      } else {
+        period = `${startMonth} ${startYear} - ${endMonth} ${endYear}`;
+      }
+    } else {
+      period = data.period || 'Unknown';
+    }
+    
     const experience = await prisma.experience.create({
       data: {
         company: data.company,
         position: data.position,
         location: data.location || null,
-        period: data.period,
+        period: period,
         type: data.type || 'professional',
         description: data.description || null,
         responsibilities: data.responsibilities || [],
@@ -85,13 +105,33 @@ export async function PUT(request) {
       );
     }
 
+    // Calculate period from dates
+    let period = '';
+    if (data.startDate) {
+      const startDate = new Date(data.startDate);
+      const endDate = data.endDate ? new Date(data.endDate) : new Date();
+      
+      const startMonth = startDate.toLocaleDateString('en-US', { month: 'short' });
+      const startYear = startDate.getFullYear();
+      const endMonth = endDate.toLocaleDateString('en-US', { month: 'short' });
+      const endYear = endDate.getFullYear();
+      
+      if (data.isCurrent) {
+        period = `${startMonth} ${startYear} - Present`;
+      } else {
+        period = `${startMonth} ${startYear} - ${endMonth} ${endYear}`;
+      }
+    } else {
+      period = data.period || 'Unknown';
+    }
+
     const experience = await prisma.experience.update({
       where: { id: data.id },
       data: {
         company: data.company,
         position: data.position,
         location: data.location,
-        period: data.period,
+        period: period,
         type: data.type,
         description: data.description,
         responsibilities: data.responsibilities,
@@ -112,6 +152,32 @@ export async function PUT(request) {
     console.error('Database error:', error);
     return NextResponse.json(
       { error: 'Failed to update experience record' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function DELETE(request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const id = searchParams.get('id');
+    
+    if (!id) {
+      return NextResponse.json(
+        { error: 'Experience ID is required' },
+        { status: 400 }
+      );
+    }
+
+    await prisma.experience.delete({
+      where: { id: id }
+    });
+
+    return NextResponse.json({ message: 'Experience record deleted successfully' });
+  } catch (error) {
+    console.error('Database error:', error);
+    return NextResponse.json(
+      { error: 'Failed to delete experience record' },
       { status: 500 }
     );
   }

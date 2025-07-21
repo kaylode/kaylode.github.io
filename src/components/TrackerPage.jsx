@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import dynamic from 'next/dynamic';
 import { 
   FaGithub, 
   FaCode, 
@@ -13,7 +14,8 @@ import {
   FaTrophy,
   FaClock,
   FaArrowUp,
-  FaArrowDown
+  FaArrowDown,
+  FaGlobe
 } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';
 import {
@@ -32,57 +34,22 @@ import {
   Tooltip,
   ResponsiveContainer
 } from 'recharts';
-import CalendarHeatmap from 'react-calendar-heatmap';
+
+const CalendarHeatmap = dynamic(() => import('react-calendar-heatmap'), { 
+  ssr: false,
+  loading: () => <div className="h-32 bg-gray-700 rounded animate-pulse"></div>
+});
 import { format, subDays, startOfYear, endOfYear, parseISO } from 'date-fns';
 import '../styles/tracker.css';
 
 const TrackerPage = () => {
   const [activeTab, setActiveTab] = useState('overview');
-  const [timeRange, setTimeRange] = useState('yearly');
   const [githubStats, setGithubStats] = useState(null);
   const [leetcodeStats, setLeetcodeStats] = useState(null);
   const [commitData, setCommitData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isUpdating, setIsUpdating] = useState(false);
-
-  // Manual update function
-  const updateData = async () => {
-    try {
-      setIsUpdating(true);
-      
-      // Trigger data update
-      const updateResponse = await fetch('/api/update-stats', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      
-      if (updateResponse.ok) {
-        const updateResult = await updateResponse.json();
-        console.log('Update result:', updateResult);
-        
-        // Refresh data after update
-        const [githubResponse, leetcodeResponse, commitsResponse] = await Promise.all([
-          fetch('/api/github'),
-          fetch('/api/leetcode'),
-          fetch('/api/github/commits')
-        ]);
-        
-        const githubData = await githubResponse.json();
-        const leetcodeData = await leetcodeResponse.json();
-        const commitsData = await commitsResponse.json();
-        
-        setGithubStats(githubData);
-        setLeetcodeStats(leetcodeData);
-        setCommitData(commitsData);
-      }
-    } catch (error) {
-      console.error('Error updating data:', error);
-    } finally {
-      setIsUpdating(false);
-    }
-  };
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [lastRefresh, setLastRefresh] = useState(null);
 
   // Fetch data from APIs
   useEffect(() => {
@@ -103,6 +70,7 @@ const TrackerPage = () => {
         setGithubStats(githubData);
         setLeetcodeStats(leetcodeData);
         setCommitData(commitsData);
+        setLastRefresh(new Date());
       } catch (error) {
         console.error('Error fetching tracker data:', error);
       } finally {
@@ -112,6 +80,45 @@ const TrackerPage = () => {
 
     fetchData();
   }, []);
+
+  // Function to refresh data from external APIs
+  const refreshData = async () => {
+    try {
+      setIsRefreshing(true);
+      
+      // Call the update-stats API to fetch fresh data from GitHub and LeetCode
+      const updateResponse = await fetch('/api/update-stats', {
+        method: 'POST'
+      });
+      
+      if (updateResponse.ok) {
+        // After updating, fetch the fresh data
+        const [githubResponse, leetcodeResponse, commitsResponse] = await Promise.all([
+          fetch('/api/github'),
+          fetch('/api/leetcode'),
+          fetch('/api/github/commits')
+        ]);
+        
+        const githubData = await githubResponse.json();
+        const leetcodeData = await leetcodeResponse.json();
+        const commitsData = await commitsResponse.json();
+        
+        setGithubStats(githubData);
+        setLeetcodeStats(leetcodeData);
+        setCommitData(commitsData);
+        setLastRefresh(new Date());
+        
+        console.log('Data refreshed successfully');
+      } else {
+        const errorData = await updateResponse.json();
+        console.error('Failed to refresh data:', errorData.message);
+      }
+    } catch (error) {
+      console.error('Error refreshing data:', error);
+    } finally {
+      setIsRefreshing(false);
+    }
+  };
 
   // Mock data for demonstration (replace with real data from APIs)
   const mockGithubCommits = commitData.length > 0 ? commitData : Array.from({ length: 365 }, (_, i) => {
@@ -123,12 +130,12 @@ const TrackerPage = () => {
   });
 
   const mockLeetcodeProgress = [
-    { month: 'Jan', easy: 15, medium: 8, hard: 2 },
-    { month: 'Feb', easy: 22, medium: 12, hard: 4 },
-    { month: 'Mar', easy: 18, medium: 15, hard: 6 },
-    { month: 'Apr', easy: 25, medium: 18, hard: 8 },
-    { month: 'May', easy: 30, medium: 22, hard: 10 },
-    { month: 'Jun', easy: 28, medium: 25, hard: 12 },
+    { month: 'Jan', easy: 0, medium: 0, hard: 0 },
+    { month: 'Feb', easy: 0, medium: 0, hard: 0 },
+    { month: 'Mar', easy: 0, medium: 0, hard: 0 },
+    { month: 'Apr', easy: 0, medium: 0, hard: 0 },
+    { month: 'May', easy: 0, medium: 0, hard: 0 },
+    { month: 'Jun', easy: 0, medium: 0, hard: 0 },
   ];
 
   const mockLanguageStats = githubStats?.languages ? 
@@ -143,6 +150,21 @@ const TrackerPage = () => {
       { name: 'Java', value: 10, color: '#ed8b00' },
       { name: 'C++', value: 10, color: '#00599c' },
     ];
+
+  // Countries visited data
+  const visitedCountries = [
+    { name: 'Vietnam', flag: '🇻🇳', code: 'VN', year: 'Birth country', description: 'Home country' },
+    { name: 'Singapore', flag: '🇸🇬', code: 'SG', year: '2022', description: 'Conference: MICCAI 2022' },
+    { name: 'Ireland', flag: '🇮🇪', code: 'IE', year: '2022', description: 'Ph.D. studies at DCU' },
+    { name: 'Netherlands', flag: '🇳🇱', code: 'NL', year: '2023', description: 'Tourism' },
+    { name: 'Germany', flag: '🇩🇪', code: 'DE', year: '2023', description: 'Tourism' },
+    { name: 'China', flag: '🇨🇳', code: 'CN', year: '2023', description: 'Visiting Huawei HQ' },
+    { name: 'Portugal', flag: '🇵🇹', code: 'PT', year: '2024', description: 'Tourism' },
+    { name: 'Belgium', flag: '🇧🇪', code: 'BE', year: '2024', description: 'Tourism' },
+    { name: 'Italy', flag: '🇮🇹', code: 'IT', year: '2025', description: 'Tourism' },
+    { name: 'Switzerland', flag: '🇨🇭', code: 'CH', year: '2025', description: 'Research visit: EPFL' },
+    { name: 'France', flag: '🇫🇷', code: 'FR', year: '2025', description: 'Tourism' }
+  ];
 
   // Helper function to get language colors
   function getLanguageColor(language) {
@@ -175,13 +197,7 @@ const TrackerPage = () => {
     { id: 'overview', label: 'Overview', icon: FaChartLine },
     { id: 'github', label: 'GitHub', icon: FaGithub },
     { id: 'leetcode', label: 'LeetCode', icon: SiLeetcode },
-    { id: 'languages', label: 'Languages', icon: FaCode },
-  ];
-
-  const timeRanges = [
-    { id: 'daily', label: 'Daily' },
-    { id: 'monthly', label: 'Monthly' },
-    { id: 'yearly', label: 'Yearly' },
+    { id: 'countries', label: 'Countries', icon: FaGlobe },
   ];
 
   const StatCard = ({ title, value, icon: Icon, trend, color = 'blue' }) => (
@@ -287,6 +303,127 @@ const TrackerPage = () => {
           <Tooltip />
         </PieChart>
       </ResponsiveContainer>
+    </div>
+  );
+
+  const CountriesTab = () => (
+    <div className="space-y-8">
+      {/* Countries Header */}
+      <div className="text-center">
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-3xl font-bold text-white mb-4"
+        >
+          Countries I've Visited
+        </motion.h2>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="text-gray-400 max-w-2xl mx-auto"
+        >
+          My journey across {visitedCountries.length} countries for research, conferences, and exploration
+        </motion.p>
+      </div>
+
+      {/* Countries Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {visitedCountries.map((country, index) => (
+          <motion.div
+            key={country.code}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: index * 0.1 }}
+            whileHover={{ scale: 1.05, y: -5 }}
+            className="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-blue-500 transition-all duration-300 cursor-pointer group"
+          >
+            <div className="text-center">
+              <div className="text-6xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                {country.flag}
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">{country.name}</h3>
+              <div className="space-y-2">
+                <div className="text-sm text-blue-400 font-semibold">
+                  {country.year}
+                </div>
+                <div className="text-sm text-gray-400">
+                  {country.description}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Countries Stats */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="bg-gray-800 rounded-xl p-6 border border-gray-700 text-center"
+        >
+          <FaGlobe className="text-4xl text-blue-400 mx-auto mb-4" />
+          <div className="text-3xl font-bold text-white mb-2">{visitedCountries.length}</div>
+          <div className="text-gray-400">Countries Visited</div>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="bg-gray-800 rounded-xl p-6 border border-gray-700 text-center"
+        >
+          <FaTrophy className="text-4xl text-yellow-400 mx-auto mb-4" />
+          <div className="text-3xl font-bold text-white mb-2">3</div>
+          <div className="text-gray-400">Continents Explored</div>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="bg-gray-800 rounded-xl p-6 border border-gray-700 text-center"
+        >
+          <FaCalendarAlt className="text-4xl text-green-400 mx-auto mb-4" />
+          <div className="text-3xl font-bold text-white mb-2">6</div>
+          <div className="text-gray-400">Years Traveling</div>
+        </motion.div>
+      </div>
+
+      {/* Travel Timeline */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6 }}
+        className="bg-gray-800 rounded-xl p-6 border border-gray-700"
+      >
+        <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+          <FaCalendarAlt className="text-green-400" />
+          Travel Timeline
+        </h3>
+        <div className="space-y-4">
+          {visitedCountries
+            .sort((a, b) => {
+              if (a.year === 'Birth country') return -1;
+              if (b.year === 'Birth country') return 1;
+              return parseInt(a.year) - parseInt(b.year);
+            })
+            .map((country, index) => (
+              <div key={country.code} className="flex items-center gap-4 p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                <div className="text-2xl">{country.flag}</div>
+                <div className="flex-1">
+                  <div className="flex justify-between items-center">
+                    <span className="text-white font-semibold">{country.name}</span>
+                    <span className="text-blue-400 text-sm">{country.year}</span>
+                  </div>
+                  <div className="text-gray-400 text-sm">{country.description}</div>
+                </div>
+              </div>
+            ))}
+        </div>
+      </motion.div>
     </div>
   );
 
@@ -486,53 +623,35 @@ const TrackerPage = () => {
             Real-time statistics and progress tracking across platforms
           </p>
           
-          {/* Update Data Button */}
-          <motion.button
-            onClick={updateData}
-            disabled={isUpdating}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
-              isUpdating 
-                ? 'bg-gray-600 text-gray-400 cursor-not-allowed' 
-                : 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:from-blue-600 hover:to-purple-700'
-            } shadow-lg`}
-          >
-            {isUpdating ? (
-              <span className="flex items-center space-x-2">
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                <span>Updating...</span>
-              </span>
-            ) : (
-              <span className="flex items-center space-x-2">
-                <FaArrowUp className="rotate-45" />
-                <span>Update Data</span>
-              </span>
+          {/* Refresh Data Section */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+            <button
+              onClick={refreshData}
+              disabled={isRefreshing}
+              className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+                isRefreshing
+                  ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                  : 'bg-blue-600 hover:bg-blue-700 text-white hover:scale-105'
+              }`}
+            >
+              {isRefreshing ? (
+                <>
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                  Refreshing...
+                </>
+              ) : (
+                <>
+                  <FaArrowUp className="text-sm" />
+                  Refresh Data
+                </>
+              )}
+            </button>
+            
+            {lastRefresh && (
+              <div className="text-sm text-gray-400">
+                Last updated: {lastRefresh.toLocaleString()}
+              </div>
             )}
-          </motion.button>
-        </motion.div>
-
-        {/* Time Range Selector */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="flex justify-center mb-8"
-        >
-          <div className="bg-gray-800 rounded-lg p-1 border border-gray-700">
-            {timeRanges.map((range) => (
-              <button
-                key={range.id}
-                onClick={() => setTimeRange(range.id)}
-                className={`px-4 py-2 rounded-md transition-all duration-300 ${
-                  timeRange === range.id
-                    ? 'bg-blue-600 text-white'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                {range.label}
-              </button>
-            ))}
           </div>
         </motion.div>
 
@@ -540,15 +659,15 @@ const TrackerPage = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: 0.2 }}
           className="flex justify-center mb-8"
         >
-          <div className="bg-gray-800 rounded-lg p-1 border border-gray-700">
+          <div className="bg-gray-800 rounded-lg p-1 border border-gray-700 flex flex-wrap gap-1">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-6 py-3 rounded-md transition-all duration-300 ${
+                className={`flex items-center gap-2 px-4 py-3 rounded-md transition-all duration-300 whitespace-nowrap ${
                   activeTab === tab.id
                     ? 'bg-blue-600 text-white'
                     : 'text-gray-400 hover:text-white'
@@ -570,28 +689,7 @@ const TrackerPage = () => {
           {activeTab === 'overview' && <OverviewTab />}
           {activeTab === 'github' && <GitHubTab />}
           {activeTab === 'leetcode' && <LeetCodeTab />}
-          {activeTab === 'languages' && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <LanguageChart />
-              <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
-                <h3 className="text-xl font-bold text-white mb-6">Language Stats</h3>
-                <div className="space-y-4">
-                  {mockLanguageStats.map((lang, index) => (
-                    <div key={index} className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div 
-                          className="w-4 h-4 rounded-full"
-                          style={{ backgroundColor: lang.color }}
-                        />
-                        <span className="text-white">{lang.name}</span>
-                      </div>
-                      <span className="text-gray-400">{lang.value}%</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
+          {activeTab === 'countries' && <CountriesTab />}
         </motion.div>
       </div>
     </section>

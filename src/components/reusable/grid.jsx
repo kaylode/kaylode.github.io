@@ -19,9 +19,20 @@ const styles = {
 }
 
 function Grid(props) {
+    console.log('Grid component received props:', props);
+    console.log('Props list length:', props.list?.length);
+    
+    if (!props.list || props.list.length === 0) {
+        return (
+            <div className="text-center text-white">
+                <p>No projects to display</p>
+            </div>
+        );
+    }
+    
     return (
-        <div class="container my-12 mx-auto px-4 md:px-12">
-            <div class="flex flex-wrap -mx-1 lg:-mx-4 columns-3 gap-8 justify-center">
+        <div className="container my-12 mx-auto px-4 md:px-12">
+            <div className="flex flex-wrap -mx-1 lg:-mx-4 columns-3 gap-8 justify-center">
                     {props.list.map((link) => (
                         <Card 
                             className="text-center w-full aspect-auto"

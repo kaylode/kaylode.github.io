@@ -1,7 +1,26 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['github.com', 'avatars.githubusercontent.com', 'leetcode.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'leetcode.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
   env: {
     DATABASE_URL: process.env.DATABASE_URL,

@@ -1,9 +1,5 @@
 {
   "framework": "nextjs",
-  "env": {
-    "DATABASE_URL": "@database-url",
-    "GITHUB_TOKEN": "@github-token"
-  },
   "crons": [
     {
       "path": "/api/cron/crawl-data",

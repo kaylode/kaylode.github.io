@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 // Check if database is available
 let prisma = null;
 try {
-  const { prisma: prismaClient } = require('../../../src/lib/prisma');
+  const { prisma: prismaClient } = require('../../../lib/prisma');
   prisma = prismaClient;
 } catch (error) {
   console.log('Database not available, using fallback mode');
@@ -29,36 +29,42 @@ export async function GET() {
       }
     }
 
-    // If no data exists or database unavailable, return mock data
+    // If no data from database, use static fallback
     if (!stats) {
-      return NextResponse.json({
-        username: 'kaylode',
-        publicRepos: 33,
-        followers: 100,
-        following: 45,
-        totalStars: 494,
-        totalForks: 34,
-        totalCommits: 1234,
-        contributionsLastYear: 856,
-        languages: {
-          Python: 35,
-          JavaScript: 25,
-          TypeScript: 20,
-          Java: 10,
-          'C++': 10
-        },
-        topRepositories: [
-          {
-            name: 'awesome-ai-project',
-            description: 'A comprehensive AI toolkit for computer vision',
-            stars: 45,
-            forks: 12,
-            language: 'Python',
-            url: 'https://github.com/kaylode/awesome-ai-project'
-          }
-        ],
-        lastUpdated: new Date().toISOString()
-      })
+      try {
+        const { github_stats } = await import('../../../src/data/github.js');
+        return NextResponse.json(github_stats);
+      } catch (importError) {
+        console.error('Failed to import static data:', importError.message);
+        
+        // Final fallback to default mock data
+        return NextResponse.json({
+          username: 'kaylode',
+          publicRepos: 33,
+          followers: 100,
+          following: 45,
+          totalStars: 494,
+          totalForks: 34,
+          languages: {
+            Python: 35,
+            JavaScript: 25,
+            TypeScript: 20,
+            Java: 10,
+            'C++': 10
+          },
+          topRepositories: [
+            {
+              name: 'awesome-ai-project',
+              description: 'A comprehensive AI toolkit for computer vision',
+              stars: 45,
+              forks: 12,
+              language: 'Python',
+              url: 'https://github.com/kaylode/awesome-ai-project'
+            }
+          ],
+          lastUpdated: new Date().toISOString()
+        });
+      }
     }
 
     // Parse JSON fields and return the data

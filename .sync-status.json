@@ -1,13 +1,15 @@
 {
   "success": true,
-  "syncTime": "2025-07-21T10:05:37.350Z",
-  "duration": 628,
+  "syncTime": "2025-07-21T11:17:29.319Z",
+  "duration": 667,
   "stats": {
     "projects": 10,
     "publications": 12,
     "experiences": 15,
     "technologies": 9,
-    "blogPosts": 1
+    "blogPosts": 1,
+    "githubStats": 1,
+    "leetcodeStats": 1
   },
   "errors": []
 }

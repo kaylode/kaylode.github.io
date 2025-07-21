@@ -383,6 +383,126 @@ export default blog_posts;
   }
 }
 
+// Sync GitHub stats to static file
+async function syncGitHubStats() {
+  console.log('📊 Syncing GitHub stats...');
+  
+  try {
+    let githubStats = await prisma.gitHubStats.findFirst({
+      where: { username: 'kaylode' },
+      orderBy: { lastUpdated: 'desc' }
+    });
+
+    // If no data exists, fetch from API
+    if (!githubStats) {
+      console.log('📡 No GitHub data found, fetching from API...');
+      const { crawlGitHubStats } = require('./crawl-data.js');
+      await crawlGitHubStats();
+      
+      // Try to get data again after crawling
+      githubStats = await prisma.gitHubStats.findFirst({
+        where: { username: 'kaylode' },
+        orderBy: { lastUpdated: 'desc' }
+      });
+      
+      if (!githubStats) {
+        throw new Error('Failed to fetch GitHub data from API');
+      }
+    }
+
+    const staticData = {
+      username: githubStats.username,
+      publicRepos: githubStats.publicRepos,
+      followers: githubStats.followers,
+      following: githubStats.following,
+      totalStars: githubStats.totalStars,
+      totalForks: githubStats.totalForks,
+      languages: typeof githubStats.languages === 'string' ? JSON.parse(githubStats.languages) : githubStats.languages,
+      topRepositories: typeof githubStats.topRepositories === 'string' ? JSON.parse(githubStats.topRepositories) : githubStats.topRepositories,
+      lastUpdated: githubStats.lastUpdated.toISOString()
+    };
+
+    const fileContent = `// Auto-generated from database sync on ${new Date().toISOString()}
+// Last synced: GitHub stats for ${githubStats.username}
+
+export const github_stats = ${JSON.stringify(staticData, null, 2)};
+
+export default github_stats;
+`;
+
+    await fs.writeFile(
+      path.join(__dirname, '../src/data/github.js'),
+      fileContent,
+      'utf8'
+    );
+    
+    console.log(`✅ GitHub stats synced for user: ${githubStats.username}`);
+    return 1;
+  } catch (error) {
+    console.error('❌ Error syncing GitHub stats:', error.message);
+    throw error;
+  }
+}
+
+// Sync LeetCode stats to static file
+async function syncLeetCodeStats() {
+  console.log('🧩 Syncing LeetCode stats...');
+  
+  try {
+    let leetcodeStats = await prisma.leetCodeStats.findFirst({
+      where: { username: 'kaylode' },
+      orderBy: { lastUpdated: 'desc' }
+    });
+
+    // If no data exists, fetch from API
+    if (!leetcodeStats) {
+      console.log('📡 No LeetCode data found, fetching from API...');
+      const { crawlLeetCodeStats } = require('./crawl-data.js');
+      await crawlLeetCodeStats();
+      
+      // Try to get data again after crawling
+      leetcodeStats = await prisma.leetCodeStats.findFirst({
+        where: { username: 'kaylode' },
+        orderBy: { lastUpdated: 'desc' }
+      });
+      
+      if (!leetcodeStats) {
+        throw new Error('Failed to fetch LeetCode data from API');
+      }
+    }
+
+    const staticData = {
+      username: leetcodeStats.username,
+      totalSolved: leetcodeStats.totalSolved,
+      easySolved: leetcodeStats.easySolved,
+      mediumSolved: leetcodeStats.mediumSolved,
+      hardSolved: leetcodeStats.hardSolved,
+      ranking: leetcodeStats.ranking,
+      lastUpdated: leetcodeStats.lastUpdated.toISOString()
+    };
+
+    const fileContent = `// Auto-generated from database sync on ${new Date().toISOString()}
+// Last synced: LeetCode stats for ${leetcodeStats.username}
+
+export const leetcode_stats = ${JSON.stringify(staticData, null, 2)};
+
+export default leetcode_stats;
+`;
+
+    await fs.writeFile(
+      path.join(__dirname, '../src/data/leetcode.js'),
+      fileContent,
+      'utf8'
+    );
+    
+    console.log(`✅ LeetCode stats synced for user: ${leetcodeStats.username}`);
+    return 1;
+  } catch (error) {
+    console.error('❌ Error syncing LeetCode stats:', error.message);
+    throw error;
+  }
+}
+
 // Main sync function
 async function syncAllData() {
   console.log('🚀 Starting database to static files synchronization...');
@@ -410,7 +530,9 @@ async function syncAllData() {
       { name: 'publications', fn: syncPublications },
       { name: 'experiences', fn: syncExperiences },
       { name: 'technologies', fn: syncTechnologies },
-      { name: 'blogPosts', fn: syncBlogPosts }
+      { name: 'blogPosts', fn: syncBlogPosts },
+      { name: 'githubStats', fn: syncGitHubStats },
+      { name: 'leetcodeStats', fn: syncLeetCodeStats }
     ];
 
     for (const operation of syncOperations) {

@@ -42,6 +42,9 @@
     "db:migrate-static": "node scripts/migrate-static-data.js",
     "crawl": "node scripts/crawl-data.js",
     "data:sync": "node scripts/data-sync-cli.js sync",
+    "data:crawl": "node scripts/data-sync-cli.js crawl",
+    "data:crawl:github": "node scripts/data-sync-cli.js crawl github",
+    "data:crawl:leetcode": "node scripts/data-sync-cli.js crawl leetcode",
     "data:status": "node scripts/data-sync-cli.js status",
     "data:help": "node scripts/data-sync-cli.js help"
   },

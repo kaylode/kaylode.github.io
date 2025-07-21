@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 // Check if database is available
 let prisma = null;
 try {
-  const { prisma: prismaClient } = require('../../../src/lib/prisma');
+  const { prisma: prismaClient } = require('../../../lib/prisma');
   prisma = prismaClient;
 } catch (error) {
   console.log('Database not available, using fallback mode');
@@ -29,47 +29,30 @@ export async function GET() {
       }
     }
 
-    // If no data exists or database unavailable, return mock data for development
+    // If no data from database, use static fallback
     if (!stats) {
-      return NextResponse.json({
-        username: 'kaylode',
-        totalSolved: 89,
-        easySolved: 45,
-        mediumSolved: 126,
-        hardSolved: 30,
-        acceptanceRate: 75.2,
-        ranking: 12345,
-        contributionPoints: 1850,
-        contestRating: 1650,
-        contestParticipation: 15,
-        recentSubmissions: [
-          {
-            title: 'Two Sum',
-            difficulty: 'Easy',
-            status: 'Accepted',
-            date: '2024-07-20'
-          },
-          {
-            title: 'Binary Tree Inorder Traversal',
-            difficulty: 'Medium',
-            status: 'Accepted',
-            date: '2024-07-19'
-          }
-        ],
-        skillStats: {
-          algorithms: 85,
-          dataStructures: 78,
-          mathematics: 70,
-          database: 65
-        },
-        lastUpdated: new Date().toISOString()
-      })
+      try {
+        const { leetcode_stats } = await import('../../../src/data/leetcode.js');
+        return NextResponse.json(leetcode_stats);
+      } catch (importError) {
+        console.error('Failed to import static data:', importError.message);
+        
+        // Final fallback to default mock data
+        return NextResponse.json({
+          username: 'kaylode',
+          totalSolved: 89,
+          easySolved: 45,
+          mediumSolved: 126,
+          hardSolved: 30,
+          ranking: 12345,
+          lastUpdated: new Date().toISOString()
+        });
+      }
     }
 
-    // Parse JSON fields and return the data
+    // Parse JSON fields and return the data from database
     const parsedStats = {
       ...stats,
-      recentSubmissions: typeof stats.recentSubmissions === 'string' ? JSON.parse(stats.recentSubmissions) : stats.recentSubmissions,
       lastUpdated: stats.lastUpdated.toISOString()
     };
 

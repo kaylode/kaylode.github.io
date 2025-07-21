@@ -1,4 +1,4 @@
-// Auto-generated from database sync on 2025-07-21T10:05:37.663Z
+// Auto-generated from database sync on 2025-07-21T11:17:29.586Z
 // Last synced: 12 publications
 
 export const publications_list = [

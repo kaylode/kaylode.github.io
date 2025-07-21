@@ -176,14 +176,11 @@
 - [ ] **Analytics & Performance**
   - [ ] Implement page view tracking
   - [ ] Add visitor analytics and insights
-  - [ ] Monitor file download statistics
   - [ ] Create analytics dashboard
 
 - [ ] **Content Management**
   - [ ] Enhance admin interface for content management
   - [ ] Add rich text editor for blog posts
-  - [ ] Implement media gallery management
-  - [ ] Create backup and export functionality
 
 ### Phase 7: LeetCode Progress Tracker (Future)
 - [ ] **Data Integration**
@@ -195,20 +192,6 @@
 - [ ] **Visualization**
   - [ ] Heatmap calendar view
   - [ ] Statistics dashboard (total problems, by difficulty)
-  - [ ] Progress charts and trends
-  - [ ] Achievement badges system
-
-### Phase 8: GitHub Projects Showcase (Future)
-- [ ] **API Integration**
-  - [ ] GitHub API setup and authentication
-  - [ ] Repository auto-sync system
-  - [ ] Real-time metrics fetching
-
-- [ ] **Features**
-  - [ ] Featured projects selection
-  - [ ] Language statistics visualization
-  - [ ] Star/fork/commit activity display
-  - [ ] Project filtering and search
 
 ### Phase 9: Publications & Experience System (Future)
 - [ ] **Database Setup**
@@ -219,14 +202,10 @@
 - [ ] **Admin Panel**
   - [ ] Content management interface
   - [ ] Publication CRUD operations
-  - [ ] Timeline management
   - [ ] Media upload system
 
 - [ ] **Public Interface**
-  - [ ] Timeline view of experiences
-  - [ ] Publication list with filters
   - [ ] PDF viewer integration
-  - [ ] Citation management
 
 ### Phase 10: Blog Platform (Future)
 - [ ] **Content System**
@@ -235,42 +214,17 @@
   - [ ] Tag and category system
   - [ ] Search functionality
 
-- [ ] **Features**
-  - [ ] Reading time estimation
-  - [ ] View count tracking
-  - [ ] Comment system integration
-  - [ ] Social sharing buttons
-
 ### Phase 11: Advanced Features (Future)
 - [ ] **Analytics & Monitoring**
   - [ ] Google Analytics 4 integration
   - [ ] Performance monitoring
   - [ ] User interaction tracking
-  - [ ] A/B testing setup
 
 - [ ] **SEO & Performance**
   - [ ] Next.js migration for SSR
   - [ ] SEO optimization
   - [ ] Performance auditing
   - [ ] Core Web Vitals optimization
-
----
-
-## 🎯 **PRIORITIES**
-
-### High Priority
-1. **Deploy current modern homepage** ⚡
-2. **LeetCode Progress Tracker** - Unique differentiator
-3. **GitHub Projects Integration** - Showcase technical skills
-
-### Medium Priority
-4. **Publications System** - Academic credibility
-5. **Blog Platform** - Content creation and SEO
-6. **Advanced Analytics** - Data-driven improvements
-
-### Low Priority
-7. **Next.js Migration** - Future scalability
-8. **A/B Testing** - Optimization
 
 ---
 
@@ -327,27 +281,6 @@
 - ✅ Added Steam social link integration
 - ✅ Streamlined stats display for cleaner UI
 
----
-
-## 📊 **METRICS TO TRACK**
-
-### Performance
-- [ ] Page load time < 3 seconds
-- [ ] Lighthouse score > 90
-- [ ] Mobile responsiveness score
-- [ ] SEO score improvement
-
-### Engagement
-- [ ] Time on site
-- [ ] Bounce rate
-- [ ] Page views per session
-- [ ] Social shares and clicks
-
-### Technical
-- [ ] GitHub repository stars
-- [ ] Code quality metrics
-- [ ] Build time optimization
-- [ ] Bundle size reduction
 
 ---
 

@@ -1,4 +1,4 @@
-// Auto-generated from database sync on 2025-07-21T11:17:29.828Z
+// Auto-generated from database sync on 2025-07-21T11:21:55.966Z
 // Last synced: 9 technologies
 
 export const techs_list = [

@@ -1,4 +1,4 @@
-// Auto-generated from database sync on 2025-07-21T11:17:29.903Z
+// Auto-generated from database sync on 2025-07-21T11:21:56.046Z
 // Last synced: 1 blog posts
 
 export const blog_posts = [

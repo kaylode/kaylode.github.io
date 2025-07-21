@@ -31,6 +31,7 @@ const ExperiencesPage = () => {
   const [selectedSkillCategory, setSelectedSkillCategory] = useState('technical');
   const [dynamicExperiences, setDynamicExperiences] = useState([]);
   const [dynamicEducation, setDynamicEducation] = useState([]);
+  const [dynamicAchievements, setDynamicAchievements] = useState([]);
   const [loading, setLoading] = useState(true);
   const [mounted, setMounted] = useState(false);
 
@@ -40,9 +41,10 @@ const ExperiencesPage = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const [experiencesResponse, educationResponse] = await Promise.all([
+        const [experiencesResponse, educationResponse, achievementsResponse] = await Promise.all([
           fetch('/api/experiences'),
-          fetch('/api/education')
+          fetch('/api/education'),
+          fetch('/api/achievements')
         ]);
         
         if (experiencesResponse.ok) {
@@ -53,6 +55,11 @@ const ExperiencesPage = () => {
         if (educationResponse.ok) {
           const educationData = await educationResponse.json();
           setDynamicEducation(educationData.filter(edu => edu.isVisible));
+        }
+
+        if (achievementsResponse.ok) {
+          const achievementsData = await achievementsResponse.json();
+          setDynamicAchievements(achievementsData.filter(achievement => achievement.isVisible));
         }
       } catch (error) {
         console.error('Error fetching dynamic data:', error);
@@ -95,7 +102,37 @@ const ExperiencesPage = () => {
       responsibilities: exp.responsibilities || [],
       achievements: exp.achievements || [],
       technologies: exp.technologies || []
-    })) : experiences_data.professional
+    })) : experiences_data.professional,
+    achievements: dynamicAchievements.length > 0 ? (() => {
+      // Transform database achievements into grouped structure
+      const groupedAchievements = dynamicAchievements.reduce((acc, achievement) => {
+        const existingGroup = acc.find(group => group.title === achievement.category);
+        const transformedItem = {
+          name: achievement.title,
+          description: achievement.description,
+          year: achievement.year,
+          type: achievement.type,
+          organization: achievement.organization,
+          rank: achievement.rank,
+          value: achievement.value,
+          url: achievement.url,
+          image: achievement.image
+        };
+
+        if (existingGroup) {
+          existingGroup.items.push(transformedItem);
+        } else {
+          acc.push({
+            id: acc.length + 1,
+            title: achievement.category,
+            items: [transformedItem]
+          });
+        }
+        return acc;
+      }, []);
+
+      return groupedAchievements;
+    })() : experiences_data.achievements
   };
 
   const containerVariants = {

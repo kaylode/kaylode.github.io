@@ -250,3 +250,23 @@ model Technology {
 
   @@map("technologies")
 }
+
+model Achievement {
+  id          String   @id @default(cuid())
+  category    String   // "academic", "competition", "scholarship", "recognition", "hackathon"
+  title       String   // "Outstanding GPA", "1st Place - AI4VN Hackathon 2020", etc.
+  description String   // Detailed description of the achievement
+  year        String   // Year or period when achieved (e.g., "2020", "2020-2021")
+  type        String   // "academic", "competition", "hackathon", "scholarship", "recognition"
+  organization String? // Organization that awarded (e.g., "MediaEval", "AI4VN", "Panasonic")
+  rank        String?  // Rank or position (e.g., "1st Place", "Runner-up", "Top 15")
+  value       String?  // Additional value like GPA, scholarship amount, etc.
+  url         String?  // URL to achievement details, certificate, or announcement
+  image       String?  // URL to certificate image or logo
+  isVisible   Boolean  @default(true)
+  order       Int      @default(0) // For custom ordering in UI
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("achievements")
+}

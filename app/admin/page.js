@@ -16,6 +16,7 @@ const AdminDashboard = () => {
     { id: 'education', label: 'Education', endpoint: '/api/education' },
     { id: 'experiences', label: 'Experience', endpoint: '/api/experiences' },
     { id: 'technologies', label: 'Technologies', endpoint: '/api/technologies' },
+    { id: 'achievements', label: 'Achievements', endpoint: '/api/achievements' },
     { id: 'blog', label: 'Blog Posts', endpoint: '/api/blog' },
   ];
 
@@ -511,6 +512,71 @@ const AdminDashboard = () => {
     </div>
   );
 
+  const renderAchievementForm = (item = {}) => (
+    <div className="bg-white p-6 rounded-lg">
+      <h3 className="text-xl font-bold mb-4">{item.id ? 'Edit Achievement' : 'Add New Achievement'}</h3>
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData);
+        
+        // Convert boolean fields
+        data.isVisible = data.isVisible === 'on';
+        data.order = parseInt(data.order) || 0;
+        
+        handleSave(data, '/api/achievements');
+      }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <input name="title" placeholder="Achievement Title" defaultValue={item.title} required
+                 className="p-2 border rounded" />
+          <input name="category" placeholder="Category" defaultValue={item.category} required
+                 className="p-2 border rounded" />
+          <select name="type" defaultValue={item.type} required className="p-2 border rounded">
+            <option value="">Select Type</option>
+            <option value="academic">Academic</option>
+            <option value="competition">Competition</option>
+            <option value="hackathon">Hackathon</option>
+            <option value="scholarship">Scholarship</option>
+            <option value="recognition">Recognition</option>
+          </select>
+          <input name="year" placeholder="Year (e.g., 2020, 2020-2021)" defaultValue={item.year} required
+                 className="p-2 border rounded" />
+          <input name="organization" placeholder="Organization (optional)" defaultValue={item.organization}
+                 className="p-2 border rounded" />
+          <input name="rank" placeholder="Rank/Position (e.g., 1st Place, Runner-up)" defaultValue={item.rank}
+                 className="p-2 border rounded" />
+          <input name="value" placeholder="Value (e.g., GPA, Amount)" defaultValue={item.value}
+                 className="p-2 border rounded" />
+          <input name="url" placeholder="URL (optional)" defaultValue={item.url}
+                 className="p-2 border rounded" />
+          <input name="image" placeholder="Image URL (optional)" defaultValue={item.image}
+                 className="p-2 border rounded" />
+          <input name="order" type="number" placeholder="Display Order" defaultValue={item.order || 0}
+                 className="p-2 border rounded" />
+        </div>
+        <div className="mt-4">
+          <textarea name="description" placeholder="Description" defaultValue={item.description} required
+                    rows="3" className="w-full p-2 border rounded" />
+        </div>
+        <div className="mt-4">
+          <label className="flex items-center">
+            <input type="checkbox" name="isVisible" defaultChecked={item.isVisible !== false} />
+            <span className="ml-2">Visible</span>
+          </label>
+        </div>
+        <div className="flex gap-2 mt-4">
+          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+            {item.id ? 'Update' : 'Create'}
+          </button>
+          <button type="button" onClick={() => setEditingItem(null)}
+                  className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+
   const renderDataTable = (items, type) => {
     if (!items || items.length === 0) {
       return <div className="text-center py-8 text-gray-500">No data available</div>;
@@ -562,6 +628,16 @@ const AdminDashboard = () => {
                   <th className="px-4 py-2 text-left">Position</th>
                   <th className="px-4 py-2 text-left">Duration</th>
                   <th className="px-4 py-2 text-left">Current</th>
+                  <th className="px-4 py-2 text-left">Actions</th>
+                </>
+              )}
+              {type === 'achievements' && (
+                <>
+                  <th className="px-4 py-2 text-left">Title</th>
+                  <th className="px-4 py-2 text-left">Type</th>
+                  <th className="px-4 py-2 text-left">Year</th>
+                  <th className="px-4 py-2 text-left">Organization</th>
+                  <th className="px-4 py-2 text-left">Visible</th>
                   <th className="px-4 py-2 text-left">Actions</th>
                 </>
               )}
@@ -621,6 +697,27 @@ const AdminDashboard = () => {
                     <td className="px-4 py-2">{item.startDate} - {item.endDate || 'Present'}</td>
                     <td className="px-4 py-2">
                       {item.current ? <FaEye className="text-green-500" /> : <FaEyeSlash className="text-gray-400" />}
+                    </td>
+                  </>
+                )}
+                {type === 'achievements' && (
+                  <>
+                    <td className="px-4 py-2">{item.title}</td>
+                    <td className="px-4 py-2">
+                      <span className={`px-2 py-1 rounded text-xs ${
+                        item.type === 'competition' ? 'bg-yellow-100 text-yellow-800' :
+                        item.type === 'academic' ? 'bg-blue-100 text-blue-800' :
+                        item.type === 'hackathon' ? 'bg-green-100 text-green-800' :
+                        item.type === 'scholarship' ? 'bg-purple-100 text-purple-800' :
+                        'bg-gray-100 text-gray-800'
+                      }`}>
+                        {item.type}
+                      </span>
+                    </td>
+                    <td className="px-4 py-2">{item.year}</td>
+                    <td className="px-4 py-2">{item.organization || '-'}</td>
+                    <td className="px-4 py-2">
+                      {item.isVisible ? <FaEye className="text-green-500" /> : <FaEyeSlash className="text-gray-400" />}
                     </td>
                   </>
                 )}
@@ -710,6 +807,7 @@ const AdminDashboard = () => {
                 {activeTab === 'publications' && renderPublicationForm(editingItem)}
                 {activeTab === 'education' && renderEducationForm(editingItem)}
                 {activeTab === 'experiences' && renderExperienceForm(editingItem)}
+                {activeTab === 'achievements' && renderAchievementForm(editingItem)}
                 {activeTab === 'blog' && renderBlogForm(editingItem)}
               </div>
             </div>

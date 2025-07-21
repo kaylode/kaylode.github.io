@@ -1,14 +1,52 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { FaPlus, FaEdit, FaTrash, FaEye, FaEyeSlash, FaSync } from 'react-icons/fa';
+import { FaPlus, FaEdit, FaTrash, FaEye, FaEyeSlash, FaSync, FaSignOutAlt, FaUser } from 'react-icons/fa';
+import { useSession, signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 const AdminDashboard = () => {
+  const { data: session, status } = useSession();
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState('projects');
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
+
+  const [initialLoad, setInitialLoad] = useState(false);
+
+  // Redirect to sign-in if not authenticated
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push('/auth/signin');
+    }
+  }, [status, router]);
+
+  useEffect(() => {
+    if (status === 'authenticated' && !initialLoad) {
+      fetchData(activeTab);
+      setInitialLoad(true);
+    }
+  }, [status, activeTab, initialLoad]);
+
+  // Show loading while checking authentication
+  if (status === 'loading') {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black flex items-center justify-center">
+        <div className="text-white text-xl">Loading...</div>
+      </div>
+    );
+  }
+
+  // Don't render anything if not authenticated (will redirect)
+  if (status === 'unauthenticated') {
+    return null;
+  }
+
+  const handleSignOut = async () => {
+    await signOut({ callbackUrl: '/' });
+  };
 
   const tabs = [
     { id: 'projects', label: 'Projects', endpoint: '/api/projects' },
@@ -83,10 +121,6 @@ const AdminDashboard = () => {
     }
     setRefreshing(false);
   };
-
-  useEffect(() => {
-    fetchData(activeTab);
-  }, []);
 
   const renderProjectForm = (item = {}) => (
     <div className="bg-white p-6 rounded-lg shadow-lg">
@@ -757,8 +791,47 @@ const AdminDashboard = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-4">
       <div className="max-w-7xl mx-auto">
+        {/* Header with User Info */}
+        <div className="bg-white rounded-lg shadow-sm p-4 mb-6">
+          <div className="flex justify-between items-center">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900">Portfolio Admin Dashboard</h1>
+              <p className="text-gray-600 mt-1">Manage your portfolio content</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center">
+                  {session?.user?.image ? (
+                    <img 
+                      src={session.user.image} 
+                      alt="Profile" 
+                      className="w-10 h-10 rounded-full"
+                    />
+                  ) : (
+                    <FaUser className="text-white" />
+                  )}
+                </div>
+                <div>
+                  <p className="font-medium text-gray-900">{session?.user?.name}</p>
+                  <p className="text-sm text-gray-500">{session?.user?.email}</p>
+                </div>
+              </div>
+              <button
+                onClick={handleSignOut}
+                className="flex items-center gap-2 px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors duration-200"
+              >
+                <FaSignOutAlt />
+                Sign Out
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Action Bar */}
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold">Portfolio Admin Dashboard</h1>
+          <div className="flex items-center gap-4">
+            <h2 className="text-xl font-semibold text-gray-900">Content Management</h2>
+          </div>
           <button
             onClick={refreshAllData}
             disabled={refreshing}

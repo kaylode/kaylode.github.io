@@ -1,4 +1,5 @@
 import '../src/index.css'
+import Providers from './providers'
 
 export const metadata = {
   title: 'Minh-Khoi Pham - AI Researcher & Ph.D. Student',
@@ -16,7 +17,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Providers>
+          {children}
+        </Providers>
+      </body>
     </html>
   )
 }

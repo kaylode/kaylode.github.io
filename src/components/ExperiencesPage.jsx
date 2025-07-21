@@ -28,7 +28,6 @@ import '../styles/modern-home.css';
 
 const ExperiencesPage = () => {
   const [expandedCard, setExpandedCard] = useState(null);
-  const [selectedSkillCategory, setSelectedSkillCategory] = useState('technical');
   const [dynamicExperiences, setDynamicExperiences] = useState([]);
   const [dynamicEducation, setDynamicEducation] = useState([]);
   const [dynamicAchievements, setDynamicAchievements] = useState([]);
@@ -102,7 +101,7 @@ const ExperiencesPage = () => {
       responsibilities: exp.responsibilities || [],
       achievements: exp.achievements || [],
       technologies: exp.technologies || []
-    })) : experiences_data.professional,
+    })) : experiences_data.experience,
     achievements: dynamicAchievements.length > 0 ? (() => {
       // Transform database achievements into grouped structure
       const groupedAchievements = dynamicAchievements.reduce((acc, achievement) => {
@@ -132,7 +131,28 @@ const ExperiencesPage = () => {
       }, []);
 
       return groupedAchievements;
-    })() : experiences_data.achievements
+    })() : (() => {
+      // Transform static achievements structure to component format
+      const staticAchievements = [];
+      Object.entries(experiences_data.achievements || {}).forEach(([category, items], index) => {
+        staticAchievements.push({
+          id: index + 1,
+          title: category,
+          items: items.map(item => ({
+            name: item.title,
+            description: item.description,
+            year: item.year,
+            type: item.type,
+            organization: item.organization,
+            rank: item.rank,
+            value: item.value,
+            url: item.url,
+            image: item.image
+          }))
+        });
+      });
+      return staticAchievements;
+    })()
   };
 
   const containerVariants = {
@@ -393,116 +413,8 @@ const ExperiencesPage = () => {
 
   const SkillsSection = () => (
     <motion.div variants={itemVariants} className="space-y-6">
-      {/* Skill Category Tabs */}
-      <div className="flex flex-wrap gap-4 mb-6">
-        <button
-          onClick={() => setSelectedSkillCategory('technical')}
-          className={`px-4 py-2 rounded-lg transition-all ${
-            selectedSkillCategory === 'technical'
-              ? 'bg-blue-500/20 text-blue-300 border border-blue-400/50'
-              : 'bg-white/10 text-gray-400 border border-white/20 hover:border-blue-400/30'
-          }`}
-        >
-          Technical Skills
-        </button>
-        <button
-          onClick={() => setSelectedSkillCategory('research')}
-          className={`px-4 py-2 rounded-lg transition-all ${
-            selectedSkillCategory === 'research'
-              ? 'bg-purple-500/20 text-purple-300 border border-purple-400/50'
-              : 'bg-white/10 text-gray-400 border border-white/20 hover:border-purple-400/30'
-          }`}
-        >
-          Research Areas
-        </button>
-        <button
-          onClick={() => setSelectedSkillCategory('techstack')}
-          className={`px-4 py-2 rounded-lg transition-all ${
-            selectedSkillCategory === 'techstack'
-              ? 'bg-green-500/20 text-green-300 border border-green-400/50'
-              : 'bg-white/10 text-gray-400 border border-white/20 hover:border-green-400/30'
-          }`}
-        >
-          Tech Stack
-        </button>
-      </div>
-
-      {/* Technical Skills */}
-      {selectedSkillCategory === 'technical' && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {combinedData.skills?.technical?.map((skillGroup, index) => {
-            const IconComponent = getSkillIcon(skillGroup.category);
-            
-            return (
-              <motion.div
-                key={index}
-                whileHover={{ y: -5 }}
-                className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-blue-400/50 transition-all"
-              >
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="p-2 bg-blue-500/20 text-blue-400 rounded-lg">
-                    <IconComponent size={20} />
-                  </div>
-                  <h4 className="font-semibold text-white">{skillGroup.category}</h4>
-                </div>
-                
-                <div className="flex flex-wrap gap-2">
-                  {skillGroup.items.map((skill, skillIndex) => (
-                    <span
-                      key={skillIndex}
-                      className="px-3 py-1 bg-blue-500/10 text-blue-300 rounded-full text-sm border border-blue-500/30 hover:bg-blue-500/20 transition-all"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            );
-          }) || (
-            <div className="col-span-full text-center text-gray-400">
-              No technical skills data available
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* Research Areas */}
-      {selectedSkillCategory === 'research' && (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {combinedData.skills?.research?.map((researchArea, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ y: -5 }}
-              className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:border-purple-400/50 transition-all"
-            >
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="p-2 bg-purple-500/20 text-purple-400 rounded-lg">
-                  <FaFlask size={20} />
-                </div>
-                <h4 className="font-semibold text-white">{researchArea.area}</h4>
-              </div>
-              
-              <div className="flex flex-wrap gap-2">
-                {researchArea.topics.map((topic, topicIndex) => (
-                  <span
-                    key={topicIndex}
-                    className="px-3 py-1 bg-purple-500/10 text-purple-300 rounded-full text-sm border border-purple-500/30 hover:bg-purple-500/20 transition-all"
-                  >
-                    {topic}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          )) || (
-            <div className="col-span-full text-center text-gray-400">
-              No research areas data available
-            </div>
-          )}
-        </div>
-      )}
-
       {/* Tech Stack */}
-      {selectedSkillCategory === 'techstack' && mounted && (
+      {mounted && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {techs_list.map((tech) => (
             <motion.div
@@ -512,26 +424,29 @@ const ExperiencesPage = () => {
             >
               <div className="flex justify-center mb-4">
                 <img 
-                  src={tech.src} 
-                  alt={tech.title}
+                  src={tech.src || tech.icon} 
+                  alt={tech.title || tech.name || 'Technology'}
                   className="w-16 h-16 object-contain group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
-              <h4 className="font-semibold text-white mb-2">{tech.title}</h4>
+              <h4 className="font-semibold text-white mb-2">{tech.title || tech.name || 'Unknown Technology'}</h4>
               
-              {/* Find corresponding skill level from our experiences data */}
+              {/* Use real proficiency data from techs.js */}
               {(() => {
-                const skillData = combinedData.skills.techStack?.find(
-                  skillTech => skillTech.title === tech.title
-                );
-                // Use a deterministic seed based on tech.title to ensure consistent values between SSR and client
-                const hashCode = tech.title.split('').reduce((a, b) => {
-                  a = ((a << 5) - a) + b.charCodeAt(0);
-                  return a & a;
-                }, 0);
-                const level = skillData?.level || Math.abs(hashCode % 40) + 60;
-                const category = skillData?.category || "Technology";
-                const description = skillData?.description || `Experience with ${tech.title}`;
+                // Convert proficiency text to percentage
+                const getProficiencyLevel = (proficiency) => {
+                  switch (proficiency) {
+                    case 'expert': return 95;
+                    case 'advanced': return 80;
+                    case 'intermediate': return 65;
+                    case 'beginner': return 40;
+                    default: return 50;
+                  }
+                };
+
+                const level = getProficiencyLevel(tech.proficiency);
+                const category = tech.category || "Technology";
+                const description = tech.description || `${tech.proficiency || 'Some'} experience with ${tech.name}`;
                 
                 return (
                   <>
@@ -542,7 +457,7 @@ const ExperiencesPage = () => {
                       ></div>
                     </div>
                     <div className="text-sm text-green-400 mb-1">{level}% Proficiency</div>
-                    <div className="text-xs text-gray-400 mb-2">{category}</div>
+                    <div className="text-xs text-gray-400 mb-2 capitalize">{tech.proficiency || 'Unknown'} • {category}</div>
                     <p className="text-xs text-gray-300">{description}</p>
                   </>
                 );
@@ -553,7 +468,7 @@ const ExperiencesPage = () => {
       )}
 
       {/* Tech Stack Loading State */}
-      {selectedSkillCategory === 'techstack' && !mounted && (
+      {!mounted && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {Array.from({ length: 8 }).map((_, index) => (
             <div key={index} className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 animate-pulse">
@@ -650,40 +565,6 @@ const ExperiencesPage = () => {
             className="mb-16"
           >
             <h2 className="text-4xl font-bold text-white text-center mb-12">Skills</h2>
-            
-            {/* Skill Category Tabs */}
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <button
-                onClick={() => setSelectedSkillCategory('technical')}
-                className={`px-4 py-2 rounded-lg transition-all ${
-                  selectedSkillCategory === 'technical'
-                    ? 'bg-blue-500/20 text-blue-300 border border-blue-400/50'
-                    : 'bg-white/10 text-gray-400 border border-white/20 hover:border-blue-400/30'
-                }`}
-              >
-                Technical Skills
-              </button>
-              <button
-                onClick={() => setSelectedSkillCategory('research')}
-                className={`px-4 py-2 rounded-lg transition-all ${
-                  selectedSkillCategory === 'research'
-                    ? 'bg-purple-500/20 text-purple-300 border border-purple-400/50'
-                    : 'bg-white/10 text-gray-400 border border-white/20 hover:border-purple-400/30'
-                }`}
-              >
-                Research Areas
-              </button>
-              <button
-                onClick={() => setSelectedSkillCategory('techstack')}
-                className={`px-4 py-2 rounded-lg transition-all ${
-                  selectedSkillCategory === 'techstack'
-                    ? 'bg-green-500/20 text-green-300 border border-green-400/50'
-                    : 'bg-white/10 text-gray-400 border border-white/20 hover:border-green-400/30'
-                }`}
-              >
-                Tech Stack
-              </button>
-            </div>
 
             {/* Render the selected skill category */}
             <SkillsSection />

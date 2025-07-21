@@ -16,6 +16,7 @@ import {
 } from 'react-icons/fa';
 import { SiGooglescholar, SiOrcid } from 'react-icons/si';
 import AuthorNames from './utils/text';
+import { publications_list } from '../data/publications';
 import '../styles/modern-home.css';
 
 const PublicationsPage = () => {
@@ -37,12 +38,7 @@ const PublicationsPage = () => {
       } catch (error) {
         console.error('Failed to fetch publications:', error);
         // Fallback to static data
-        try {
-          const { publications_list } = await import('../data/publications');
-          setPublications(publications_list);
-        } catch (fallbackError) {
-          console.error('Failed to load fallback data:', fallbackError);
-        }
+        setPublications(publications_list);
       } finally {
         setLoading(false);
       }
@@ -106,11 +102,13 @@ const PublicationsPage = () => {
   // Flatten publications and add year to each publication
   const allPublications = useMemo(() => {
     const flattened = [];
-    Object.entries(publications).forEach(([year, publicationsArray]) => {
-      publicationsArray.forEach(pub => {
+    
+    // Handle both array format (static data) and object format (API data)
+    if (Array.isArray(publications)) {
+      // Static data format - array of publications
+      publications.forEach(pub => {
         flattened.push({ 
           ...pub, 
-          year: parseInt(year),
           // Map database fields to expected format
           name: pub.title || pub.name,
           site: pub.venue || pub.site,
@@ -119,7 +117,24 @@ const PublicationsPage = () => {
           authors: Array.isArray(pub.authors) ? pub.authors.join(', ') : pub.authors
         });
       });
-    });
+    } else if (publications && typeof publications === 'object') {
+      // API data format - object with years as keys
+      Object.entries(publications).forEach(([year, publicationsArray]) => {
+        publicationsArray.forEach(pub => {
+          flattened.push({ 
+            ...pub, 
+            year: parseInt(year),
+            // Map database fields to expected format
+            name: pub.title || pub.name,
+            site: pub.venue || pub.site,
+            link: pub.pdfUrl || pub.link,
+            description: pub.abstract || pub.description,
+            authors: Array.isArray(pub.authors) ? pub.authors.join(', ') : pub.authors
+          });
+        });
+      });
+    }
+    
     return flattened;
   }, [publications]);
 

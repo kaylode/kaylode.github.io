@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
+// import { motion, AnimatePresence } from 'framer-motion';
+// import Image from 'next/image';
 import { 
   FaGithub, 
   FaLinkedin, 
@@ -16,14 +16,11 @@ import {
   FaGamepad,
   FaBook,
   FaInstagram,
-  FaTwitter,
-  FaStar,
-  FaEye,
-  FaCodeBranch,
-  FaUsers
+  FaTwitter
 } from 'react-icons/fa';
 import { SiGooglescholar, SiOrcid } from 'react-icons/si';
-import '../styles/modern-home.css';
+const avatar = '/avatar.png';
+// import '../styles/modern-home.css';
 
 // Custom Steam Icon Component
 const SteamIcon = () => (
@@ -35,23 +32,12 @@ const SteamIcon = () => (
 );
 
 const ModernHome = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [currentRole, setCurrentRole] = useState(0);
-
-  const roles = [
-    "AI Researcher",
-    "Ph.D. Student", 
-    "Computer Vision Engineer",
-    "Full-stack Developer",
-    "Problem Solver"
-  ];
-
-  const stats = [
-    { icon: FaStar, value: "100+", label: "GitHub Stars" },
-    { icon: FaCodeBranch, value: "50+", label: "Repositories" },
-    { icon: FaEye, value: "10K+", label: "Profile Views" },
-    { icon: FaUsers, value: "30+", label: "Followers" }
-  ];
+  return (
+    <div>
+      <h1>Modern Home</h1>
+    </div>
+  );
+};
 
   const socialLinks = [
     {

@@ -1,84 +1,318 @@
-export const publications_list = {
-    2020: [
-        {
-            id: 1,
-            link: 'http://ceur-ws.org/Vol-2882/paper41.pdf',
-            name: 'HCMUS at Pixel Privacy 2020: Quality Camouflage with Back Propagation and Image Enhancement',
-            description: "We employed multiple improved adversarial attack algorithms based on Fast Gradient Sign Method to degrade the quality of images while maintaining their quality scores assessed by the BiQA model",
-            authors: 'Minh-Khoi Pham, Hai-Tuan Ho-Nguyen, Trong-Thang Pham, Hung Vinh Tran, Hai-Dang Nguyen, Minh-Triet Tran',
-            site: 'CEUR Workshop Proceedings',
-            categories: ['Adversarial Attacks'],
-        },
+// Auto-generated from database sync on 2025-07-21T10:05:37.663Z
+// Last synced: 12 publications
+
+export const publications_list = [
+  {
+    "id": 1,
+    "title": "Grammar-Guided Evolutionary Search for Discrete Prompt Optimisation",
+    "authors": [
+      "Muzhaffar Hazman",
+      "Minh-Khoi Pham",
+      "Shweta Soundararajan",
+      "Goncalo Mordido",
+      "Leonardo Custode",
+      "David Lynch",
+      "Giorgio Cruciata",
+      "Yucheng Shi",
+      "Hongmeng Song",
+      "Wang Chao",
+      "Pan Yue",
+      "Aleksandar Milenovic",
+      "Alexandros Agapitos"
     ],
-
-
-    2021: [
-        {
-            id: 2,
-            link: 'http://ceur-ws.org/Vol-3181/paper72.pdf',
-            name: 'HCMUS at MediaEval 2021: Facial Data De-identification with Adversarial Generation and Perturbation Methods',
-            description: "We employed adversarial attack algorithms on driver' faces while storing their identities in hidden representation",
-            authors: 'Minh-Khoi Pham, Thang-Long Nguyen-Ho, Trong-Thang Pham, Hai-Tuan Ho-Nguyen, Hai-Dang Nguyen, Minh-Triet Tran',
-            site: 'CEUR Workshop Proceedings',
-            categories: ['Facial Recognition', 'Adversarial Attacks', 'Computer Vision'],
-        },
-        {
-            id: 6,
-            link: 'https://doi.org/10.1016/j.cag.2021.07.010',
-            name: 'SHREC 2021: Retrieval of cultural heritage objects',
-            description: "Our team propose various methods to retrieve objects based on shape, with me introduce a 3D mesh-based approach by using MeshNet",
-            authors: 'Ivan Sipiran, ..., Dinh-Huan Nguyen, Thang-Long Nguyen-Ho, Bang-Dang Pham, Minh-Khoi Pham, Quoc-Huy Trinh, The-Anh Vu-Le',
-            site: 'Computer & Graphics',
-            categories: ['3D Computer Vision', '3D Object Retrieval'],
-        },
+    "venue": "ECAI",
+    "year": 2025,
+    "doi": "10.48550/arXiv.2507.10326 Focus to learn more",
+    "arxivId": null,
+    "pdfUrl": "https://doi.org/10.48550/arXiv.2507.10326 Focus to learn more",
+    "category": "conference",
+    "abstract": "Prompt engineering has proven to be a crucial step in leveraging pretrained large language models (LLMs) in solving various real-world tasks. Numerous solutions have been proposed that seek to automate prompt engineering by using the model itself to edit prompts. However, the majority of state-of-the-art approaches are evaluated on tasks that require minimal prompt templates and on very large and highly capable LLMs. In contrast, solving complex tasks that require detailed information to be included in the prompt increases the amount of text that needs to be optimised. Furthermore, smaller models have been shown to be more sensitive to prompt design. To address these challenges, we propose an evolutionary search approach to automated discrete prompt optimisation consisting of two phases. In the first phase, grammar-guided genetic programming is invoked to synthesise prompt-creating programmes by searching the space of programmes populated by function compositions of syntactic, dictionary-based and LLM-based prompt-editing functions. In the second phase, local search is applied to explore the neighbourhoods of best-performing programmes in an attempt to further fine-tune their performance. Our approach outperforms three state-of-the-art prompt optimisation approaches, PromptWizard, OPRO, and RL-Prompt, on three relatively small general-purpose LLMs in four domain-specific challenging tasks.",
+    "citations": 0,
+    "type": "conference",
+    "url": "https://doi.org/10.48550/arXiv.2507.10326 Focus to learn more",
+    "arxiv": null
+  },
+  {
+    "id": 2,
+    "title": "A systems approach to managing the risk of healthcare acquired infection in an acute hospital setting supported by human factors ergonomics, data science, data governance and AI",
+    "authors": [
+      "Marie E Ward",
+      "Una Geary",
+      "Rob Brennan",
+      "Rebecca Vining",
+      "Lucy McKenna",
+      "Brian O’Connell",
+      "Colm Bergin",
+      "Declan Byrne",
+      "Donncha Creagh",
+      "Mary Fogarty",
+      "Una Healy",
+      "Grainne McDonald",
+      "Malick Ebiele",
+      "Martin Crane",
+      "Minh-Khoi Pham",
+      "Malika Bendechache",
+      "Marija Bezbradica",
+      "Junli Liang",
+      "Brian Doyle",
+      "John Guilfoyle",
+      "Arwa Shuhaiber",
+      "Nick McDonald"
     ],
-
-
-    2022: [
-
-        {
-            id: 3,
-            link: 'https://drive.google.com/file/d/1IImyUiGCpZzt6YAUiDALJQ5NWLRYQ84f/view?usp=sharing',
-            authors: "Thao Thi Phuong Dao, Minh-Khoi Pham, Mai-Khiem Tran, Bich Anh Trane, Ngoc Boi Van, Chanh Cong Ha, Minh-Triet Tran",
-            name: 'Vision-based Assistance for Vocal Fold Identification in Laryngoscopy with Knowledge Distillation',
-            description: 'We introduced a new  dataset about the identification of vocal fold along with an efficient model trained by knowledge distillation technique',
-            site: 'poster at WiCV Workshop @ CVPR 2022',
-            categories: ['Medical AI', 'Knowledge Distillation', 'Computer Vision'],
-        },
-
-        {
-            id: 4,
-            link: 'https://doi.org/10.1016/j.cag.2022.07.018',
-            name: 'SHREC 2022: pothole and crack detection in the road pavement using images and RGB-D data',
-            description: '',
-            authors: 'Elia Moscoso Thompson, Andrea Ranieri, Silvia Biasotti, Miguel Chicchon, Ivan Sipiran, Minh-Khoi Pham, Thang-Long Nguyen-Ho, Hai-Dang Nguyen, Minh-Triet Tran',
-            site: "Computers & Graphics",
-            categories: ['Computer Vision', 'Image Segmentation'],
-        },
-
-        {
-            id: 5,
-            link: 'https://openaccess.thecvf.com/content/CVPR2022W/AICity/papers/Nguyen-Ho_Text_Query_Based_Traffic_Video_Event_Retrieval_With_Global-Local_Fusion_CVPRW_2022_paper.pdf',
-            name: 'Text Query based Traffic Video Event Retrieval with Global-Local Fusion Embedding',
-            description: 'We proposed an improved pipeline to perform video retrieval based on query texts about traffic events. Our approach achieved rank 5th overall, received runner-up award',
-            authors: 'Thang-Long Nguyen-Ho, Minh-Khoi Pham, Tien-Phat Nguyen, Hai-Dang Nguyen, Minh N. Do, Tam V. Nguyen and Minh-Triet Tran',
-            site: 'AI City Challenge Workshop @ CVPR 2022',
-            categories: ['Text-Video Retrieval', 'Multimodal Learning', 'Computer Vision'],
-        },
+    "venue": "Ergonomics",
+    "year": 2024,
+    "doi": "10.1080/00140139.2024.2396527",
+    "arxivId": null,
+    "pdfUrl": "https://doi.org/10.1080/00140139.2024.2396527",
+    "category": "journal",
+    "abstract": "Innovative approaches are needed for managing risk and system change in healthcare. This paper presents a case study of a project that took place over two years, taking a systems approach to managing the risk of healthcare acquired infection in an acute hospital setting, supported by an Access Risk Knowledge Platform which brings together Human Factors Ergonomics, Data Science, Data Governance and AI expertise. Evidence for change including meeting notes and use of the platform were studied. The work on the project focused on first systematically building a rich picture of the current situation from a transdisciplinary perspective. This allowed for understanding risk in context and developing a better capability to support enterprise risk management and accountability. From there a linking of operational and risk data took place which led to mapping of the risk pattern in the hospital.",
+    "citations": 0,
+    "type": "journal",
+    "url": "https://doi.org/10.1080/00140139.2024.2396527",
+    "arxiv": null
+  },
+  {
+    "id": 3,
+    "title": "Forecasting patient early readmission from Irish hospital discharge records using conventional machine learning models",
+    "authors": [
+      "Minh-Khoi Pham",
+      "Tai Tan Mai",
+      "Martin Crane",
+      "Malick Ebiele",
+      "Rob Brennan",
+      "Marie E Ward",
+      "Una Geary",
+      "Nick McDonald",
+      "Marija Bezbradica"
     ],
+    "venue": "MDPI Diagnostics",
+    "year": 2024,
+    "doi": "10.3390/diagnostics14212405",
+    "arxivId": null,
+    "pdfUrl": "https://doi.org/10.3390/diagnostics14212405",
+    "category": "journal",
+    "abstract": "We evaluate the effectiveness of several widely used machine learning models that leverage patient demographics, historical hospitalization records, and clinical diagnosis codes to forecast future clinical risks. Our work focuses on addressing two key challenges in the medical fields, data imbalance and the variety of data types, in order to boost the performance of machine learning algorithms. Furthermore, we also employ SHapley Additive Explanations (SHAP) value visualization to interpret the model predictions and identify both the key data features and disease codes associated with readmission risks, identifying a specific set of diagnosis codes that are significant predictors of readmission within 30 days.",
+    "citations": 0,
+    "type": "journal",
+    "url": "https://doi.org/10.3390/diagnostics14212405",
+    "arxiv": null
+  },
+  {
+    "id": 4,
+    "title": "Improving Laryngoscopy Image Analysis Through Integration of Global Information and Local Features in VoFoCD Dataset",
+    "authors": [
+      "Thao Thi Phuong Dao",
+      "Tuan-Luc Huynh",
+      "Minh-Khoi Pham",
+      "Trung-Nghia Le",
+      "Tan-Cong Nguyen",
+      "Quang-Thuc Nguyen",
+      "Bich Anh Tran",
+      "Boi Ngoc Van",
+      "Chanh Cong Ha",
+      "Minh-Triet Tran"
+    ],
+    "venue": "Journal of Imaging Informatics in Medicine",
+    "year": 2024,
+    "doi": "10.1007/s10278-024-01068-z",
+    "arxivId": null,
+    "pdfUrl": "https://doi.org/10.1007/s10278-024-01068-z",
+    "category": "journal",
+    "abstract": "The diagnosis and treatment of vocal fold disorders heavily rely on the use of laryngoscopy. A comprehensive vocal fold diagnosis requires accurate identification of crucial anatomical structures and potential lesions during laryngoscopy observation. However, existing approaches have yet to explore the joint optimization of the decision-making process, including object detection and image classification tasks simultaneously. In this study, we provide a new dataset, VoFoCD, with 1724 laryngology images designed explicitly for object detection and image classification in laryngoscopy images. Images in the VoFoCD dataset are categorized into four classes and comprise six glottic object types.",
+    "citations": 0,
+    "type": "journal",
+    "url": "https://doi.org/10.1007/s10278-024-01068-z",
+    "arxiv": null
+  },
+  {
+    "id": 5,
+    "title": "Semi-supervised Organ Segmentation with Mask Propagation Refinement and Uncertainty Estimation for Data Generation",
+    "authors": [
+      "Minh-Khoi Pham",
+      "Thang-Long Nguyen-Ho",
+      "Thao Thi Phuong Dao",
+      "Tan-Cong Nguyen & Minh-Triet Tran"
+    ],
+    "venue": "Lecture Notes in Computer Science",
+    "year": 2023,
+    "doi": null,
+    "arxivId": null,
+    "pdfUrl": "https://link.springer.com/chapter/10.1007/978-3-031-23911-3_15",
+    "category": "Medical AI",
+    "abstract": "We present a novel two-staged method that employs various 2D-based techniques to deal with the 3D segmentation task. We propose using the recent state-of-the-art technique in video object segmentation, combining it with other semi-supervised training techniques to leverage the extensive unlabeled data. Moreover, we introduce a way to generate pseudo-labeled data that is both plausible and consistent for further retraining by using uncertainty estimation",
+    "citations": 0,
+    "type": "Medical AI",
+    "url": "https://link.springer.com/chapter/10.1007/978-3-031-23911-3_15",
+    "arxiv": null
+  },
+  {
+    "id": 6,
+    "title": "Vision-Based Assistance for Vocal Fold Identification in Laryngoscopy with Knowledge Distillation",
+    "authors": [
+      "Thao Thi Phuong Dao",
+      "Minh-Khoi Pham",
+      "Mai-Khiem Tran",
+      "Chanh Cong Ha",
+      "Boi Ngoc Van",
+      "Bich Anh Tran",
+      "Minh-Triet Tran"
+    ],
+    "venue": "MEDINFO",
+    "year": 2023,
+    "doi": "10.3233/SHTI231104",
+    "arxivId": null,
+    "pdfUrl": "https://ebooks.iospress.nl/doi/10.3233/SHTI231104",
+    "category": "journal",
+    "abstract": "Laryngoscopy images play a vital role in merging computer vision and otorhinolaryngology research. However, limited studies offer laryngeal datasets for comparative evaluation. Hence, this study introduces a novel dataset focusing on vocal fold images. Additionally, we propose a lightweight network utilizing knowledge distillation, with our student model achieving around 98.4% accuracy-comparable to the original EfficientNetB1 while reducing model weights by up to 88%. We also present an AI-assisted smartphone solution, enabling a portable and intelligent laryngoscopy system that aids laryngoscopists in efficiently targeting vocal fold areas for observation and diagnosis. To sum up, our contribution includes a laryngeal image dataset and a compressed version of the efficient model, suitable for handheld laryngoscopy devices.",
+    "citations": 0,
+    "type": "journal",
+    "url": "https://doi.org/10.3233/SHTI231104",
+    "arxiv": null
+  },
+  {
+    "id": 7,
+    "title": "SHREC 2022: pothole and crack detection in the road pavement using images and RGB-D data",
+    "authors": [
+      "Elia Moscoso Thompson",
+      "Andrea Ranieri",
+      "Silvia Biasotti",
+      "Miguel Chicchon",
+      "Ivan Sipiran",
+      "Minh-Khoi Pham",
+      "Thang-Long Nguyen-Ho",
+      "Hai-Dang Nguyen",
+      "Minh-Triet Tran"
+    ],
+    "venue": "Computers & Graphics",
+    "year": 2022,
+    "doi": null,
+    "arxivId": null,
+    "pdfUrl": "https://doi.org/10.1016/j.cag.2022.07.018",
+    "category": "Computer Vision",
+    "abstract": null,
+    "citations": 0,
+    "type": "Computer Vision",
+    "url": "https://doi.org/10.1016/j.cag.2022.07.018",
+    "arxiv": null
+  },
+  {
+    "id": 8,
+    "title": "Text Query based Traffic Video Event Retrieval with Global-Local Fusion Embedding",
+    "authors": [
+      "Thang-Long Nguyen-Ho",
+      "Minh-Khoi Pham",
+      "Tien-Phat Nguyen",
+      "Hai-Dang Nguyen",
+      "Minh N. Do",
+      "Tam V. Nguyen and Minh-Triet Tran"
+    ],
+    "venue": "AI City Challenge Workshop @ CVPR 2022",
+    "year": 2022,
+    "doi": null,
+    "arxivId": null,
+    "pdfUrl": "https://openaccess.thecvf.com/content/CVPR2022W/AICity/papers/Nguyen-Ho_Text_Query_Based_Traffic_Video_Event_Retrieval_With_Global-Local_Fusion_CVPRW_2022_paper.pdf",
+    "category": "Text-Video Retrieval",
+    "abstract": "We proposed an improved pipeline to perform video retrieval based on query texts about traffic events. Our approach achieved rank 5th overall, received runner-up award",
+    "citations": 0,
+    "type": "Text-Video Retrieval",
+    "url": "https://openaccess.thecvf.com/content/CVPR2022W/AICity/papers/Nguyen-Ho_Text_Query_Based_Traffic_Video_Event_Retrieval_With_Global-Local_Fusion_CVPRW_2022_paper.pdf",
+    "arxiv": null
+  },
+  {
+    "id": 9,
+    "title": "Vision-based Assistance for Vocal Fold Identification in Laryngoscopy with Knowledge Distillation",
+    "authors": [
+      "Thao Thi Phuong Dao",
+      "Minh-Khoi Pham",
+      "Mai-Khiem Tran",
+      "Bich Anh Trane",
+      "Ngoc Boi Van",
+      "Chanh Cong Ha",
+      "Minh-Triet Tran"
+    ],
+    "venue": "poster at WiCV Workshop @ CVPR 2022",
+    "year": 2022,
+    "doi": null,
+    "arxivId": null,
+    "pdfUrl": "https://drive.google.com/file/d/1IImyUiGCpZzt6YAUiDALJQ5NWLRYQ84f/view?usp=sharing",
+    "category": "Medical AI",
+    "abstract": "We introduced a new  dataset about the identification of vocal fold along with an efficient model trained by knowledge distillation technique",
+    "citations": 0,
+    "type": "Medical AI",
+    "url": "https://drive.google.com/file/d/1IImyUiGCpZzt6YAUiDALJQ5NWLRYQ84f/view?usp=sharing",
+    "arxiv": null
+  },
+  {
+    "id": 10,
+    "title": "HCMUS at MediaEval 2021: Facial Data De-identification with Adversarial Generation and Perturbation Methods",
+    "authors": [
+      "Minh-Khoi Pham",
+      "Thang-Long Nguyen-Ho",
+      "Trong-Thang Pham",
+      "Hai-Tuan Ho-Nguyen",
+      "Hai-Dang Nguyen",
+      "Minh-Triet Tran"
+    ],
+    "venue": "CEUR Workshop Proceedings",
+    "year": 2021,
+    "doi": null,
+    "arxivId": null,
+    "pdfUrl": "http://ceur-ws.org/Vol-3181/paper72.pdf",
+    "category": "Facial Recognition",
+    "abstract": "We employed adversarial attack algorithms on driver' faces while storing their identities in hidden representation",
+    "citations": 0,
+    "type": "Facial Recognition",
+    "url": "http://ceur-ws.org/Vol-3181/paper72.pdf",
+    "arxiv": null
+  },
+  {
+    "id": 11,
+    "title": "SHREC 2021: Retrieval of cultural heritage objects",
+    "authors": [
+      "Ivan Sipiran",
+      "...",
+      "Dinh-Huan Nguyen",
+      "Thang-Long Nguyen-Ho",
+      "Bang-Dang Pham",
+      "Minh-Khoi Pham",
+      "Quoc-Huy Trinh",
+      "The-Anh Vu-Le"
+    ],
+    "venue": "Computer & Graphics",
+    "year": 2021,
+    "doi": null,
+    "arxivId": null,
+    "pdfUrl": "https://doi.org/10.1016/j.cag.2021.07.010",
+    "category": "3D Computer Vision",
+    "abstract": "Our team propose various methods to retrieve objects based on shape, with me introduce a 3D mesh-based approach by using MeshNet",
+    "citations": 0,
+    "type": "3D Computer Vision",
+    "url": "https://doi.org/10.1016/j.cag.2021.07.010",
+    "arxiv": null
+  },
+  {
+    "id": 12,
+    "title": "HCMUS at Pixel Privacy 2020: Quality Camouflage with Back Propagation and Image Enhancement",
+    "authors": [
+      "Minh-Khoi Pham",
+      "Hai-Tuan Ho-Nguyen",
+      "Trong-Thang Pham",
+      "Hung Vinh Tran",
+      "Hai-Dang Nguyen",
+      "Minh-Triet Tran"
+    ],
+    "venue": "CEUR Workshop Proceedings",
+    "year": 2020,
+    "doi": null,
+    "arxivId": null,
+    "pdfUrl": "http://ceur-ws.org/Vol-2882/paper41.pdf",
+    "category": "Adversarial Attacks",
+    "abstract": "We employed multiple improved adversarial attack algorithms based on Fast Gradient Sign Method to degrade the quality of images while maintaining their quality scores assessed by the BiQA model",
+    "citations": 0,
+    "type": "Adversarial Attacks",
+    "url": "http://ceur-ws.org/Vol-2882/paper41.pdf",
+    "arxiv": null
+  }
+];
 
-    2023: [
-        {
-            id: 7,
-            link: 'https://link.springer.com/chapter/10.1007/978-3-031-23911-3_15',
-            name: 'Semi-supervised Organ Segmentation with Mask Propagation Refinement and Uncertainty Estimation for Data Generation',
-            description: 'We present a novel two-staged method that employs various 2D-based techniques to deal with the 3D segmentation task. We propose using the recent state-of-the-art technique in video object segmentation, combining it with other semi-supervised training techniques to leverage the extensive unlabeled data. Moreover, we introduce a way to generate pseudo-labeled data that is both plausible and consistent for further retraining by using uncertainty estimation',
-            authors: 'Minh-Khoi Pham, Thang-Long Nguyen-Ho, Thao Thi Phuong Dao, Tan-Cong Nguyen & Minh-Triet Tran',
-            site: 'Lecture Notes in Computer Science',
-            categories: ['Medical AI', 'Semi-supervised Learning', 'Uncertainty Estimation', 'Video Object Segmentation'],
-        },
-    ]
-
-};
-
-export default publications_list
+export default publications_list;

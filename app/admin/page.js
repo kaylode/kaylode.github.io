@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { FaPlus, FaEdit, FaTrash, FaEye, FaEyeSlash, FaSync, FaSignOutAlt, FaUser } from 'react-icons/fa';
 import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import DataSyncManager from '../../src/components/admin/DataSyncManager';
 
 const AdminDashboard = () => {
   const { data: session, status } = useSession();
@@ -826,6 +827,9 @@ const AdminDashboard = () => {
             </div>
           </div>
         </div>
+
+        {/* Database Sync Manager */}
+        <DataSyncManager />
 
         {/* Action Bar */}
         <div className="flex justify-between items-center mb-8">

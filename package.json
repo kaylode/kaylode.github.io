@@ -40,7 +40,10 @@
     "db:deploy": "node scripts/deploy-database.js",
     "db:sample": "node scripts/deploy-database.js --sample",
     "db:migrate-static": "node scripts/migrate-static-data.js",
-    "crawl": "node scripts/crawl-data.js"
+    "crawl": "node scripts/crawl-data.js",
+    "data:sync": "node scripts/data-sync-cli.js sync",
+    "data:status": "node scripts/data-sync-cli.js status",
+    "data:help": "node scripts/data-sync-cli.js help"
   },
   "eslintConfig": {
     "extends": [

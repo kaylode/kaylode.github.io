@@ -8,7 +8,7 @@ export async function GET() {
     console.log('🔄 App startup: Checking if data sync is needed...');
 
     // Check if database is available
-    const { isDatabaseAvailable } = await import('../../../scripts/sync-database-to-static.js');
+    const { isDatabaseAvailable } = await import('../../../../scripts/sync-database-to-static.js');
     const dbAvailable = await isDatabaseAvailable();
 
     if (!dbAvailable) {
@@ -54,7 +54,7 @@ export async function GET() {
     }
 
     // Trigger sync in the background (don't wait for completion)
-    const { syncAllData } = await import('../../../scripts/sync-database-to-static.js');
+    const { syncAllData } = await import('../../../../scripts/sync-database-to-static.js');
     
     // Start sync without awaiting (fire and forget for startup)
     syncAllData()

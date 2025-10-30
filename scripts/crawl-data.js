@@ -86,7 +86,7 @@ async function crawlGitHubStats() {
 // LeetCode API crawler (using GraphQL)
 async function crawlLeetCodeStats() {
   try {
-    const username = 'kaylode'; // Replace with your LeetCode username
+    const username = 'kaylochee'; // Replace with your LeetCode username
     
     const query = `
       query getUserProfile($username: String!) {

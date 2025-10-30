@@ -216,7 +216,7 @@ const ModernHome = () => {
               {/* Action Buttons */}
               <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
                 <motion.a
-                  href="https://drive.google.com/file/d/1QuBwk92yxYacEvgHm6d2KKRFAgVm873L/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1bXCpYpjLVoYZS6v9CuwNoBre0xYEyycH/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.05 }}

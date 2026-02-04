@@ -10,9 +10,9 @@ import {
   BlogPost,
   TimelineEvent,
   TrackingStats
-} from './types';
+} from '@/types';
 
-import data from './data.json';
+import data from '@/data.json';
 
 export const PROFILE_DATA: ProfileInfo = data.profile;
 

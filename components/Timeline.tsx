@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { TimelineEvent } from '../types';
+import { TimelineEvent } from '@/types';
 import { Briefcase, GraduationCap, Trophy, ExternalLink } from 'lucide-react';
 
 interface TimelineProps {

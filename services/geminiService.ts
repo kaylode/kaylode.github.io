@@ -1,10 +1,23 @@
 
 import { GoogleGenAI } from "@google/genai";
-import { PROFILE_DATA, ACADEMIA_DATA, EXPERIENCES_DATA, BLOG_POSTS, TIMELINE_EVENTS, TRACKING_DATA } from "../constants";
+import { PROFILE_DATA, ACADEMIA_DATA, EXPERIENCES_DATA, BLOG_POSTS, TIMELINE_EVENTS, TRACKING_DATA } from "@/constants";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
+let aiInstance: GoogleGenAI | null = null;
+
+const getAI = () => {
+  if (!aiInstance) {
+    const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || "";
+    if (!apiKey && typeof window !== 'undefined') {
+      console.warn("Gemini API key is not set.");
+    }
+    aiInstance = new GoogleGenAI({ apiKey });
+  }
+  return aiInstance;
+};
 
 export const askResearcher = async (question: string) => {
+  const ai = getAI();
+  // ... rest of the function
   const context = `
     You are an AI assistant for ${PROFILE_DATA.name}, an academic.
     Professional Background:

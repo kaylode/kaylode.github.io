@@ -42,7 +42,7 @@
   },
   "timeline": [
     {
-      "id": "t4",
+      "id": "t1",
       "date": "Nov 2025 - Dec 2025",
       "title": "Alibaba Cloud CIKM 2025 Hackathon Winner",
       "description": "Winner with LLM e-commerce product matching using LLM",
@@ -51,7 +51,7 @@
       "link": "https://www.linkedin.com/posts/kaylochee_cikm2025-alibabacloud-analyticsup-activity-7395002060573810688-gIsD?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
     },
     {
-      "id": "t8",
+      "id": "t2",
       "date": "Aug 2025 - September 2025",
       "title": "AI for Health Summer School",
       "description": "Qualified and attended summer school on Foundation Models for Health",
@@ -60,7 +60,7 @@
       "link": "https://www.linkedin.com/posts/kaylochee_aiforhealth-epfl-ellis-activity-7351605320663662604-6WuJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
     },
     {
-      "id": "t4",
+      "id": "t3",
       "date": "July 2025 - August 2025",
       "title": "Google AI Student Hackathon Runner-up",
       "description": "2nd Place with PictureTales",
@@ -69,7 +69,7 @@
       "link": "https://www.linkedin.com/posts/swaaz_googleaihackathon-studentinnovation-mentorship-ugcPost-7351578765438697472-Iq7d?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
     },
     {
-      "id": "t2",
+      "id": "t4",
       "date": "Feb 2024 - Feb 2025",
       "title": "AI Researcher Internship",
       "description": "Published 1 ranked A conference. Awarded 'Excellent Intern'",
@@ -78,7 +78,7 @@
       "link": "https://www.linkedin.com/posts/kaylochee_as-my-internship-at-huawei-ireland-research-activity-7293937402945912832-yCiP?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
     },
     {
-      "id": "t3",
+      "id": "t5",
       "date": "May 2023 - Sep 2024",
       "title": "Teaching Assistant",
       "institution": "Dublin City University",
@@ -95,7 +95,7 @@
       "link": "https://www.linkedin.com/posts/kaylochee_huaweitecharena-llm-sql-activity-7112101082591322112-NORF?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
     },
     {
-      "id": "t1",
+      "id": "t6",
       "date": "Nov 2022 - Present",
       "title": "Ph.D. in Computer Science",
       "institution": "Dublin City University",
@@ -103,7 +103,7 @@
       "iconType": "edu"
     },
     {
-      "id": "t6",
+      "id": "t8",
       "date": "July 2022 - Aug 2022",
       "title": "Ph.D. Scholarship",
       "institution": "Science Foundation Ireland",
@@ -111,7 +111,7 @@
       "iconType": "award"
     },
     {
-      "id": "t5",
+      "id": "t9",
       "date": "Oct 2018 - Oct 2022",
       "title": "B.S. in Computer Science",
       "institution": "University of Science, VNU-HCM",

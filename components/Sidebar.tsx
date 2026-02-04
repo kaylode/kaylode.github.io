@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ProfileInfo } from '../types';
+import { ProfileInfo } from '@/types';
 import { Mail, MapPin, Github, Twitter, GraduationCap, Linkedin, Facebook, Instagram, Gamepad2, Gamepad, FileText } from 'lucide-react';
 import { Card } from './ui';
 

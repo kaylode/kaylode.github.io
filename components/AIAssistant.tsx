@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { MessageSquare, Send, X, Bot } from 'lucide-react';
-import { askResearcher } from '../services/geminiService';
+import { askResearcher } from '@/services/geminiService';
 import { Button, Card, Input } from './ui';
 
 const AIAssistant: React.FC = () => {
@@ -60,8 +60,8 @@ const AIAssistant: React.FC = () => {
                 placeholder="How does ScribbleDiff work?"
                 className="pr-10 text-xs"
               />
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 disabled={isLoading}
                 className="absolute right-2 top-1/2 -translate-y-1/2 text-blue-600 disabled:text-slate-400 hover:scale-110 transition-transform"
               >

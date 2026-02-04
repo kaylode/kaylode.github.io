@@ -53,7 +53,7 @@ npm install
 # Ensure .env.local exists in frontend/ with your keys
 npm run dev
 ```
-
+ 
 The app runs at `http://localhost:5173`.
 
 ## 📁 Project Structure

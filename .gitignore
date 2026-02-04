@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+.venv
+venv/
+__pycache__/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+*.env
+
+# Build outputs
+dist/
+build/
+.vite/
+.next/
+out/
+
+# System files
+.DS_Store
+.idea/
+.vscode/
+*.log
+
+# Misc
+.coverage
+htmlcov/
+portfolio/

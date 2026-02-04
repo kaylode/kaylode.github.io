@@ -9,5 +9,5 @@
 			"destination": "/index.html"
 		}
 	],
-	"outputDirectory": "frontend/dist"
+	"outputDirectory": "dist"
 }

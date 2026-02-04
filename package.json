@@ -1,18 +1,23 @@
 {
-	"name": "academic-portfolio-root",
-	"version": "1.0.0",
-	"workspaces": [
-		"frontend"
-	],
-	"scripts": {
-		"build": "npm run build --workspace=frontend"
-	},
-	"devDependencies": {
-		"vite": "^6.2.0",
-		"typescript": "~5.8.2",
-		"@vitejs/plugin-react": "^5.0.0"
-	},
-	"engines": {
-		"node": "22.x"
-	}
+  "name": "academic-portfolio-pro",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lucide-react": "^0.563.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "@google/genai": "^1.39.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  }
 }

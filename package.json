@@ -1,12 +1,16 @@
 {
 	"name": "academic-portfolio-root",
 	"version": "1.0.0",
+	"workspaces": [
+		"frontend"
+	],
 	"scripts": {
-		"build": "npm run build --prefix frontend"
+		"build": "npm run build --workspace=frontend"
 	},
 	"devDependencies": {
 		"vite": "^6.2.0",
-		"typescript": "~5.8.2"
+		"typescript": "~5.8.2",
+		"@vitejs/plugin-react": "^5.0.0"
 	},
 	"engines": {
 		"node": "22.x"

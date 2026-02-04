@@ -53,8 +53,8 @@ const App: React.FC = () => {
     const fetchData = async () => {
       try {
         const [blogRes, trackingRes] = await Promise.all([
-          fetch('http://localhost:8000/api/blog'),
-          fetch('http://localhost:8000/api/tracking')
+          fetch('/api/blog'),
+          fetch('/api/tracking')
         ]);
         if (blogRes.ok) {
           const blogData = await blogRes.json();

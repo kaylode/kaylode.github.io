@@ -1,753 +1,753 @@
 {
-	"profile": {
-		"name": "Minh-Khoi Pham",
-		"title": "Ph.D. Student in Computer Science",
-		"affiliation": "Dublin City University",
-		"location": "Dublin, Ireland 🇮🇪 (Originally from Vietnam 🇻🇳)",
-		"email": "minhkhoi.pham@adaptcentre.ie",
-		"avatarUrl": "https://github.com/kaylode.png",
-		"bio": "I am currently pursuing a Ph.D. at Dublin City University, focusing on using advanced machine learning and deep learning models to study patients' electronic health records.",
-		"about": [
-			"I'm an pursuing my Ph.D. of Computer Applications at Dublin City University, Dublin, Ireland. My current research focuses on developing and critically evaluating foundation model approaches for clinical risk prediction using large-scale structured electronic health records. I am particularly interested in how pretrained models can support robust zero-shot and few-shot inference for rare and imbalanced outcomes, such as healthcare-associated infections, while reducing reliance on task-specific labeling and retraining. My work examines how temporal structure, feature heterogeneity, patient interaction networks, and retrieval mechanisms influence model performance, generalisability, and failure modes in real hospital settings.",
-			"I'm passionate about discovering new methods, state-of-the-art models, and applying or reimplementing them. Technology evolves daily, so I dedicate effort to exploring as many new innovations as possible. All my code is open source on my GitHub for educational purposes and for fellow researchers and developers to reference."
-		],
-		"roles": [
-			"AI Researcher",
-			"Ph.D. Student",
-			"Machine Learning Engineer",
-			"Machine Learning Researcher",
-			"Data Scientist",
-			"Applied Scientist"
-		],
-		"interests": [
-			"Gaming",
-			"Marvel Comics",
-			"Investing",
-			"Vietnamese Iced Coffee",
-			"Research",
-			"Open Source"
-		],
-		"resumeUrl": "https://drive.google.com/file/d/1QuBwk92yxYacEvgHm6d2KKRFAgVm873L/view?usp=sharing",
-		"socials": {
-			"github": "https://github.com/kaylode",
-			"twitter": "https://x.com/_kaylode",
-			"scholar": "https://scholar.google.com/citations?user=kaylode",
-			"linkedin": "https://linkedin.com/in/kaylochee",
-			"facebook": "https://www.facebook.com/Kaylode",
-			"discord": "https://discordapp.com/users/326944513396441089",
-			"instagram": "https://www.instagram.com/_kaylochee",
-			"steam": "https://steamcommunity.com/id/Kaylode/",
-			"orcid": "https://orcid.org/0000-0003-3211-9076"
-		}
-	},
-	"timeline": [
-		{
-			"id": "t4",
-			"date": "Nov 2025 - Dec 2025",
-			"title": "Alibaba Cloud CIKM 2025 Hackathon Winner",
-			"description": "Winner with LLM e-commerce product matching using LLM",
-			"institution": "Alibaba Cloud",
-			"iconType": "award",
-			"link": "https://www.linkedin.com/posts/kaylochee_cikm2025-alibabacloud-analyticsup-activity-7395002060573810688-gIsD?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
-		},
-		{
-			"id": "t8",
-			"date": "Aug 2025 - September 2025",
-			"title": "AI for Health Summer School",
-			"description": "Qualified and attended summer school on Foundation Models for Health",
-			"institution": "EPFL, Lausanne, Switzerland",
-			"iconType": "edu",
-			"link": "https://www.linkedin.com/posts/kaylochee_aiforhealth-epfl-ellis-activity-7351605320663662604-6WuJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
-		},
-		{
-			"id": "t4",
-			"date": "July 2025 - August 2025",
-			"title": "Google AI Student Hackathon Runner-up",
-			"description": "2nd Place with PictureTales",
-			"institution": "Google",
-			"iconType": "award",
-			"link": "https://www.linkedin.com/posts/swaaz_googleaihackathon-studentinnovation-mentorship-ugcPost-7351578765438697472-Iq7d?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
-		},
-		{
-			"id": "t2",
-			"date": "Feb 2024 - Feb 2025",
-			"title": "AI Researcher Internship",
-			"description": "Published 1 ranked A conference. Awarded 'Excellent Intern'",
-			"institution": "Huawei Ireland Research Centre",
-			"iconType": "work",
-			"link": "https://www.linkedin.com/posts/kaylochee_as-my-internship-at-huawei-ireland-research-activity-7293937402945912832-yCiP?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
-		},
-		{
-			"id": "t3",
-			"date": "May 2023 - Sep 2024",
-			"title": "Teaching Assistant",
-			"institution": "Dublin City University",
-			"description": "Lab tutoring for C programming and Django web application for undergraduate students",
-			"iconType": "work"
-		},
-		{
-			"id": "t7",
-			"date": "Sep 2023 - Oct 2023",
-			"title": "Huawei Tech Arena Hackathon Runner-up",
-			"description": "2nd Place with SQL-Agent",
-			"institution": "Huawei Ireland Research Centre",
-			"iconType": "award",
-			"link": "https://www.linkedin.com/posts/kaylochee_huaweitecharena-llm-sql-activity-7112101082591322112-NORF?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
-		},
-		{
-			"id": "t1",
-			"date": "Nov 2022 - Present",
-			"title": "Ph.D. in Computer Science",
-			"institution": "Dublin City University",
-			"description": "Research topic: clinical risk prediction using foundation models",
-			"iconType": "edu"
-		},
-		{
-			"id": "t6",
-			"date": "July 2022 - Aug 2022",
-			"title": "Ph.D. Scholarship",
-			"institution": "Science Foundation Ireland",
-			"description": "Full-time PhD scholarship at Dublin City University",
-			"iconType": "award"
-		},
-		{
-			"id": "t5",
-			"date": "Oct 2018 - Oct 2022",
-			"title": "B.S. in Computer Science",
-			"institution": "University of Science, VNU-HCM",
-			"description": "Graduated with honors, GPA: 4.0/4.0",
-			"iconType": "edu"
-		}
-	],
-	"academia": {
-		"publications": [
-			{
-				"id": "pub-0",
-				"title": "Explainable AI for infection prevention and control: modeling CPE acquisition and patient outcomes in an Irish hospital with transformers",
-				"authors": [
-					"Minh-Khoi Pham",
-					"Tai Tan Mai",
-					"Martin Crane",
-					"Rob Brennan",
-					"Marie E. Ward",
-					"Una Geary",
-					"Declan Byrne",
-					"Brian O’Connell",
-					"Colm Bergin",
-					"Donncha Creagh",
-					"Nick McDonald",
-					"Marija Bezbradica"
-				],
-				"venue": "BMC Medical Informatics and Decision Making",
-				"year": 2025,
-				"url": "https://doi.org/10.1186/s12911-025-03214-1",
-				"abstract": "This study introduces an eXplainable AI (XAI) modeling framework to investigate CPE impact on patient outcomes from Electronic Medical Records (EMR) data of an Irish hospital. We analyzed an inpatient dataset from an Irish acute hospital (2018–2022), incorporating diagnostic codes, ward transitions, patient demographics, infection-related variables and contact network features. Several Transformer-based architectures (e.g., TabTransformer, TabNet) were benchmarked alongside traditional machine learning models. Clinical outcomes were predicted, and XAI techniques were applied to interpret model decisions."
-			},
-			{
-				"id": "pub-1",
-				"title": "Grammar-Guided Evolutionary Search for Discrete Prompt Optimisation",
-				"authors": [
-					"Muzhaffar Hazman",
-					"Minh-Khoi Pham",
-					"Shweta Soundararajan",
-					"Goncalo Mordido",
-					"Leonardo Custode",
-					"David Lynch",
-					"Giorgio Cruciata",
-					"Yucheng Shi",
-					"Hongmeng Song",
-					"Wang Chao",
-					"Pan Yue",
-					"Aleksandar Milenovic",
-					"Alexandros Agapitos"
-				],
-				"venue": "ECAI 2025",
-				"year": 2025,
-				"url": "https://doi.org/10.48550/arXiv.2507.10326",
-				"abstract": "We propose an evolutionary search approach to automated discrete LLM prompt optimisation consisting of two phases. In the first phase, grammar-guided genetic programming is invoked to synthesise prompt-creating programmes by searching the space of programmes populated by function compositions of syntactic, dictionary-based and LLM-based prompt-editing functions. In the second phase, local search is applied to explore the neighbourhoods of best-performing programmes in an attempt to further fine-tune their performance. Our approach outperforms three state-of-the-art prompt optimisation approaches, PromptWizard, OPRO, and RL-Prompt, on three relatively small general-purpose LLMs in four domain-specific challenging tasks."
-			},
-			{
-				"id": "pub-2",
-				"title": "Forecasting patient early readmission from Irish hospital discharge records using conventional machine learning models",
-				"authors": [
-					"Minh-Khoi Pham",
-					"Tai Tan Mai",
-					"Martin Crane",
-					"Rob Brennan",
-					"Marie E. Ward",
-					"Una Geary",
-					"Declan Byrne",
-					"Brian O’Connell",
-					"Colm Bergin",
-					"Donncha Creagh",
-					"Nick McDonald",
-					"Marija Bezbradica"
-				],
-				"venue": "MDPI Diagnostics",
-				"year": 2024,
-				"url": "https://doi.org/10.3390/diagnostics14212405",
-				"abstract": "Evaluated efficiency of ML models for forecasting patient readmission risks using demographics and historical records."
-			},
-			{
-				"id": "pub-3",
-				"title": "Semi-supervised Organ Segmentation with Mask Propagation Refinement and Uncertainty Estimation",
-				"authors": [
-					"Minh-Khoi Pham",
-					"et al."
-				],
-				"venue": "Lecture Notes in Computer Science",
-				"year": 2023,
-				"url": "https://link.springer.com/chapter/10.1007/978-3-031-23911-3_15",
-				"abstract": "Proposed a two-staged method employing 2D-based techniques for 3D segmentation, leveraging unlabeled data with semi-supervised learning."
-			},
-			{
-				"id": "pub-4",
-				"title": "SHREC 2022: pothole and crack detection in the road pavement using images and RGB-D data",
-				"authors": [
-					"Elia Moscoso Thompson",
-					"...",
-					"Minh-Khoi Pham",
-					"et al."
-				],
-				"venue": "Computers & Graphics",
-				"year": 2022,
-				"url": "https://doi.org/10.1016/j.cag.2022.07.018",
-				"abstract": "Implemented semi-supervised algorithms to detect and segment road cracks and street potholes."
-			},
-			{
-				"id": "pub-5",
-				"title": "A systems approach to managing the risk of healthcare acquired infection...",
-				"authors": [
-					"Marie E Ward",
-					"Minh-Khoi Pham",
-					"et al."
-				],
-				"venue": "Ergonomics",
-				"year": 2024,
-				"url": "https://doi.org/10.1080/00140139.2024.2396527",
-				"abstract": "A systems approach to managing risk of healthcare acquired infection, supported by AI and data science."
-			},
-			{
-				"id": "pub-6",
-				"title": "Improving Laryngoscopy Image Analysis Through Integration of Global Information...",
-				"authors": [
-					"Thao Thi Phuong Dao",
-					"Minh-Khoi Pham",
-					"et al."
-				],
-				"venue": "Journal of Imaging Informatics in Medicine",
-				"year": 2024,
-				"url": "https://doi.org/10.1007/s10278-024-01068-z",
-				"abstract": "Dataset and method for object detection and image classification in laryngoscopy images."
-			},
-			{
-				"id": "pub-7",
-				"title": "Vision-Based Assistance for Vocal Fold Identification in Laryngoscopy with Knowledge Distillation",
-				"authors": [
-					"Thao Thi Phuong Dao",
-					"Minh-Khoi Pham",
-					"et al."
-				],
-				"venue": "MEDINFO",
-				"year": 2023,
-				"url": "https://doi.org/10.3233/SHTI231104",
-				"abstract": "Lightweight network utilizing knowledge distillation for vocal fold identification."
-			},
-			{
-				"id": "pub-8",
-				"title": "Text Query based Traffic Video Event Retrieval with Global-Local Fusion Embedding",
-				"authors": [
-					"Thang-Long Nguyen-Ho",
-					"Minh-Khoi Pham",
-					"et al."
-				],
-				"venue": "CVPR 2022 Workshop",
-				"year": 2022,
-				"url": "https://openaccess.thecvf.com/content/CVPR2022W/AICity/papers/Nguyen-Ho_Text_Query_Based_Traffic_Video_Event_Retrieval_With_Global-Local_Fusion_CVPRW_2022_paper.pdf",
-				"abstract": "Improved pipeline for video retrieval based on query texts about traffic events."
-			},
-			{
-				"id": "pub-9",
-				"title": "Vision-based Assistance for Vocal Fold Identification in Laryngoscopy...",
-				"authors": [
-					"Thao Thi Phuong Dao",
-					"Minh-Khoi Pham",
-					"et al."
-				],
-				"venue": "CVPR 2022 Workshop",
-				"year": 2022,
-				"url": "https://drive.google.com/file/d/1IImyUiGCpZzt6YAUiDALJQ5NWLRYQ84f/view?usp=sharing",
-				"abstract": "Dataset and efficient model for vocal fold identification."
-			},
-			{
-				"id": "pub-10",
-				"title": "HCMUS at MediaEval 2021: Facial Data De-identification...",
-				"authors": [
-					"Minh-Khoi Pham",
-					"et al."
-				],
-				"venue": "MediaEval 2021",
-				"year": 2021,
-				"url": "http://ceur-ws.org/Vol-3181/paper72.pdf",
-				"abstract": "Adversarial attack algorithms on driver' faces for de-identification."
-			},
-			{
-				"id": "pub-11",
-				"title": "SHREC 2021: Retrieval of cultural heritage objects",
-				"authors": [
-					"Ivan Sipiran",
-					"Minh-Khoi Pham",
-					"et al."
-				],
-				"venue": "Computers & Graphics",
-				"year": 2021,
-				"url": "https://doi.org/10.1016/j.cag.2021.07.010",
-				"abstract": "Retrieval of cultural heritage objects using 3D mesh-based approach."
-			},
-			{
-				"id": "pub-12",
-				"title": "HCMUS at Pixel Privacy 2020: Quality Camouflage...",
-				"authors": [
-					"Minh-Khoi Pham",
-					"et al."
-				],
-				"venue": "MediaEval 2020",
-				"year": 2020,
-				"url": "http://ceur-ws.org/Vol-2882/paper41.pdf",
-				"abstract": "Adversarial attack algorithms to degrade image quality for privacy."
-			}
-		],
-		"education": [
-			{
-				"id": "edu-1",
-				"institution": "Dublin City University",
-				"degree": "Ph.D. in Computer Science",
-				"year": "2022 - 2026",
-				"description": "Develop AI systems for clinical risk prediction using large foundation models and finetune on health records."
-			},
-			{
-				"id": "edu-2",
-				"institution": "University of Science, VNU-HCM",
-				"degree": "B.S. in Computer Science",
-				"year": "2018 - 2022",
-				"description": "Honors Program. GPA: 4.0/4.0 | First Class Honors"
-			},
-			{
-				"id": "edu-3",
-				"institution": "Nguyen Thi Minh Khai High School",
-				"degree": "High School Diploma",
-				"year": "2015 - 2018",
-				"description": ""
-			},
-			{
-				"id": "edu-4",
-				"institution": "Tran Van On Middle School",
-				"degree": "Middle School Diploma",
-				"year": "2012 - 2015",
-				"description": ""
-			}
-		],
-		"certificates": [
-			{
-				"id": "cert-1",
-				"title": "Outstanding GPA",
-				"issuer": "University of Science, VNU-HCM",
-				"date": "2022",
-				"link": "#"
-			},
-			{
-				"id": "cert-2",
-				"title": "Panasonic Special Scholarship",
-				"issuer": "Panasonic",
-				"date": "2021",
-				"link": "#"
-			},
-			{
-				"id": "cert-3",
-				"title": "Student Excellence Certificate",
-				"issuer": "HCMC Information Department",
-				"date": "2021",
-				"link": "#"
-			}
-		]
-	},
-	"experiences": {
-		"industry": [
-			{
-				"id": "ind-1",
-				"company": "Huawei Ireland Research Centre",
-				"role": "AI Researcher Internship",
-				"duration": "Feb 2024 - Feb 2025",
-				"description": "Awarded Excellent Intern. Designing LLM-powered system for automatic network configuration. Key responsibilities: Literature Review, System Design, Key Technologies implementation, testing and benchmarking. LLM Reasoning/Planning improvement (Technical documents RAG, Self-reflection). Prompt Engineering with enhanced decoding methods (ICL, CoT, CoTSC, ToT,…). Research and Implementation of Discrete Prompt Optimization using Grammartical Evolution (Evolutionary Algorithm)"
-			},
-			{
-				"id": "ind-2",
-				"company": "Dublin City University, ADAPT Centre",
-				"role": "Teaching Assistant",
-				"duration": "May 2023 - Sep 2024",
-				"description": "Worked as a lab tutor, assisted Dr. Tai Tan Mai in module “Programming System” involving basic C programming for undergraduate students. Worked as a lab tutor, assisted Dr. Darragh O’Brien in module “Programming Fundamentals” involving Django web application for undergraduate students"
-			},
-			{
-				"id": "ind-3",
-				"company": "MAPDAS",
-				"role": "Research Intern",
-				"duration": "May 2022 - Aug 2022",
-				"description": "Traffic signboard detection system for mobile mapping in panoramic street images using deep learning models. My Role: Engineered the core classification and detection modules, achieving an impressive F1 score of over 80%. Actively participated in the iterative development process: encompassing data labeling, model training, reevaluation while maintaining bi-weekly reports with the stakeholders. Achievement: The system was built for a collaborative project between SELab and MapDAS secured a position among the top 20 startup projects selected for funding by VINIF",
-				"link": "https://vietnamnews.vn/economy/524263/vingroup-to-support-science-and-technology-projects.html"
-			},
-			{
-				"id": "ind-4",
-				"company": "Selab, University of Science, VNU-HCM",
-				"role": "Research Assistant",
-				"duration": "Oct 2019 - Oct 2022",
-				"description": "Conducted research on Adversarial Attacks, Image Segmentation, and Facial Recognition."
-			}
-		],
-		"projects": [
-			{
-				"id": "proj-1",
-				"title": "PictureTales",
-				"description": "At the Google Student AI Hackathon 2025 Dublin, our team developed PictureTales, an AI-powered platform that transforms user photos into accessible, engaging storybooks for dyslexic readers. Built with the Gemini API, it integrates advanced summarization, adaptive storytelling, consistent image generation, and seamless text-to-speech for an immersive, personalized reading experience. The interface is designed for accessibility, allowing users to freely adjust fonts, sizes, and voice styles, ensuring each story fits individual reading needs while maintaining a user-friendly, intuitive experience.",
-				"imageUrl": "/projects/picturetales.png",
-				"link": "https://picture-tales.vercel.app",
-				"tags": [
-					"Gemini AI",
-					"Text-to-Speech",
-					"Image Generation"
-				]
-			},
-			{
-				"id": "proj-2",
-				"title": "Vehicle Counting",
-				"description": "Application for tracking and counting vehicles from surveillance cameras using YOLOv5 and DeepSORT.",
-				"imageUrl": "/projects/vehicle_tracking.gif",
-				"link": "https://github.com/kaylode/vehicle-counting",
-				"tags": [
-					"PyTorch",
-					"YOLOv5",
-					"Object Tracking"
-				]
-			},
-			{
-				"id": "proj-3",
-				"title": "THESEUS",
-				"description": "A general template for PyTorch deep learning projects supporting classification, detection, and segmentation.",
-				"imageUrl": "/projects/github.png",
-				"link": "https://github.com/kaylode/theseus",
-				"tags": [
-					"PyTorch",
-					"Template",
-					"Computer Vision"
-				]
-			},
-			{
-				"id": "proj-4",
-				"title": "Meal Analysis Web-app",
-				"description": "Technicals: YOLOv5 model, CNN classification, FlaskAPI, Ngrok, - Created a web application for precise ingredient and nutrition analysis from meal photos using advanced deep learning models.\t- The project, initially conceived as a class assignment, gained significant recognition with over 200 stars on GitHub.\n- My Role: Designed the core workflow of the system, including developing the API server and ensuring the seamless orchestration of application hosting on a remote server. Took charge of implementing and closely monitoring the performance of the core deep learning models throughout the project.",
-				"imageUrl": "/projects/food_api.jpg",
-				"link": "https://github.com/lannguyen0910/food-recognition",
-				"tags": [
-					"Deep Learning",
-					"Food Analysis",
-					"Object Detection"
-				]
-			},
-			{
-				"id": "proj-5",
-				"title": "Vietnamese OCR Toolbox",
-				"description": "Toolbox to retrieve Vietnamese text from receipts or documents.",
-				"imageUrl": "/projects/vnocrtoolbox.png",
-				"link": "https://github.com/kaylode/vietnamese-ocr-toolbox",
-				"tags": [
-					"OCR",
-					"C++",
-					"Text Detection"
-				]
-			},
-			{
-				"id": "proj-6",
-				"title": "K.A.I Discord Bot",
-				"description": "Being inspired by Marvel's Ultron/Jarvis, K.A.I is created as a Discord bot written using discord.py that can do a lot of things an AI can do. From basic usage such as customable alarm system, streaming music, translating multiple languages, searching wikipedia, to even more intelligence tasks like computer vision (classification, detection, segmentation, etc), natural language processing (telling jokes, answering questions, chatting)* responding with voice, or even being voice-controlled.",
-				"imageUrl": "/projects/kai.jpg",
-				"link": "https://github.com/kaylode/kai",
-				"tags": [
-					"Python",
-					"Discord.py",
-					"AI Assistant"
-				]
-			},
-			{
-				"id": "proj-7",
-				"title": "Video Traffic Event Retrieval",
-				"description": "Pipeline to retrieve video clips matching text prompts. Runner-up in AI City Challenge 2022.",
-				"imageUrl": "/projects/aic22.png",
-				"link": "https://github.com/nhtlongcs/AIC2022-VER",
-				"tags": [
-					"PyTorch",
-					"Retrieval",
-					"AI City Challenge"
-				]
-			},
-			{
-				"id": "proj-8",
-				"title": "Facemask Removal",
-				"description": "Application for removing facemasks from portraits using GANs.",
-				"imageUrl": "/projects/facemask.png",
-				"link": "https://github.com/kaylode/facemask-removal",
-				"tags": [
-					"PyTorch",
-					"GAN",
-					"Inpainting"
-				]
-			},
-			{
-				"id": "proj-9",
-				"title": "Street Pothole Segmentation",
-				"description": "Semi-supervised algorithms to detect and segment road cracks and potholes.",
-				"imageUrl": "/projects/pothole.png",
-				"link": "https://github.com/kaylode/shrec22-pothole",
-				"tags": [
-					"Segmentation",
-					"Semi-supervised",
-					"Pothole Detection"
-				]
-			},
-			{
-				"id": "proj-10",
-				"title": "Interactive CT Volume Organ Segmentation",
-				"description": "Two-staged method for 3D segmentation using 2D techniques and active learning.",
-				"imageUrl": "/projects/ivos.png",
-				"link": "https://github.com/kaylode/ivos",
-				"tags": [
-					"Medical AI",
-					"Active Learning",
-					"Segmentation"
-				]
-			}
-		],
-		"awards": [
-			{
-				"id": "aw-6",
-				"year": 2025,
-				"title": "1st Place - Alibaba Cloud CIKM 2025 Hackathon",
-				"event": "Alibaba Cloud",
-				"description": "At the Alibaba Cloud CIKM 2025 Hackathon, our team developed an innovative e-commerce product matching system using Large Language Models (LLMs). We focused on enhancing product discovery and recommendation accuracy by leveraging advanced semantic understanding and augmentation techniques. The solution demonstrated significant improvements in matching relevance, showcasing the potential of LLMs to revolutionize e-commerce search and personalization.",
-				"link": "https://www.linkedin.com/posts/kaylochee_cikm2025-alibabacloud-analyticsup-activity-7395002060573810688-gIsD?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
-			},
-			{
-				"id": "aw-1",
-				"title": "2nd Place - Google AI Student Hackathon",
-				"event": "Google Dublin",
-				"year": 2025,
-				"description": "At the Google Student AI Hackathon 2025 Dublin, our team developed PictureTales, an AI-powered platform that transforms user photos into accessible, engaging storybooks for dyslexic readers. Built with the Gemini API, it integrates advanced summarization, adaptive storytelling, consistent image generation, and seamless text-to-speech for an immersive, personalized reading experience. The interface is designed for accessibility, allowing users to freely adjust fonts, sizes, and voice styles, ensuring each story fits individual reading needs while maintaining a user-friendly, intuitive experience.",
-				"link": "https://www.linkedin.com/posts/swaaz_googleaihackathon-studentinnovation-mentorship-ugcPost-7351578765438697472-Iq7d?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
-			},
-			{
-				"id": "aw-2",
-				"title": "Runner-up - Huawei Tech Arena Hackathon",
-				"event": "Huawei Ireland",
-				"description": "We were awarded runner-up team at the hackathon in Dublin, Ireland. We deployed a LLM-based chat assistant that can translate user's data query into sql commands and execute it to retrieve relevant information. The evaluation was based on 4 aspects of the system: intelligence, reliability, safety, and trustworthiness",
-				"year": 2023,
-				"link": "https://www.linkedin.com/posts/kaylochee_huawei-tech-arena-hackathon-2023-activity-7119341339686987776-5501?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
-			},
-			{
-				"id": "aw-3",
-				"title": "Runner-up - AI City Challenge Track 2",
-				"event": "CVPR Workshop",
-				"year": 2022,
-				"link": "https://github.com/nhtlongcs/AIC2022-VER"
-			},
-			{
-				"id": "aw-4",
-				"title": "1st Place - Pixel Privacy MediaEval",
-				"event": "MediaEval Benchmark",
-				"year": 2020
-			},
-			{
-				"id": "aw-5",
-				"title": "1st Place - AI4VN Hackathon",
-				"event": "AI4VN",
-				"year": 2020
-			}
-		],
-		"keywords": [
-			"Machine Learning",
-			"Computer Vision",
-			"Generative AI",
-			"Large Language Models",
-			"Prompt Engineering",
-			"PyTorch",
-			"Clinical Foundation Models"
-		]
-	},
-	"tracking": {
-		"leetcode": {
-			"solved": 423,
-			"streak": 14,
-			"dailyDone": true,
-			"monthlySolves": [
-				{
-					"month": "Mar",
-					"year": 2023,
-					"solved": 15
-				},
-				{
-					"month": "Apr",
-					"year": 2023,
-					"solved": 20
-				},
-				{
-					"month": "May",
-					"year": 2023,
-					"solved": 10
-				},
-				{
-					"month": "Jun",
-					"year": 2023,
-					"solved": 25
-				},
-				{
-					"month": "Jul",
-					"year": 2023,
-					"solved": 30
-				},
-				{
-					"month": "Aug",
-					"year": 2023,
-					"solved": 15
-				},
-				{
-					"month": "Sep",
-					"year": 2023,
-					"solved": 40
-				},
-				{
-					"month": "Oct",
-					"year": 2023,
-					"solved": 35
-				},
-				{
-					"month": "Nov",
-					"year": 2023,
-					"solved": 20
-				},
-				{
-					"month": "Dec",
-					"year": 2023,
-					"solved": 10
-				},
-				{
-					"month": "Jan",
-					"year": 2024,
-					"solved": 50
-				},
-				{
-					"month": "Feb",
-					"year": 2024,
-					"solved": 25
-				}
-			]
-		},
-		"github": {
-			"totalStars": 128,
-			"monthlyCommits": [
-				{
-					"month": "Mar",
-					"year": 2023,
-					"commits": 45
-				},
-				{
-					"month": "Apr",
-					"year": 2023,
-					"commits": 62
-				},
-				{
-					"month": "May",
-					"year": 2023,
-					"commits": 38
-				},
-				{
-					"month": "Jun",
-					"year": 2023,
-					"commits": 50
-				},
-				{
-					"month": "Jul",
-					"year": 2023,
-					"commits": 25
-				},
-				{
-					"month": "Aug",
-					"year": 2023,
-					"commits": 70
-				},
-				{
-					"month": "Sep",
-					"year": 2023,
-					"commits": 90
-				},
-				{
-					"month": "Oct",
-					"year": 2023,
-					"commits": 110
-				},
-				{
-					"month": "Nov",
-					"year": 2023,
-					"commits": 40
-				},
-				{
-					"month": "Dec",
-					"year": 2023,
-					"commits": 35
-				},
-				{
-					"month": "Jan",
-					"year": 2024,
-					"commits": 85
-				},
-				{
-					"month": "Feb",
-					"year": 2024,
-					"commits": 60
-				}
-			]
-		},
-		"travel": {
-			"totalCountries": 8,
-			"countries": [
-				"Vietnam",
-				"Ireland",
-				"UK",
-				"France",
-				"Germany",
-				"Korean",
-				"Singapore",
-				"Italy"
-			]
-		},
-		"goals": [
-			{
-				"title": "Research Papers Read",
-				"current": 45,
-				"total": 100,
-				"unit": "papers"
-			},
-			{
-				"title": "Books Read",
-				"current": 8,
-				"total": 12,
-				"unit": "books"
-			}
-		]
-	},
-	"blog": [
-		{
-			"id": "cmdceujgf000t8o3ejcmu87h3",
-			"title": "Machine Learning in Computer Vision",
-			"date": "2024-02-10",
-			"excerpt": "Exploring the latest developments in machine learning applications for computer vision tasks.",
-			"content": "# Machine Learning in Computer Vision\n\nComputer vision has seen remarkable progress..."
-		}
-	]
+  "profile": {
+    "name": "Minh-Khoi Pham",
+    "title": "Ph.D. Student in Computer Science",
+    "affiliation": "Dublin City University",
+    "location": "Dublin, Ireland 🇮🇪 (Originally from Vietnam 🇻🇳)",
+    "email": "minhkhoi.pham@adaptcentre.ie",
+    "avatarUrl": "https://github.com/kaylode.png",
+    "bio": "I am currently pursuing a Ph.D. at Dublin City University, focusing on using advanced machine learning and deep learning models to study patients' electronic health records.",
+    "about": [
+      "I'm an pursuing my Ph.D. of Computer Applications at Dublin City University, Dublin, Ireland. My current research focuses on developing and critically evaluating foundation model approaches for clinical risk prediction using large-scale structured electronic health records. I am particularly interested in how pretrained models can support robust zero-shot and few-shot inference for rare and imbalanced outcomes, such as healthcare-associated infections, while reducing reliance on task-specific labeling and retraining. My work examines how temporal structure, feature heterogeneity, patient interaction networks, and retrieval mechanisms influence model performance, generalisability, and failure modes in real hospital settings.",
+      "I'm passionate about discovering new methods, state-of-the-art models, and applying or reimplementing them. Technology evolves daily, so I dedicate effort to exploring as many new innovations as possible. All my code is open source on my GitHub for educational purposes and for fellow researchers and developers to reference."
+    ],
+    "roles": [
+      "AI Researcher",
+      "Ph.D. Student",
+      "Machine Learning Engineer",
+      "Machine Learning Researcher",
+      "Data Scientist",
+      "Applied Scientist"
+    ],
+    "interests": [
+      "Gaming",
+      "Marvel Comics",
+      "Investing",
+      "Vietnamese Iced Coffee",
+      "Research",
+      "Open Source"
+    ],
+    "resumeUrl": "https://drive.google.com/file/d/1QuBwk92yxYacEvgHm6d2KKRFAgVm873L/view?usp=sharing",
+    "socials": {
+      "github": "https://github.com/kaylode",
+      "twitter": "https://x.com/_kaylode",
+      "scholar": "https://scholar.google.com/citations?user=kaylode",
+      "linkedin": "https://linkedin.com/in/kaylochee",
+      "facebook": "https://www.facebook.com/Kaylode",
+      "discord": "https://discordapp.com/users/326944513396441089",
+      "instagram": "https://www.instagram.com/_kaylochee",
+      "steam": "https://steamcommunity.com/id/Kaylode/",
+      "orcid": "https://orcid.org/0000-0003-3211-9076"
+    }
+  },
+  "timeline": [
+    {
+      "id": "t4",
+      "date": "Nov 2025 - Dec 2025",
+      "title": "Alibaba Cloud CIKM 2025 Hackathon Winner",
+      "description": "Winner with LLM e-commerce product matching using LLM",
+      "institution": "Alibaba Cloud",
+      "iconType": "award",
+      "link": "https://www.linkedin.com/posts/kaylochee_cikm2025-alibabacloud-analyticsup-activity-7395002060573810688-gIsD?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
+    },
+    {
+      "id": "t8",
+      "date": "Aug 2025 - September 2025",
+      "title": "AI for Health Summer School",
+      "description": "Qualified and attended summer school on Foundation Models for Health",
+      "institution": "EPFL, Lausanne, Switzerland",
+      "iconType": "edu",
+      "link": "https://www.linkedin.com/posts/kaylochee_aiforhealth-epfl-ellis-activity-7351605320663662604-6WuJ?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
+    },
+    {
+      "id": "t4",
+      "date": "July 2025 - August 2025",
+      "title": "Google AI Student Hackathon Runner-up",
+      "description": "2nd Place with PictureTales",
+      "institution": "Google",
+      "iconType": "award",
+      "link": "https://www.linkedin.com/posts/swaaz_googleaihackathon-studentinnovation-mentorship-ugcPost-7351578765438697472-Iq7d?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
+    },
+    {
+      "id": "t2",
+      "date": "Feb 2024 - Feb 2025",
+      "title": "AI Researcher Internship",
+      "description": "Published 1 ranked A conference. Awarded 'Excellent Intern'",
+      "institution": "Huawei Ireland Research Centre",
+      "iconType": "work",
+      "link": "https://www.linkedin.com/posts/kaylochee_as-my-internship-at-huawei-ireland-research-activity-7293937402945912832-yCiP?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
+    },
+    {
+      "id": "t3",
+      "date": "May 2023 - Sep 2024",
+      "title": "Teaching Assistant",
+      "institution": "Dublin City University",
+      "description": "Lab tutoring for C programming and Django web application for undergraduate students",
+      "iconType": "work"
+    },
+    {
+      "id": "t7",
+      "date": "Sep 2023 - Oct 2023",
+      "title": "Huawei Tech Arena Hackathon Runner-up",
+      "description": "2nd Place with SQL-Agent",
+      "institution": "Huawei Ireland Research Centre",
+      "iconType": "award",
+      "link": "https://www.linkedin.com/posts/kaylochee_huaweitecharena-llm-sql-activity-7112101082591322112-NORF?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
+    },
+    {
+      "id": "t1",
+      "date": "Nov 2022 - Present",
+      "title": "Ph.D. in Computer Science",
+      "institution": "Dublin City University",
+      "description": "Research topic: clinical risk prediction using foundation models",
+      "iconType": "edu"
+    },
+    {
+      "id": "t6",
+      "date": "July 2022 - Aug 2022",
+      "title": "Ph.D. Scholarship",
+      "institution": "Science Foundation Ireland",
+      "description": "Full-time PhD scholarship at Dublin City University",
+      "iconType": "award"
+    },
+    {
+      "id": "t5",
+      "date": "Oct 2018 - Oct 2022",
+      "title": "B.S. in Computer Science",
+      "institution": "University of Science, VNU-HCM",
+      "description": "Graduated with honors, GPA: 4.0/4.0",
+      "iconType": "edu"
+    }
+  ],
+  "academia": {
+    "publications": [
+      {
+        "id": "pub-0",
+        "title": "Explainable AI for infection prevention and control: modeling CPE acquisition and patient outcomes in an Irish hospital with transformers",
+        "authors": [
+          "Minh-Khoi Pham",
+          "Tai Tan Mai",
+          "Martin Crane",
+          "Rob Brennan",
+          "Marie E. Ward",
+          "Una Geary",
+          "Declan Byrne",
+          "Brian O’Connell",
+          "Colm Bergin",
+          "Donncha Creagh",
+          "Nick McDonald",
+          "Marija Bezbradica"
+        ],
+        "venue": "BMC Medical Informatics and Decision Making",
+        "year": 2025,
+        "url": "https://doi.org/10.1186/s12911-025-03214-1",
+        "abstract": "This study introduces an eXplainable AI (XAI) modeling framework to investigate CPE impact on patient outcomes from Electronic Medical Records (EMR) data of an Irish hospital. We analyzed an inpatient dataset from an Irish acute hospital (2018–2022), incorporating diagnostic codes, ward transitions, patient demographics, infection-related variables and contact network features. Several Transformer-based architectures (e.g., TabTransformer, TabNet) were benchmarked alongside traditional machine learning models. Clinical outcomes were predicted, and XAI techniques were applied to interpret model decisions."
+      },
+      {
+        "id": "pub-1",
+        "title": "Grammar-Guided Evolutionary Search for Discrete Prompt Optimisation",
+        "authors": [
+          "Muzhaffar Hazman",
+          "Minh-Khoi Pham",
+          "Shweta Soundararajan",
+          "Goncalo Mordido",
+          "Leonardo Custode",
+          "David Lynch",
+          "Giorgio Cruciata",
+          "Yucheng Shi",
+          "Hongmeng Song",
+          "Wang Chao",
+          "Pan Yue",
+          "Aleksandar Milenovic",
+          "Alexandros Agapitos"
+        ],
+        "venue": "ECAI 2025",
+        "year": 2025,
+        "url": "https://doi.org/10.48550/arXiv.2507.10326",
+        "abstract": "We propose an evolutionary search approach to automated discrete LLM prompt optimisation consisting of two phases. In the first phase, grammar-guided genetic programming is invoked to synthesise prompt-creating programmes by searching the space of programmes populated by function compositions of syntactic, dictionary-based and LLM-based prompt-editing functions. In the second phase, local search is applied to explore the neighbourhoods of best-performing programmes in an attempt to further fine-tune their performance. Our approach outperforms three state-of-the-art prompt optimisation approaches, PromptWizard, OPRO, and RL-Prompt, on three relatively small general-purpose LLMs in four domain-specific challenging tasks."
+      },
+      {
+        "id": "pub-2",
+        "title": "Forecasting patient early readmission from Irish hospital discharge records using conventional machine learning models",
+        "authors": [
+          "Minh-Khoi Pham",
+          "Tai Tan Mai",
+          "Martin Crane",
+          "Rob Brennan",
+          "Marie E. Ward",
+          "Una Geary",
+          "Declan Byrne",
+          "Brian O’Connell",
+          "Colm Bergin",
+          "Donncha Creagh",
+          "Nick McDonald",
+          "Marija Bezbradica"
+        ],
+        "venue": "MDPI Diagnostics",
+        "year": 2024,
+        "url": "https://doi.org/10.3390/diagnostics14212405",
+        "abstract": "Evaluated efficiency of ML models for forecasting patient readmission risks using demographics and historical records."
+      },
+      {
+        "id": "pub-3",
+        "title": "Semi-supervised Organ Segmentation with Mask Propagation Refinement and Uncertainty Estimation",
+        "authors": [
+          "Minh-Khoi Pham",
+          "et al."
+        ],
+        "venue": "Lecture Notes in Computer Science",
+        "year": 2023,
+        "url": "https://link.springer.com/chapter/10.1007/978-3-031-23911-3_15",
+        "abstract": "Proposed a two-staged method employing 2D-based techniques for 3D segmentation, leveraging unlabeled data with semi-supervised learning."
+      },
+      {
+        "id": "pub-4",
+        "title": "SHREC 2022: pothole and crack detection in the road pavement using images and RGB-D data",
+        "authors": [
+          "Elia Moscoso Thompson",
+          "...",
+          "Minh-Khoi Pham",
+          "et al."
+        ],
+        "venue": "Computers & Graphics",
+        "year": 2022,
+        "url": "https://doi.org/10.1016/j.cag.2022.07.018",
+        "abstract": "Implemented semi-supervised algorithms to detect and segment road cracks and street potholes."
+      },
+      {
+        "id": "pub-5",
+        "title": "A systems approach to managing the risk of healthcare acquired infection...",
+        "authors": [
+          "Marie E Ward",
+          "Minh-Khoi Pham",
+          "et al."
+        ],
+        "venue": "Ergonomics",
+        "year": 2024,
+        "url": "https://doi.org/10.1080/00140139.2024.2396527",
+        "abstract": "A systems approach to managing risk of healthcare acquired infection, supported by AI and data science."
+      },
+      {
+        "id": "pub-6",
+        "title": "Improving Laryngoscopy Image Analysis Through Integration of Global Information...",
+        "authors": [
+          "Thao Thi Phuong Dao",
+          "Minh-Khoi Pham",
+          "et al."
+        ],
+        "venue": "Journal of Imaging Informatics in Medicine",
+        "year": 2024,
+        "url": "https://doi.org/10.1007/s10278-024-01068-z",
+        "abstract": "Dataset and method for object detection and image classification in laryngoscopy images."
+      },
+      {
+        "id": "pub-7",
+        "title": "Vision-Based Assistance for Vocal Fold Identification in Laryngoscopy with Knowledge Distillation",
+        "authors": [
+          "Thao Thi Phuong Dao",
+          "Minh-Khoi Pham",
+          "et al."
+        ],
+        "venue": "MEDINFO",
+        "year": 2023,
+        "url": "https://doi.org/10.3233/SHTI231104",
+        "abstract": "Lightweight network utilizing knowledge distillation for vocal fold identification."
+      },
+      {
+        "id": "pub-8",
+        "title": "Text Query based Traffic Video Event Retrieval with Global-Local Fusion Embedding",
+        "authors": [
+          "Thang-Long Nguyen-Ho",
+          "Minh-Khoi Pham",
+          "et al."
+        ],
+        "venue": "CVPR 2022 Workshop",
+        "year": 2022,
+        "url": "https://openaccess.thecvf.com/content/CVPR2022W/AICity/papers/Nguyen-Ho_Text_Query_Based_Traffic_Video_Event_Retrieval_With_Global-Local_Fusion_CVPRW_2022_paper.pdf",
+        "abstract": "Improved pipeline for video retrieval based on query texts about traffic events."
+      },
+      {
+        "id": "pub-9",
+        "title": "Vision-based Assistance for Vocal Fold Identification in Laryngoscopy...",
+        "authors": [
+          "Thao Thi Phuong Dao",
+          "Minh-Khoi Pham",
+          "et al."
+        ],
+        "venue": "CVPR 2022 Workshop",
+        "year": 2022,
+        "url": "https://drive.google.com/file/d/1IImyUiGCpZzt6YAUiDALJQ5NWLRYQ84f/view?usp=sharing",
+        "abstract": "Dataset and efficient model for vocal fold identification."
+      },
+      {
+        "id": "pub-10",
+        "title": "HCMUS at MediaEval 2021: Facial Data De-identification...",
+        "authors": [
+          "Minh-Khoi Pham",
+          "et al."
+        ],
+        "venue": "MediaEval 2021",
+        "year": 2021,
+        "url": "http://ceur-ws.org/Vol-3181/paper72.pdf",
+        "abstract": "Adversarial attack algorithms on driver' faces for de-identification."
+      },
+      {
+        "id": "pub-11",
+        "title": "SHREC 2021: Retrieval of cultural heritage objects",
+        "authors": [
+          "Ivan Sipiran",
+          "Minh-Khoi Pham",
+          "et al."
+        ],
+        "venue": "Computers & Graphics",
+        "year": 2021,
+        "url": "https://doi.org/10.1016/j.cag.2021.07.010",
+        "abstract": "Retrieval of cultural heritage objects using 3D mesh-based approach."
+      },
+      {
+        "id": "pub-12",
+        "title": "HCMUS at Pixel Privacy 2020: Quality Camouflage...",
+        "authors": [
+          "Minh-Khoi Pham",
+          "et al."
+        ],
+        "venue": "MediaEval 2020",
+        "year": 2020,
+        "url": "http://ceur-ws.org/Vol-2882/paper41.pdf",
+        "abstract": "Adversarial attack algorithms to degrade image quality for privacy."
+      }
+    ],
+    "education": [
+      {
+        "id": "edu-1",
+        "institution": "Dublin City University",
+        "degree": "Ph.D. in Computer Science",
+        "year": "2022 - 2026",
+        "description": "Develop AI systems for clinical risk prediction using large foundation models and finetune on health records."
+      },
+      {
+        "id": "edu-2",
+        "institution": "University of Science, VNU-HCM",
+        "degree": "B.S. in Computer Science",
+        "year": "2018 - 2022",
+        "description": "Honors Program. GPA: 4.0/4.0 | First Class Honors"
+      },
+      {
+        "id": "edu-3",
+        "institution": "Nguyen Thi Minh Khai High School",
+        "degree": "High School Diploma",
+        "year": "2015 - 2018",
+        "description": ""
+      },
+      {
+        "id": "edu-4",
+        "institution": "Tran Van On Middle School",
+        "degree": "Middle School Diploma",
+        "year": "2012 - 2015",
+        "description": ""
+      }
+    ],
+    "certificates": [
+      {
+        "id": "cert-1",
+        "title": "Outstanding GPA",
+        "issuer": "University of Science, VNU-HCM",
+        "date": "2022",
+        "link": "#"
+      },
+      {
+        "id": "cert-2",
+        "title": "Panasonic Special Scholarship",
+        "issuer": "Panasonic",
+        "date": "2021",
+        "link": "#"
+      },
+      {
+        "id": "cert-3",
+        "title": "Student Excellence Certificate",
+        "issuer": "HCMC Information Department",
+        "date": "2021",
+        "link": "#"
+      }
+    ]
+  },
+  "experiences": {
+    "industry": [
+      {
+        "id": "ind-1",
+        "company": "Huawei Ireland Research Centre",
+        "role": "AI Researcher Internship",
+        "duration": "Feb 2024 - Feb 2025",
+        "description": "Awarded Excellent Intern. Designing LLM-powered system for automatic network configuration. Key responsibilities: Literature Review, System Design, Key Technologies implementation, testing and benchmarking. LLM Reasoning/Planning improvement (Technical documents RAG, Self-reflection). Prompt Engineering with enhanced decoding methods (ICL, CoT, CoTSC, ToT,…). Research and Implementation of Discrete Prompt Optimization using Grammartical Evolution (Evolutionary Algorithm)"
+      },
+      {
+        "id": "ind-2",
+        "company": "Dublin City University, ADAPT Centre",
+        "role": "Teaching Assistant",
+        "duration": "May 2023 - Sep 2024",
+        "description": "Worked as a lab tutor, assisted Dr. Tai Tan Mai in module “Programming System” involving basic C programming for undergraduate students. Worked as a lab tutor, assisted Dr. Darragh O’Brien in module “Programming Fundamentals” involving Django web application for undergraduate students"
+      },
+      {
+        "id": "ind-3",
+        "company": "MAPDAS",
+        "role": "Research Intern",
+        "duration": "May 2022 - Aug 2022",
+        "description": "Traffic signboard detection system for mobile mapping in panoramic street images using deep learning models. My Role: Engineered the core classification and detection modules, achieving an impressive F1 score of over 80%. Actively participated in the iterative development process: encompassing data labeling, model training, reevaluation while maintaining bi-weekly reports with the stakeholders. Achievement: The system was built for a collaborative project between SELab and MapDAS secured a position among the top 20 startup projects selected for funding by VINIF",
+        "link": "https://vietnamnews.vn/economy/524263/vingroup-to-support-science-and-technology-projects.html"
+      },
+      {
+        "id": "ind-4",
+        "company": "Selab, University of Science, VNU-HCM",
+        "role": "Research Assistant",
+        "duration": "Oct 2019 - Oct 2022",
+        "description": "Conducted research on Adversarial Attacks, Image Segmentation, and Facial Recognition."
+      }
+    ],
+    "projects": [
+      {
+        "id": "proj-1",
+        "title": "PictureTales",
+        "description": "At the Google Student AI Hackathon 2025 Dublin, our team developed PictureTales, an AI-powered platform that transforms user photos into accessible, engaging storybooks for dyslexic readers. Built with the Gemini API, it integrates advanced summarization, adaptive storytelling, consistent image generation, and seamless text-to-speech for an immersive, personalized reading experience. The interface is designed for accessibility, allowing users to freely adjust fonts, sizes, and voice styles, ensuring each story fits individual reading needs while maintaining a user-friendly, intuitive experience.",
+        "imageUrl": "/projects/picturetales.png",
+        "link": "https://picture-tales.vercel.app",
+        "tags": [
+          "Gemini AI",
+          "Text-to-Speech",
+          "Image Generation"
+        ]
+      },
+      {
+        "id": "proj-2",
+        "title": "Vehicle Counting",
+        "description": "Application for tracking and counting vehicles from surveillance cameras using YOLOv5 and DeepSORT.",
+        "imageUrl": "/projects/vehicle_tracking.gif",
+        "link": "https://github.com/kaylode/vehicle-counting",
+        "tags": [
+          "PyTorch",
+          "YOLOv5",
+          "Object Tracking"
+        ]
+      },
+      {
+        "id": "proj-3",
+        "title": "THESEUS",
+        "description": "A general template for PyTorch deep learning projects supporting classification, detection, and segmentation.",
+        "imageUrl": "/projects/github.png",
+        "link": "https://github.com/kaylode/theseus",
+        "tags": [
+          "PyTorch",
+          "Template",
+          "Computer Vision"
+        ]
+      },
+      {
+        "id": "proj-4",
+        "title": "Meal Analysis Web-app",
+        "description": "Technicals: YOLOv5 model, CNN classification, FlaskAPI, Ngrok, - Created a web application for precise ingredient and nutrition analysis from meal photos using advanced deep learning models.\t- The project, initially conceived as a class assignment, gained significant recognition with over 200 stars on GitHub.\n- My Role: Designed the core workflow of the system, including developing the API server and ensuring the seamless orchestration of application hosting on a remote server. Took charge of implementing and closely monitoring the performance of the core deep learning models throughout the project.",
+        "imageUrl": "/projects/food_api.jpg",
+        "link": "https://github.com/lannguyen0910/food-recognition",
+        "tags": [
+          "Deep Learning",
+          "Food Analysis",
+          "Object Detection"
+        ]
+      },
+      {
+        "id": "proj-5",
+        "title": "Vietnamese OCR Toolbox",
+        "description": "Toolbox to retrieve Vietnamese text from receipts or documents.",
+        "imageUrl": "/projects/vnocrtoolbox.png",
+        "link": "https://github.com/kaylode/vietnamese-ocr-toolbox",
+        "tags": [
+          "OCR",
+          "C++",
+          "Text Detection"
+        ]
+      },
+      {
+        "id": "proj-6",
+        "title": "K.A.I Discord Bot",
+        "description": "Being inspired by Marvel's Ultron/Jarvis, K.A.I is created as a Discord bot written using discord.py that can do a lot of things an AI can do. From basic usage such as customable alarm system, streaming music, translating multiple languages, searching wikipedia, to even more intelligence tasks like computer vision (classification, detection, segmentation, etc), natural language processing (telling jokes, answering questions, chatting)* responding with voice, or even being voice-controlled.",
+        "imageUrl": "/projects/kai.jpg",
+        "link": "https://github.com/kaylode/kai",
+        "tags": [
+          "Python",
+          "Discord.py",
+          "AI Assistant"
+        ]
+      },
+      {
+        "id": "proj-7",
+        "title": "Video Traffic Event Retrieval",
+        "description": "Pipeline to retrieve video clips matching text prompts. Runner-up in AI City Challenge 2022.",
+        "imageUrl": "/projects/aic22.png",
+        "link": "https://github.com/nhtlongcs/AIC2022-VER",
+        "tags": [
+          "PyTorch",
+          "Retrieval",
+          "AI City Challenge"
+        ]
+      },
+      {
+        "id": "proj-8",
+        "title": "Facemask Removal",
+        "description": "Application for removing facemasks from portraits using GANs.",
+        "imageUrl": "/projects/facemask.png",
+        "link": "https://github.com/kaylode/facemask-removal",
+        "tags": [
+          "PyTorch",
+          "GAN",
+          "Inpainting"
+        ]
+      },
+      {
+        "id": "proj-9",
+        "title": "Street Pothole Segmentation",
+        "description": "Semi-supervised algorithms to detect and segment road cracks and potholes.",
+        "imageUrl": "/projects/pothole.png",
+        "link": "https://github.com/kaylode/shrec22-pothole",
+        "tags": [
+          "Segmentation",
+          "Semi-supervised",
+          "Pothole Detection"
+        ]
+      },
+      {
+        "id": "proj-10",
+        "title": "Interactive CT Volume Organ Segmentation",
+        "description": "Two-staged method for 3D segmentation using 2D techniques and active learning.",
+        "imageUrl": "/projects/ivos.png",
+        "link": "https://github.com/kaylode/ivos",
+        "tags": [
+          "Medical AI",
+          "Active Learning",
+          "Segmentation"
+        ]
+      }
+    ],
+    "awards": [
+      {
+        "id": "aw-6",
+        "year": 2025,
+        "title": "1st Place - Alibaba Cloud CIKM 2025 Hackathon",
+        "event": "Alibaba Cloud",
+        "description": "At the Alibaba Cloud CIKM 2025 Hackathon, our team developed an innovative e-commerce product matching system using Large Language Models (LLMs). We focused on enhancing product discovery and recommendation accuracy by leveraging advanced semantic understanding and augmentation techniques. The solution demonstrated significant improvements in matching relevance, showcasing the potential of LLMs to revolutionize e-commerce search and personalization.",
+        "link": "https://www.linkedin.com/posts/kaylochee_cikm2025-alibabacloud-analyticsup-activity-7395002060573810688-gIsD?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
+      },
+      {
+        "id": "aw-1",
+        "title": "2nd Place - Google AI Student Hackathon",
+        "event": "Google Dublin",
+        "year": 2025,
+        "description": "At the Google Student AI Hackathon 2025 Dublin, our team developed PictureTales, an AI-powered platform that transforms user photos into accessible, engaging storybooks for dyslexic readers. Built with the Gemini API, it integrates advanced summarization, adaptive storytelling, consistent image generation, and seamless text-to-speech for an immersive, personalized reading experience. The interface is designed for accessibility, allowing users to freely adjust fonts, sizes, and voice styles, ensuring each story fits individual reading needs while maintaining a user-friendly, intuitive experience.",
+        "link": "https://www.linkedin.com/posts/swaaz_googleaihackathon-studentinnovation-mentorship-ugcPost-7351578765438697472-Iq7d?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
+      },
+      {
+        "id": "aw-2",
+        "title": "Runner-up - Huawei Tech Arena Hackathon",
+        "event": "Huawei Ireland",
+        "description": "We were awarded runner-up team at the hackathon in Dublin, Ireland. We deployed a LLM-based chat assistant that can translate user's data query into sql commands and execute it to retrieve relevant information. The evaluation was based on 4 aspects of the system: intelligence, reliability, safety, and trustworthiness",
+        "year": 2023,
+        "link": "https://www.linkedin.com/posts/kaylochee_huawei-tech-arena-hackathon-2023-activity-7119341339686987776-5501?utm_source=share&utm_medium=member_desktop&rcm=ACoAAC8VeQYBsE7IYt9WAKX9ccmZpNrm-EDvJ6c"
+      },
+      {
+        "id": "aw-3",
+        "title": "Runner-up - AI City Challenge Track 2",
+        "event": "CVPR Workshop",
+        "year": 2022,
+        "link": "https://github.com/nhtlongcs/AIC2022-VER"
+      },
+      {
+        "id": "aw-4",
+        "title": "1st Place - Pixel Privacy MediaEval",
+        "event": "MediaEval Benchmark",
+        "year": 2020
+      },
+      {
+        "id": "aw-5",
+        "title": "1st Place - AI4VN Hackathon",
+        "event": "AI4VN",
+        "year": 2020
+      }
+    ],
+    "keywords": [
+      "Machine Learning",
+      "Computer Vision",
+      "Generative AI",
+      "Large Language Models",
+      "Prompt Engineering",
+      "PyTorch",
+      "Clinical Foundation Models"
+    ]
+  },
+  "tracking": {
+    "leetcode": {
+      "solved": 90,
+      "streak": 15,
+      "dailyDone": true,
+      "monthlySolves": [
+        {
+          "month": "Mar",
+          "year": 2025,
+          "solved": 0
+        },
+        {
+          "month": "Apr",
+          "year": 2025,
+          "solved": 0
+        },
+        {
+          "month": "May",
+          "year": 2025,
+          "solved": 0
+        },
+        {
+          "month": "Jun",
+          "year": 2025,
+          "solved": 0
+        },
+        {
+          "month": "Jul",
+          "year": 2025,
+          "solved": 0
+        },
+        {
+          "month": "Aug",
+          "year": 2025,
+          "solved": 0
+        },
+        {
+          "month": "Sep",
+          "year": 2025,
+          "solved": 0
+        },
+        {
+          "month": "Oct",
+          "year": 2025,
+          "solved": 155
+        },
+        {
+          "month": "Nov",
+          "year": 2025,
+          "solved": 0
+        },
+        {
+          "month": "Dec",
+          "year": 2025,
+          "solved": 0
+        },
+        {
+          "month": "Jan",
+          "year": 2026,
+          "solved": 8
+        },
+        {
+          "month": "Feb",
+          "year": 2026,
+          "solved": 0
+        }
+      ]
+    },
+    "github": {
+      "totalStars": 508,
+      "monthlyCommits": [
+        {
+          "month": "Mar",
+          "year": 2025,
+          "commits": 22
+        },
+        {
+          "month": "Apr",
+          "year": 2025,
+          "commits": 105
+        },
+        {
+          "month": "May",
+          "year": 2025,
+          "commits": 92
+        },
+        {
+          "month": "Jun",
+          "year": 2025,
+          "commits": 58
+        },
+        {
+          "month": "Jul",
+          "year": 2025,
+          "commits": 11
+        },
+        {
+          "month": "Aug",
+          "year": 2025,
+          "commits": 64
+        },
+        {
+          "month": "Sep",
+          "year": 2025,
+          "commits": 80
+        },
+        {
+          "month": "Oct",
+          "year": 2025,
+          "commits": 11
+        },
+        {
+          "month": "Nov",
+          "year": 2025,
+          "commits": 92
+        },
+        {
+          "month": "Dec",
+          "year": 2025,
+          "commits": 48
+        },
+        {
+          "month": "Jan",
+          "year": 2026,
+          "commits": 48
+        },
+        {
+          "month": "Feb",
+          "year": 2026,
+          "commits": 14
+        }
+      ]
+    },
+    "travel": {
+      "totalCountries": 8,
+      "countries": [
+        "Vietnam",
+        "Ireland",
+        "UK",
+        "France",
+        "Germany",
+        "Korean",
+        "Singapore",
+        "Italy"
+      ]
+    },
+    "goals": [
+      {
+        "title": "Research Papers Read",
+        "current": 45,
+        "total": 100,
+        "unit": "papers"
+      },
+      {
+        "title": "Books Read",
+        "current": 8,
+        "total": 12,
+        "unit": "books"
+      }
+    ]
+  },
+  "blog": [
+    {
+      "id": "cmdceujgf000t8o3ejcmu87h3",
+      "title": "Machine Learning in Computer Vision",
+      "date": "2024-02-10",
+      "excerpt": "Exploring the latest developments in machine learning applications for computer vision tasks.",
+      "content": "# Machine Learning in Computer Vision\n\nComputer vision has seen remarkable progress..."
+    }
+  ]
 }

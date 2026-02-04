@@ -113,9 +113,11 @@ def refresh_github_stats():
         }).execute()
         
         print("GitHub stats updated successfully.")
+        return new_stats
         
     except Exception as e:
         print(f"Error refreshing GitHub stats: {e}")
+        return None
 
 def refresh_leetcode_stats():
     print("Fetching LeetCode stats...")
@@ -232,14 +234,49 @@ def refresh_leetcode_stats():
             }).execute()
             
             print("LeetCode stats updated successfully.")
+            return new_stats
             
         else:
             print(f"LeetCode Request failed: {response.status_code}")
 
     except Exception as e:
         print(f"Error refreshing LeetCode stats: {e}")
+        return None
 if __name__ == "__main__":
     print("Starting stats refresh...")
-    refresh_github_stats()
-    refresh_leetcode_stats()
+    github_data = refresh_github_stats()
+    leetcode_data = refresh_leetcode_stats()
+    
+    # Update local data.json
+    try:
+        json_path = os.path.join(os.path.dirname(__file__), '..', 'frontend', 'data.json')
+        if os.path.exists(json_path):
+            with open(json_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            
+            if 'tracking' not in data:
+                data['tracking'] = {}
+            
+            if github_data:
+                data['tracking']['github'] = {
+                    "totalStars": github_data['totalStars'],
+                    "monthlyCommits": github_data['monthlyCommits']
+                }
+            
+            if leetcode_data:
+                data['tracking']['leetcode'] = {
+                    "solved": leetcode_data['solved'],
+                    "streak": leetcode_data['streak'],
+                    "dailyDone": leetcode_data['dailyDone'],
+                    "monthlySolves": leetcode_data['monthlySolves']
+                }
+            
+            with open(json_path, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+            print(f"Successfully updated local data at {json_path}")
+        else:
+            print(f"Warning: Local data.json not found at {json_path}")
+    except Exception as e:
+        print(f"Error updating local data.json: {e}")
+
     print("Stats refresh complete.")

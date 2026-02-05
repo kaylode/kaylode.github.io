@@ -119,7 +119,11 @@ export interface TrackingStats {
     monthlyCommits: { month: string; year: number; commits: number }[];
   };
   travel: {
-    countries: string[];
+    visited: {
+      country: string;
+      code: string; // ISO3 code
+      visits: number;
+    }[];
     totalCountries: number;
   };
   goals: {

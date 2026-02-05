@@ -186,33 +186,41 @@
         "venue": "MDPI Diagnostics",
         "year": 2024,
         "url": "https://doi.org/10.3390/diagnostics14212405",
-        "abstract": "Evaluated efficiency of ML models for forecasting patient readmission risks using demographics and historical records."
+        "abstract": "Predicting patient readmission is critical for healthcare risk management, helping prevent adverse events, reduce costs, and improve outcomes. This study compares conventional machine learning and deep learning models using multimodal electronic discharge data from an Irish acute hospital. Models leverage demographics, hospitalization history, and diagnosis codes, addressing data imbalance and multimodality. We apply SHAP to interpret predictions and identify key clinical and diagnostic drivers of readmission risk. Feature engineering and benchmarking improved AUROC from 0.628 to 0.70. Cancer, COPD, and social factors were strong predictors, while bacterial carrier status showed limited impact. Routinely collected hospital data can effectively predict readmission risk, with explainable AI providing clinically meaningful insights."
       },
       {
         "id": "pub-3",
         "title": "Semi-supervised Organ Segmentation with Mask Propagation Refinement and Uncertainty Estimation",
         "authors": [
           "Minh-Khoi Pham",
-          "et al."
+          "Thang-Long Nguyen-Ho",
+          "Thao Thi Phuong Dao",
+          "Tan-Cong Nguyen",
+          "Minh-Triet Tran"
         ],
         "venue": "Lecture Notes in Computer Science",
         "year": 2023,
         "url": "https://link.springer.com/chapter/10.1007/978-3-031-23911-3_15",
-        "abstract": "Proposed a two-staged method employing 2D-based techniques for 3D segmentation, leveraging unlabeled data with semi-supervised learning."
+        "abstract": "We present a novel two-staged method that employs various 2D-based techniques to deal with the 3D segmentation task. In most of the previous challenges, it is unlikely for 2D CNNs to be comparable with other 3D CNNs since 2D models can hardly capture temporal information. In light of that, we propose using the recent state-of-the-art technique in video object segmentation, combining it with other semi-supervised training techniques to leverage the extensive unlabeled data. Moreover, we introduce a way to generate pseudo-labeled data that is both plausible and consistent for further retraining by using uncertainty estimation."
       },
       {
         "id": "pub-4",
         "title": "SHREC 2022: pothole and crack detection in the road pavement using images and RGB-D data",
         "authors": [
           "Elia Moscoso Thompson",
-          "...",
+          "Andrea Ranieri",
+          "Silvia Biasotti",
+          "Miguel Chicchon",
+          "Ivan Sipiran",
           "Minh-Khoi Pham",
-          "et al."
+          "Aleksandar Milenovic",
+          "Hai-Dang Nguyen",
+          "Minh-Triet Tran"
         ],
         "venue": "Computers & Graphics",
         "year": 2022,
         "url": "https://doi.org/10.1016/j.cag.2022.07.018",
-        "abstract": "Implemented semi-supervised algorithms to detect and segment road cracks and street potholes."
+        "abstract": "This paper describes the methods submitted for evaluation to the SHREC 2022 track on pothole and crack detection in the road pavement. A total of 7 different runs for the semantic segmentation of the road surface are compared, 6 from the participants plus a baseline method. All methods exploit Deep Learning techniques and their performance is tested using the same environment (i.e., a single Jupyter notebook). A training set, composed of 3836 semantic segmentation image/mask pairs and 797 RGB-D video clips collected with the latest depth cameras was made available to the participants. The methods are then evaluated on the 496 image/masks pairs in the validation set, on the 504 pairs in the test set and finally on 8 video clips. The analysis of the results is based on quantitative metrics for image segmentation and qualitative analysis of the video clips. The participation and the results show that the scenario is of great interest and that the use of RGB-D data is still challenging in this context."
       },
       {
         "id": "pub-5",
@@ -716,15 +724,47 @@
     },
     "travel": {
       "totalCountries": 8,
-      "countries": [
-        "Vietnam",
-        "Ireland",
-        "UK",
-        "France",
-        "Germany",
-        "Korean",
-        "Singapore",
-        "Italy"
+      "visited": [
+        {
+          "country": "Vietnam",
+          "code": "VNM",
+          "visits": 10
+        },
+        {
+          "country": "Ireland",
+          "code": "IRL",
+          "visits": 5
+        },
+        {
+          "country": "United Kingdom",
+          "code": "GBR",
+          "visits": 3
+        },
+        {
+          "country": "France",
+          "code": "FRA",
+          "visits": 2
+        },
+        {
+          "country": "Germany",
+          "code": "DEU",
+          "visits": 1
+        },
+        {
+          "country": "South Korea",
+          "code": "KOR",
+          "visits": 1
+        },
+        {
+          "country": "Singapore",
+          "code": "SGP",
+          "visits": 2
+        },
+        {
+          "country": "Italy",
+          "code": "ITA",
+          "visits": 1
+        }
       ]
     },
     "goals": [

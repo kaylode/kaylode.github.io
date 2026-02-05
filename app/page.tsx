@@ -12,8 +12,9 @@ import {
 	EXPERIENCES_DATA,
 	BLOG_POSTS,
 	TIMELINE_EVENTS,
-	TRACKING_DATA
+	TRACKING_DATA,
 } from '@/constants';
+import TravelMap from '@/components/TravelMap';
 import {
 	GraduationCap,
 	Briefcase,
@@ -374,19 +375,32 @@ export default function PortfolioPage() {
 								</div>
 							</Card>
 
-							{/* Travel Tracker */}
-							<Card className="p-6 border-l-4 border-l-blue-500 sm:col-span-2">
+							{/* Travel Journal */}
+							<Card className="p-6 border-l-4 border-l-blue-500 sm:col-span-2 overflow-hidden">
 								<div className="flex justify-between items-start mb-6">
 									<div className="flex items-center gap-2">
 										<Globe size={20} className="text-blue-500" />
-										<h3 className="font-bold">Travel Progress</h3>
+										<h3 className="font-bold">Travel Journal</h3>
 									</div>
-									<Badge variant="outline">{trackingStats.travel?.totalCountries} Countries Visited</Badge>
+									<div className="flex items-center gap-4">
+										<Badge variant="outline" className="bg-blue-50/50 dark:bg-blue-900/10 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800">
+											{trackingStats.travel?.totalCountries} Countries Visited
+										</Badge>
+									</div>
 								</div>
-								<div className="flex flex-wrap gap-2">
-									{trackingStats.travel?.countries.map(country => (
-										<Badge key={country} variant="secondary" className="px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300">
-											{country}
+
+								<div className="mt-2">
+									<TravelMap visited={trackingStats.travel?.visited || []} />
+								</div>
+
+								<div className="mt-6 flex flex-wrap gap-2">
+									{trackingStats.travel?.visited.map(item => (
+										<Badge
+											key={item.code}
+											variant="secondary"
+											className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors cursor-default"
+										>
+											{item.country} <span className="ml-1 text-[10px] opacity-50">({item.visits}x)</span>
 										</Badge>
 									))}
 								</div>

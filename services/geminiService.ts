@@ -30,7 +30,7 @@ export const askResearcher = async (question: string) => {
     Personal Progress & Tracking:
     - LeetCode Solved: ${TRACKING_DATA.leetcode.solved} (Streak: ${TRACKING_DATA.leetcode.streak} days)
     - GitHub Commits (Month): ${TRACKING_DATA.github.monthlyCommits}
-    - Travel: ${TRACKING_DATA.travel.totalCountries} countries visited, including ${TRACKING_DATA.travel.countries.slice(0, 3).join(", ")}
+    - Travel: ${TRACKING_DATA.travel.totalCountries} countries visited, including ${TRACKING_DATA.travel.visited.map(v => v.country).slice(0, 3).join(", ")}
     - Other Goals: ${TRACKING_DATA.goals.map(g => `${g.title}: ${g.current}/${g.total} ${g.unit}`).join("; ")}
 
     Answer the following question about their career journey, research, or personal milestones in a helpful, concise, and professional tone.

@@ -769,7 +769,7 @@
         {
           "country": "France",
           "code": "FRA",
-          "visits": 2
+          "visits": 1
         },
         {
           "country": "Germany",
@@ -784,12 +784,32 @@
         {
           "country": "Singapore",
           "code": "SGP",
-          "visits": 2
+          "visits": 1
         },
         {
           "country": "Italy",
           "code": "ITA",
           "visits": 1
+        },
+        {
+          "country": "Portugal",
+          "code": "PT",
+          "visits": 1
+        },
+        {
+          "country": "Belgium",
+          "code": "BEL",
+          "visits": 1
+        },
+        {
+          "country": "Switzerland",
+          "code": "CHE",
+          "visits": 1
+        },
+        {
+          "country": "Netherlands",
+          "code": "NLD",
+          "visits": 2
         }
       ]
     },

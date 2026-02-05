@@ -224,29 +224,55 @@
       },
       {
         "id": "pub-5",
-        "title": "A systems approach to managing the risk of healthcare acquired infection...",
+        "title": "A systems approach to managing the risk of healthcare acquired infection in an acute hospital setting supported by human factors ergonomics, data science, data governance and AI",
         "authors": [
-          "Marie E Ward",
+          "Marie E. Ward",
+          "Una Geary",
+          "Rob Brennan",
+          "Rebecca Vining",
+          "Lucy McKenna",
+          "Brian O’Connell",
+          "Colm Bergin",
+          "Declan Byrne",
+          "Donncha Creagh",
+          "Mary Fogarty",
+          "Una Healy",
+          "Grainne McDonald",
+          "Malick Ebiele",
+          "Martin Crane",
           "Minh-Khoi Pham",
-          "et al."
+          "Malika Bendechache",
+          "Marija Bezbradica",
+          "Junli Liang",
+          "Brian Doyle",
+          "John Guilfoyle",
+          "Arwa Shuhaiber",
+          "Nick McDonald"
         ],
         "venue": "Ergonomics",
         "year": 2024,
         "url": "https://doi.org/10.1080/00140139.2024.2396527",
-        "abstract": "A systems approach to managing risk of healthcare acquired infection, supported by AI and data science."
+        "abstract": "Innovative approaches are needed for managing risk and system change in healthcare. This paper presents a case study of a project that took place over two years, taking a systems approach to managing the risk of healthcare acquired infection in an acute hospital setting, supported by an Access Risk Knowledge Platform which brings together Human Factors Ergonomics, Data Science, Data Governance and AI expertise. Evidence for change including meeting notes and use of the platform were studied. The work on the project focused on first systematically building a rich picture of the current situation from a transdisciplinary perspective. This allowed for understanding risk in context and developing a better capability to support enterprise risk management and accountability. From there a linking of operational and risk data took place which led to mapping of the risk pattern in the hospital."
       },
       {
         "id": "pub-6",
-        "title": "Improving Laryngoscopy Image Analysis Through Integration of Global Information...",
+        "title": "Improving Laryngoscopy Image Analysis Through Integration of Global Information and Local Features in VoFoCD Dataset",
         "authors": [
           "Thao Thi Phuong Dao",
+          "Tuan-Luc Huynh",
           "Minh-Khoi Pham",
-          "et al."
+          "Trung-Nghia Le",
+          "Tan-Cong Nguyen",
+          "Quang-Thuc Nguyen",
+          "Bich Anh Tran",
+          "Boi Ngoc Van",
+          "Chanh Cong Ha",
+          "Minh-Triet Tran"
         ],
         "venue": "Journal of Imaging Informatics in Medicine",
         "year": 2024,
         "url": "https://doi.org/10.1007/s10278-024-01068-z",
-        "abstract": "Dataset and method for object detection and image classification in laryngoscopy images."
+        "abstract": "The diagnosis and treatment of vocal fold disorders heavily rely on the use of laryngoscopy. A comprehensive vocal fold diagnosis requires accurate identification of crucial anatomical structures and potential lesions during laryngoscopy observation. However, existing approaches have yet to explore the joint optimization of the decision-making process, including object detection and image classification tasks simultaneously. In this study, we provide a new dataset, VoFoCD, with 1724 laryngology images designed explicitly for object detection and image classification in laryngoscopy images. Images in the VoFoCD dataset are categorized into four classes and comprise six glottic object types. Moreover, we propose a novel Multitask Efficient trAnsformer network for Laryngoscopy (MEAL) to classify vocal fold images and detect glottic landmarks and lesions. To further facilitate interpretability for clinicians, MEAL provides attention maps to visualize important learned regions for explainable artificial intelligence results toward supporting clinical decision-making. We also analyze our model’s effectiveness in simulated clinical scenarios where shaking of the laryngoscopy process occurs. The proposed model demonstrates outstanding performance on our VoFoCD dataset. The accuracy for image classification and mean average precision at an intersection over a union threshold of 0.5 (mAP50) for object detection are 0.951 and 0.874, respectively. Our MEAL method integrates global knowledge, encompassing general laryngoscopy image classification, into local features, which refer to distinct anatomical regions of the vocal fold, particularly abnormal regions, including benign and malignant lesions. Our contribution can effectively aid laryngologists in identifying benign or malignant lesions of vocal folds and classifying images in the laryngeal endoscopy process visually."
       },
       {
         "id": "pub-7",

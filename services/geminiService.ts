@@ -1,6 +1,6 @@
 
 import { GoogleGenAI } from "@google/genai";
-import { PROFILE_DATA, ACADEMIA_DATA, EXPERIENCES_DATA, BLOG_POSTS, TIMELINE_EVENTS, TRACKING_DATA } from "@/constants";
+import { PROFILE_DATA, ACADEMIA_DATA, EXPERIENCES_DATA, TIMELINE_EVENTS, TRACKING_DATA } from "@/constants";
 
 let aiInstance: GoogleGenAI | null = null;
 

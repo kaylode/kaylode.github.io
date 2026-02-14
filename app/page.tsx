@@ -5,12 +5,11 @@ import Sidebar from '@/components/Sidebar';
 import AIAssistant from '@/components/AIAssistant';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { Timeline } from '@/components/Timeline';
-import { SectionType } from '@/types';
+import { SectionType, BlogPost } from '@/types';
 import {
 	PROFILE_DATA,
 	ACADEMIA_DATA,
 	EXPERIENCES_DATA,
-	BLOG_POSTS,
 	TIMELINE_EVENTS,
 	TRACKING_DATA,
 } from '@/constants';
@@ -39,7 +38,7 @@ import { Badge, Button, Card } from '@/components/ui';
 
 export default function PortfolioPage() {
 	const [activeSection, setActiveSection] = useState<SectionType>(SectionType.ABOUT);
-	const [blogPosts, setBlogPosts] = useState(BLOG_POSTS);
+	const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
 	const [trackingStats, setTrackingStats] = useState(TRACKING_DATA);
 
 	const navigation = [
@@ -50,10 +49,26 @@ export default function PortfolioPage() {
 		{ name: 'Blog', id: SectionType.BLOG, icon: PenTool },
 	];
 
+	const handleSectionChange = (section: SectionType) => {
+		setActiveSection(section);
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	};
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				// Fetch tracking data (blog data is on /blog page)
+				// Fetch blog posts from Notion
+				try {
+					const blogRes = await fetch('/api/blog');
+					if (blogRes.ok) {
+						const blogData = await blogRes.json();
+						setBlogPosts(blogData);
+					}
+				} catch (blogError) {
+					console.log("Blog API not available");
+				}
+
+				// Fetch tracking data
 				try {
 					const trackingRes = await fetch('/api/tracking');
 					if (trackingRes.ok) {
@@ -426,24 +441,51 @@ export default function PortfolioPage() {
 							<h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50">Research & Thoughts</h2>
 						</div>
 						<div className="space-y-12">
-							{blogPosts.slice(0, 3).map((post) => (
-								<article
-									key={post.id}
-									className="group cursor-pointer max-w-3xl"
-									onClick={() => window.location.href = '/blog'}
-								>
-									<div className="text-xs font-mono font-bold text-slate-400 mb-3 uppercase tracking-widest">{post.date}</div>
-									<h3 className="text-3xl font-bold text-slate-900 dark:text-slate-50 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all mb-4">
-										{post.title}
-									</h3>
-									<p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-										{post.excerpt}
-									</p>
-									<div className="inline-flex items-center font-bold text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform">
-										Read more →
-									</div>
-								</article>
-							))}
+							{blogPosts.length > 0 ? (
+								blogPosts.map((post) => (
+									<a
+										key={post.id}
+										href={post.url}
+										target="_blank"
+										rel="noopener noreferrer"
+										className="group block"
+									>
+										<article className="relative p-6 -mx-6 rounded-3xl hover:bg-slate-50 dark:hover:bg-slate-900/50 transition-all duration-300">
+											<div className="flex items-center justify-between mb-3">
+												<div className="flex items-center gap-3 text-sm font-medium text-slate-500 dark:text-slate-400">
+													<Calendar size={14} />
+													<span>{new Date(post.publishedAt).toLocaleDateString('en-US', {
+														year: 'numeric',
+														month: 'long',
+														day: 'numeric'
+													})}</span>
+												</div>
+											</div>
+											<h2 className="text-2xl font-bold text-slate-900 dark:text-slate-50 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors mb-4">
+												{post.title}
+											</h2>
+											<p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+												{post.summary}
+											</p>
+											<div className="flex flex-wrap gap-2 mb-4">
+												{post.tags.map(tag => (
+													<span key={tag} className="px-2 py-1 text-xs font-semibold rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+														{tag}
+													</span>
+												))}
+											</div>
+											<div className="inline-flex items-center font-bold text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform">
+												Read on Notion →
+											</div>
+										</article>
+									</a>
+								))
+							) : (
+								<Card className="p-12 text-center text-slate-500 dark:bg-slate-900/50 border-slate-200 dark:border-slate-800">
+									<p className="mb-4">No posts found or Notion API not configured.</p>
+									<p className="text-sm">Please set <code>NEXT_PUBLIC_NOTION_TOKEN</code> and <code>NEXT_PUBLIC_NOTION_DATABASE_ID</code> in your environment variables.</p>
+								</Card>
+							)}
 						</div>
 					</section>
 				);
@@ -469,13 +511,7 @@ export default function PortfolioPage() {
 									key={item.id}
 									variant={activeSection === item.id ? 'secondary' : 'ghost'}
 									className={`h-9 px-4 ${activeSection === item.id ? 'font-bold' : 'font-medium'}`}
-									onClick={() => {
-										if (item.id === SectionType.BLOG) {
-											window.location.href = '/blog';
-										} else {
-											setActiveSection(item.id);
-										}
-									}}
+									onClick={() => handleSectionChange(item.id)}
 								>
 									{item.name}
 								</Button>
@@ -499,13 +535,7 @@ export default function PortfolioPage() {
 									key={item.id}
 									variant={activeSection === item.id ? 'secondary' : 'outline'}
 									className="whitespace-nowrap h-9"
-									onClick={() => {
-										if (item.id === SectionType.BLOG) {
-											window.location.href = '/blog';
-										} else {
-											setActiveSection(item.id);
-										}
-									}}
+									onClick={() => handleSectionChange(item.id)}
 								>
 									<item.icon size={14} className="mr-2" />
 									{item.name}

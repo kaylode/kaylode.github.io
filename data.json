@@ -827,14 +827,5 @@
         "unit": "books"
       }
     ]
-  },
-  "blog": [
-    {
-      "id": "cmdceujgf000t8o3ejcmu87h3",
-      "title": "Machine Learning in Computer Vision",
-      "date": "2024-02-10",
-      "excerpt": "Exploring the latest developments in machine learning applications for computer vision tasks.",
-      "content": "# Machine Learning in Computer Vision\n\nComputer vision has seen remarkable progress..."
-    }
-  ]
+  }
 }

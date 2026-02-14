@@ -101,10 +101,13 @@ export interface Project {
 export interface BlogPost {
   id: string;
   title: string;
-  date: string;
-  excerpt: string;
+  date?: string; // Legacy field for compatibility
+  publishedAt: string; // Notion API field
+  excerpt?: string; // Legacy field
+  summary: string; // Notion API field
   content?: string;
-  url?: string;
+  url: string; // Notion page URL
+  tags: string[]; // Notion tags
 }
 
 export interface TrackingStats {

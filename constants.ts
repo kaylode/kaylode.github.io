@@ -7,7 +7,6 @@ import {
   IndustryExperience,
   Award,
   Project,
-  BlogPost,
   TimelineEvent,
   TrackingStats
 } from '@/types';
@@ -31,6 +30,6 @@ export const EXPERIENCES_DATA = data.experiences as unknown as {
   keywords: string[];
 };
 
-export const BLOG_POSTS: BlogPost[] = data.blog as BlogPost[];
+
 
 export const TRACKING_DATA: TrackingStats = data.tracking as TrackingStats;

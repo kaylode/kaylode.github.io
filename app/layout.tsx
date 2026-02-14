@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
 	title: "Portfolio | Minh-Khoi Pham",
 	description: "Ph.D. Student in Computer Science at Dublin City University",
+	icons: {
+		icon: '/favicon.ico',
+	},
 };
 
 export default function RootLayout({

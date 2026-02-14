@@ -104,6 +104,7 @@ export interface BlogPost {
   date: string;
   excerpt: string;
   content?: string;
+  url?: string;
 }
 
 export interface TrackingStats {

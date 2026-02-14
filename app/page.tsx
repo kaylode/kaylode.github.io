@@ -33,6 +33,7 @@ import {
 	BarChart3,
 	Star,
 	Heart,
+	Calendar,
 } from 'lucide-react';
 import { Badge, Button, Card } from '@/components/ui';
 
@@ -52,28 +53,18 @@ export default function PortfolioPage() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				// In local dev, these might fail if backend isn't running
-				// In static export, these won't be available unless specifically handled
-				const [blogRes, trackingRes] = await Promise.all([
-					fetch('/api/blog'),
-					fetch('/api/tracking')
-				]);
-				if (blogRes.ok) {
-					const blogData = await blogRes.json();
-					const mappedBlog = blogData.map((post: any) => ({
-						id: post.id,
-						title: post.title,
-						date: new Date(post.published_at).toISOString().split('T')[0],
-						excerpt: post.excerpt,
-					}));
-					setBlogPosts(mappedBlog);
-				}
-				if (trackingRes.ok) {
-					const trackingData = await trackingRes.json();
-					setTrackingStats(prev => ({
-						...prev,
-						...trackingData
-					}));
+				// Fetch tracking data (blog data is on /blog page)
+				try {
+					const trackingRes = await fetch('/api/tracking');
+					if (trackingRes.ok) {
+						const trackingData = await trackingRes.json();
+						setTrackingStats(prev => ({
+							...prev,
+							...trackingData
+						}));
+					}
+				} catch (trackingError) {
+					console.log("Tracking API not available");
 				}
 			} catch (error) {
 				console.error("Failed to fetch data:", error);
@@ -428,10 +419,19 @@ export default function PortfolioPage() {
 			case SectionType.BLOG:
 				return (
 					<section className="animate-in fade-in slide-in-from-top-4 duration-500">
-						<h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50 mb-12">Blog</h2>
-						<div className="space-y-16">
-							{blogPosts.map((post) => (
-								<article key={post.id} className="group cursor-pointer max-w-3xl">
+						<div className="flex items-center gap-3 mb-12">
+							<div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-2xl text-blue-600 dark:text-blue-400">
+								<PenTool size={24} />
+							</div>
+							<h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50">Research & Thoughts</h2>
+						</div>
+						<div className="space-y-12">
+							{blogPosts.slice(0, 3).map((post) => (
+								<article
+									key={post.id}
+									className="group cursor-pointer max-w-3xl"
+									onClick={() => window.location.href = '/blog'}
+								>
 									<div className="text-xs font-mono font-bold text-slate-400 mb-3 uppercase tracking-widest">{post.date}</div>
 									<h3 className="text-3xl font-bold text-slate-900 dark:text-slate-50 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all mb-4">
 										{post.title}
@@ -439,9 +439,9 @@ export default function PortfolioPage() {
 									<p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
 										{post.excerpt}
 									</p>
-									<Button variant="ghost" className="p-0 h-auto text-blue-600 dark:text-blue-400 hover:bg-transparent hover:underline text-base font-bold">
-										Read article →
-									</Button>
+									<div className="inline-flex items-center font-bold text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform">
+										Read more →
+									</div>
 								</article>
 							))}
 						</div>
@@ -469,7 +469,13 @@ export default function PortfolioPage() {
 									key={item.id}
 									variant={activeSection === item.id ? 'secondary' : 'ghost'}
 									className={`h-9 px-4 ${activeSection === item.id ? 'font-bold' : 'font-medium'}`}
-									onClick={() => setActiveSection(item.id)}
+									onClick={() => {
+										if (item.id === SectionType.BLOG) {
+											window.location.href = '/blog';
+										} else {
+											setActiveSection(item.id);
+										}
+									}}
 								>
 									{item.name}
 								</Button>
@@ -493,7 +499,13 @@ export default function PortfolioPage() {
 									key={item.id}
 									variant={activeSection === item.id ? 'secondary' : 'outline'}
 									className="whitespace-nowrap h-9"
-									onClick={() => setActiveSection(item.id)}
+									onClick={() => {
+										if (item.id === SectionType.BLOG) {
+											window.location.href = '/blog';
+										} else {
+											setActiveSection(item.id);
+										}
+									}}
 								>
 									<item.icon size={14} className="mr-2" />
 									{item.name}
